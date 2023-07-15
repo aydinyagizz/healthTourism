@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Imports\UsersImport;
 use App\Models\AdminBlogCategory;
 use App\Models\AdminPricing;
 use App\Models\User;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
@@ -310,6 +312,67 @@ class UserController extends Controller
             $flasher->addSuccess('Permissions assigned successfully.');
         } else {
             $flasher->addWarning('No permissions selected.');
+        }
+
+        return redirect()->back();
+    }
+
+
+    public function userImport(Request $request, FlasherInterface $flasher)
+    {
+        // ...
+
+        $validator = Validator::make($request->all(), [
+            'users_file' => 'required|mimes:xlx,xls,xlsx|max:2048'
+        ], [
+            'users_file.required' => 'File is required',
+            'users_file.mimes' => 'File format must be xlx, xls, xlsx',
+            'users_file.max' => 'The file must be a maximum of 2 MB',
+        ]);
+
+        if ($validator->fails()) {
+            foreach ($validator->errors()->all() as $error) {
+                $flasher->addError($error);
+            }
+            return redirect()->back();
+        }
+
+        $import = new UsersImport();
+        $importedData = Excel::toArray($import, $request->file('users_file'));
+
+        $errors = [];
+        $successCount = 0;
+        foreach ($importedData[0] as $row => $data) {
+           // $validation = Validator::make([$row => $data], $import->rules());
+
+            $validation = Validator::make([$row => $data], $import->rules(), [
+                '*.0.required' => 'Row ' . ($row + 1) . ': Name field is required.',
+                '*.1.required' => 'Row ' . ($row + 1) . ': Email field is required.',
+                '*.1.email' => 'Row ' . ($row + 1) . ': Invalid email format.',
+                '*.1.unique' => 'Row ' . ($row + 1) . ': Email already exists.',
+                '*.2.required' => 'Row ' . ($row + 1) . ': Password field is required.',
+                '*.2.min' => 'Row ' . ($row + 1) . ': Password must be at least 6 characters.',
+            ]);
+
+
+            if ($validation->fails()) {
+                $errors[$row] = $validation->errors()->all();
+            } else {
+                $user = $import->model($data);
+                $user->save();
+                $successCount++;
+            }
+        }
+
+        if (count($errors) > 0) {
+            foreach ($errors as $row => $rowErrors) {
+                foreach ($rowErrors as $rowError) {
+
+                    $flasher->addError('Row ' . ($row + 1) . ': ' . $rowError);
+                }
+            }
+        } else {
+            $flasher->addSuccess('Users Imported Successfully');
         }
 
         return redirect()->back();
