@@ -161,6 +161,14 @@
                                         <div class="text-gray-600"><div class="badge py-3 px-4 fs-7 badge-light-danger">Pending</div></div>
                                     @endif
 
+                                    <div class="fw-bold mt-5">Featured</div>
+                                    @if($user->featured)
+                                        <div class="text-gray-600"><div class="badge py-3 px-4 fs-7 badge-light-success">Active</div></div>
+
+                                    @else
+                                        <div class="text-gray-600"><div class="badge py-3 px-4 fs-7 badge-light-danger">Pending</div></div>
+                                    @endif
+
 
                                     <div class="fw-bold mt-5">Last Login</div>
                                     <div
@@ -596,6 +604,31 @@ data-bs-dismiss="modal" aria-label="Close"
                                         </select>
                                         <!--end::Select2-->
                                     </div>
+
+
+                                    <div class="fv-row mb-7">
+                                        <label class="required fs-6 fw-semibold mb-2">Featured</label>
+
+                                        <!--begin::Select2-->
+                                        <select data-dropdown-parent="#kt_modal_update_details" name="featured" required
+                                                class="form-select mb-2"
+                                                data-control="select2"
+                                                data-hide-search="true"
+                                                data-placeholder="Select category"
+                                                id="status_featured{{ $user->id }}">
+                                            @if($user->featured)
+                                                <option value="1">Active</option>
+                                                <option value="0">Pending</option>
+                                            @else
+                                                <option value="0">Pending</option>
+                                                <option value="1">Active</option>
+                                            @endif
+
+                                        </select>
+                                        <!--end::Select2-->
+                                    </div>
+
+
 
                                 </div>
                                 <!--end::Scroll-->

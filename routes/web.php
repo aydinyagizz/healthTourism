@@ -13,8 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::prefix('/')->group(function () {
+    Route::get( '/', [\App\Http\Controllers\AdminFrontend\AdminFrontendController::class, 'adminFrontendIndex'])->name('admin.frontend.index');
+    Route::get( '/blog', [\App\Http\Controllers\AdminFrontend\AdminFrontendBlogController::class, 'adminFrontendBlog'])->name('admin.frontend.blog');
+    Route::get( '/categories', [\App\Http\Controllers\AdminFrontend\AdminFrontendCategoryController::class, 'adminFrontendCategory'])->name('admin.frontend.category');
+    Route::get( '/cities', [\App\Http\Controllers\AdminFrontend\AdminFrontendCityController::class, 'adminFrontendCity'])->name('admin.frontend.city');
+
 });
 
 
@@ -65,6 +71,24 @@ Route::prefix('/admin')->middleware(['is_admin', 'role:Admin'])->group(function 
     Route::post( '/pricingAdd', [\App\Http\Controllers\Admin\PricingController::class, 'pricingAdd'])->name('admin.pricing.add');
     Route::post( '/pricingDelete', [\App\Http\Controllers\Admin\PricingController::class, 'pricingDelete'])->name('admin.pricing.delete');
     Route::post( '/pricingUpdate/{id}', [\App\Http\Controllers\Admin\PricingController::class, 'pricingUpdate'])->name('admin.pricing.update');
+
+
+    Route::get( '/city', [\App\Http\Controllers\Admin\CityController::class, 'cityList'])->name('admin.city.list');
+    Route::post( '/cityAdd', [\App\Http\Controllers\Admin\CityController::class, 'cityAdd'])->name('admin.city.add');
+    Route::post( '/cityUpdate/{id}', [\App\Http\Controllers\Admin\CityController::class, 'cityUpdate'])->name('admin.city.update');
+    Route::post( '/cityDelete', [\App\Http\Controllers\Admin\CityController::class, 'cityDelete'])->name('admin.city.delete');
+
+
+    Route::get( '/diseaseCategory', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryList'])->name('admin.disease.category.list');
+    Route::post( '/diseaseCategoryAdd', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryAdd'])->name('admin.disease.category.add');
+    Route::post( '/diseaseCategoryDelete', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryDelete'])->name('admin.disease.category.delete');
+    Route::post( '/diseaseCategoryUpdate/{id}', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryUpdate'])->name('admin.disease.category.update');
+
+    Route::get( '/diseases', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesList'])->name('admin.diseases.list');
+    Route::post( '/diseasesAdd', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesAdd'])->name('admin.diseases.add');
+    Route::post( '/diseasesDelete', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesDelete'])->name('admin.diseases.delete');
+    Route::get( '/diseasesUpdate/{id}', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesUpdate'])->name('admin.diseases.update');
+    Route::post( '/diseasesUpdatePost/{id}', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesUpdatePost'])->name('admin.diseases.update.post');
 
 });
 

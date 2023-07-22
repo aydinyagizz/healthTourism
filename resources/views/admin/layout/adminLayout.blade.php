@@ -236,6 +236,55 @@
                         </a>
 
 
+                        <a href="{{ route('admin.disease.category.list') }}">
+                            <div
+                                class="menu-item   {{ Route::is('admin.disease.category.list') ? 'show' : '' }} menu-accordion mb-1">
+                            <span class="menu-link"><span class="menu-icon">
+
+                                    <i class="fa fa-list-alt fa-3x" aria-hidden="true"></i>
+
+                                 </span>
+                                <span class="menu-title">Diseases Category
+                                </span>
+                                <span class=""></span></span>
+
+
+                            </div>
+                        </a>
+
+                        <a href="{{ route('admin.diseases.list') }}">
+                            <div
+                                class="menu-item   {{ Route::is('admin.diseases.list') ? 'show' : '' }} menu-accordion mb-1">
+                            <span class="menu-link"><span class="menu-icon">
+
+                                    <i class="fa fa-images fa-3x" aria-hidden="true"></i>
+
+                                 </span>
+                                <span class="menu-title">Disease
+                                </span>
+                                <span class=""></span></span>
+
+
+                            </div>
+                        </a>
+
+                        <a href="{{ route('admin.city.list') }}">
+                            <div
+                                class="menu-item   {{ Route::is('admin.city.list') ? 'show' : '' }} menu-accordion mb-1">
+                            <span class="menu-link"><span class="menu-icon">
+
+                                    <i class="fa fa-images fa-3x" aria-hidden="true"></i>
+
+                                 </span>
+                                <span class="menu-title">City
+                                </span>
+                                <span class=""></span></span>
+
+
+                            </div>
+                        </a>
+
+
 
                         <a href="{{ route('admin.about.us.list') }}">
                             <div
@@ -7557,6 +7606,14 @@
 <script src="{{ asset('admin/assets/js/user-view-update-details.js') }}"></script>
 
 
+<script src="{{ asset('public/admin/assets/js/city-list.js') }}"></script>
+<script src="{{ asset('public/admin/assets/js/city-add.js') }}"></script>
+
+<script src="{{ asset('public/admin/assets/js/diseases-category-list.js') }}"></script>
+<script src="{{ asset('public/admin/assets/js/diseases-category-add.js') }}"></script>
+
+<script src="{{ asset('public/admin/assets/js/diseases-list.js') }}"></script>
+<script src="{{ asset('public/admin/assets/js/diseases-add.js') }}"></script>
 
 
 

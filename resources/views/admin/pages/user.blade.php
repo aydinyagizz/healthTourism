@@ -207,8 +207,9 @@
                                 <th class="min-w-125px">User</th>
                                 <th class="min-w-125px">Phone</th>
                                 <th class="min-w-125px">Address</th>
-                                <th class="min-w-125px">Web Site Name</th>
+{{--                                <th class="min-w-125px">Web Site Name</th>--}}
                                 <th class="min-w-125px">Status</th>
+                                <th class="min-w-125px">Featured</th>
                                 <th class="text-end min-w-100px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -274,11 +275,21 @@
 
                                     <td>{{ $item->address }}</td>
 
-                                    <td>{{ $item->web_site_name }}</td>
+{{--                                    <td>{{ $item->web_site_name }}</td>--}}
 
 
                                     <td>
                                         @if($item->status)
+                                            <div class="badge py-3 px-4 fs-7 badge-light-success">Active</div>
+
+                                        @else
+                                            <div class="badge py-3 px-4 fs-7 badge-light-danger">Pending</div>
+                                        @endif
+
+                                    </td>
+
+                                    <td>
+                                        @if($item->featured)
                                             <div class="badge py-3 px-4 fs-7 badge-light-success">Active</div>
 
                                         @else

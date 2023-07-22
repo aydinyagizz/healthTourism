@@ -216,6 +216,7 @@ class UserController extends Controller
         $user->web_site_name = $request->web_site_name;
         $user->address = $request->address;
         $user->status = $request->status;
+        $user->featured = $request->featured;
         //$user->slug = null;
 
 
