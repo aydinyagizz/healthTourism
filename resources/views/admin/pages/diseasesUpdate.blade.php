@@ -6,7 +6,9 @@
 
 @section('css')
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.5.1/tinymce.min.js" integrity="sha512-UhysBLt7bspJ0yBkIxTrdubkLVd4qqE4Ek7k22ijq/ZAYe0aadTVXZzFSIwgC9VYnJabw7kg9UMBsiLC77LXyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.5.1/tinymce.min.js"
+            integrity="sha512-UhysBLt7bspJ0yBkIxTrdubkLVd4qqE4Ek7k22ijq/ZAYe0aadTVXZzFSIwgC9VYnJabw7kg9UMBsiLC77LXyw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 @endsection
 
@@ -65,7 +67,7 @@
                     </div>
                     <!--end::Card header-->
 
-                    <form class="form" method="POST" action="{{ route('admin.diseases.update',[$diseases->id]) }}"
+                    <form class="form" method="POST" action="{{ route('admin.diseases.update.post',[$diseases->id]) }}"
                           {{--                          id="kt_modal_add_blog_form"--}}
                           data-kt-redirect-blog-category="" enctype="multipart/form-data">
                         @csrf
@@ -77,13 +79,13 @@
                             <div class="fv-row mb-7 text-center">
                                 <div class="image-input image-input-outline"
                                      data-kt-image-input="true"
-                                     style="background-image: url('assets/media/svg/files/blank-image.svg')">
+                                     style="background-image: url('../assets/media/svg/files/blank-image.svg') !important;">
                                     <!--begin::Preview existing avatar-->
                                     <div class="image-input-wrapper w-125px h-125px"
                                          @if($diseases->image)
                                              style="background-image: url('data:image/jpeg;base64,{{ $diseases->image }}')"
                                          @else
-                                             style="background-image: url('assets/media/sabit/blog.jpg')"
+                                             style="background-image: url('../assets/media/svg/files/blank-image.svg') !important;"
                                         @endif
 
                                     ></div>
@@ -133,7 +135,6 @@
                             </div>
 
 
-
                             <div class="fv-row mb-7">
                                 <label class="required fs-6 fw-semibold mb-2">Diseases Category</label>
 
@@ -165,7 +166,8 @@
 
                                 <!--begin::Input-->
                                 <input type="text" class="form-control form-control-solid" required
-                                       placeholder="Diseases Title" name="title" id="title" value="{{ $diseases ? $diseases->title : '' }}"/>
+                                       placeholder="Diseases Title" name="title" id="title"
+                                       value="{{ $diseases ? $diseases->title : '' }}"/>
 
 
                             </div>
@@ -182,13 +184,14 @@
                                         data-placeholder="Select an option" data-allow-clear="true"
 
                                         multiple="multiple">
-{{--                                    @foreach($cities as $item)--}}
-{{--                                        <option value="{{ $item->id }}">{{ $item->name }}</option>--}}
-{{--                                    @endforeach--}}
+                                    {{--                                    @foreach($cities as $item)--}}
+                                    {{--                                        <option value="{{ $item->id }}">{{ $item->name }}</option>--}}
+                                    {{--                                    @endforeach--}}
 
                                     @foreach($cities as $city)
                                         @php $isSelected = in_array($city->id, $diseases->cities->pluck('id')->toArray()) @endphp
-                                        <option value="{{ $city->id }}" @if($isSelected) selected @endif>{{ $city->name }}</option>
+                                        <option value="{{ $city->id }}"
+                                                @if($isSelected) selected @endif>{{ $city->name }}</option>
                                     @endforeach
 
                                 </select>
@@ -218,7 +221,6 @@
                             </div>
 
 
-
                             <div class="fv-row mb-7">
                                 <label class="required fs-6 fw-semibold mb-2">Featured</label>
 
@@ -242,14 +244,12 @@
                             </div>
 
 
-
-
-
                             <div class="fv-row mb-7">
                                 <label class="required fs-6 fw-semibold mb-2">Content</label>
 
 
-                                    <textarea id="diseases_content" name="diseases_content"  style="visibility: visible;">{!! $diseases ? $diseases->content : '' !!}</textarea>
+                                <textarea id="diseases_content" name="diseases_content"
+                                          style="visibility: visible;">{!! $diseases ? $diseases->content : '' !!}</textarea>
 
 
                             </div>
@@ -302,26 +302,25 @@
             tinycomments_mode: 'embedded',
             tinycomments_author: 'Aydın Yağız',
             codesample_languages: [
-                { text: 'PHP', value: 'php' },
-                { text: 'HTML/XML', value: 'html' },
-                { text: 'CSS', value: 'css' },
-                { text: 'JavaScript', value: 'javascript' },
-                { text: 'C#', value: 'csharp' },
-                { text: 'Java', value: 'java' },
-                { text: 'Python', value: 'python' },
-                { text: 'Ruby', value: 'ruby' },
-                { text: 'Swift', value: 'swift' },
-                { text: 'Kotlin', value: 'kotlin' },
-                { text: 'Objective-C', value: 'objc' },
-                { text: 'C++', value: 'cpp' },
-                { text: 'C', value: 'c' },
-                { text: 'SQL', value: 'sql' }
+                {text: 'PHP', value: 'php'},
+                {text: 'HTML/XML', value: 'html'},
+                {text: 'CSS', value: 'css'},
+                {text: 'JavaScript', value: 'javascript'},
+                {text: 'C#', value: 'csharp'},
+                {text: 'Java', value: 'java'},
+                {text: 'Python', value: 'python'},
+                {text: 'Ruby', value: 'ruby'},
+                {text: 'Swift', value: 'swift'},
+                {text: 'Kotlin', value: 'kotlin'},
+                {text: 'Objective-C', value: 'objc'},
+                {text: 'C++', value: 'cpp'},
+                {text: 'C', value: 'c'},
+                {text: 'SQL', value: 'sql'}
                 // Diğer programlama dillerini buraya ekleyebilirsiniz
             ],
 
         });
     </script>
-
 
 @endsection
 

@@ -152,14 +152,18 @@ class DiseasesController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'blog_content' => 'required',
+            'diseases_content' => 'required',
             'status' => 'required',
-            'blog_category' => 'required',
+            'featured' => 'required',
+            'diseases_category' => 'required',
+            'cities' => 'required',
         ], [
             'title.required' => 'Title is required',
-            'blog_content.required' => 'Content is required',
-            'blog_category.required' => 'Category is required',
+            'diseases_content.required' => 'Content is required',
+            'diseases_category.required' => 'Category is required',
             'status.required' => 'Status is required',
+            'featured.required' => 'Featured is required',
+            'cities.required' => 'Cities is required',
 
         ]);
 
@@ -168,45 +172,48 @@ class DiseasesController extends Controller
                 $flasher->addError($error);
             }
             // Hata oluştuğunda yapılması gereken diğer işlemler...
-            return Redirect::route('admin.blog.list');
+            return Redirect::route('admin.diseases.list');
         }
 
         $id = $request->id;
 
         //$blogCategory = AdminBlogCategory::where('id', $id)->first();
-        $blog = AdminBlog::findOrFail($id);
-        $blog->title = $request->title;
-        $blog->content = $request->blog_content;
-        $blog->status = $request->status;
-        $blog->category_id = $request->blog_category;
-        $blog->slug = null;
+        $diseases = Disease::findOrFail($id);
+        $diseases->title = $request->title;
+        $diseases->content = $request->diseases_content;
+        $diseases->status = $request->status;
+        $diseases->featured = $request->featured;
+        $diseases->diseases_category_id  = $request->diseases_category ;
+        $diseases->slug = null;
 
 
-        if (!empty($request->file('blog_image'))) {
+        if (!empty($request->file('diseases_image'))) {
 
             $this->validate($request, [
-                'blog_image' => 'mimes:jpeg,jpg,png', 'max:4096',
+                'diseases_image' => 'mimes:jpeg,jpg,png', 'max:4096',
             ], [
-                'blog_image.mimes' => 'Blog image should be in jpg, jpeg, png format.',
-                'blog_image.max' => 'Blog photo cannot be larger than 4 MB.',
+                'diseases_image.mimes' => 'Image should be in jpg, jpeg, png format.',
+                'diseases_image.max' => 'Image cannot be larger than 4 MB.',
             ]);
 
-            $image = base64_encode(file_get_contents($request->file('blog_image')->path()));
+            $image = base64_encode(file_get_contents($request->file('diseases_image')->path()));
 
-            $blog->image = $image;
+            $diseases->image = $image;
         }
 
-        if (empty($request->file('blog_image')) && $request->avatar_remove == 1) {
-            $blog->image = null;
+        if (empty($request->file('diseases_image')) && $request->avatar_remove == 1) {
+            $diseases->image = null;
         }
 
 
 
-        $blog->save();
+        $diseases->save();
+
+        $diseases->cities()->sync($request->cities);
 
 
-        $flasher->addSuccess('Blog Update Success');
-        return Redirect::route('admin.blog.list');
+        $flasher->addSuccess('Diseases Update Success');
+        return Redirect::route('admin.diseases.list');
 
     }
 }

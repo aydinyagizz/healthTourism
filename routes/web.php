@@ -20,6 +20,7 @@ Route::prefix('/')->group(function () {
     Route::get( '/blog', [\App\Http\Controllers\AdminFrontend\AdminFrontendBlogController::class, 'adminFrontendBlog'])->name('admin.frontend.blog');
     Route::get( '/categories', [\App\Http\Controllers\AdminFrontend\AdminFrontendCategoryController::class, 'adminFrontendCategory'])->name('admin.frontend.category');
     Route::get( '/cities', [\App\Http\Controllers\AdminFrontend\AdminFrontendCityController::class, 'adminFrontendCity'])->name('admin.frontend.city');
+    Route::get( '/diseases', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendDiseases'])->name('admin.frontend.diseases');
 
 });
 

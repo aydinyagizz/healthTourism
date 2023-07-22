@@ -127,7 +127,7 @@
 
                                 <th class="min-w-125px">Status</th>
 
-                                <th class="min-w-125px">Created Date</th>
+                                <th class="min-w-125px">Featured</th>
                                 <th class="text-end min-w-100px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -194,7 +194,10 @@
                                     </td>
 
 
-                                    <td>{{ $item->category_name }}</td>
+                                    <td>
+                                        {{ $item->category_name }}
+
+                                    </td>
 
 
                                     <td>
@@ -208,7 +211,13 @@
                                     </td>
 
                                     <td>
-                                        {{ $item->created_at }}
+{{--                                        {{ $item->created_at }}--}}
+                                        @if($item->featured)
+                                            <div class="badge py-3 px-4 fs-7 badge-light-success">Active</div>
+
+                                        @else
+                                            <div class="badge py-3 px-4 fs-7 badge-light-danger">Pending</div>
+                                        @endif
                                     </td>
                                     <!--begin::Joined-->
 
@@ -334,202 +343,7 @@
 
 
 
-{{--                                TODO: Modal update Başlangıcı    --}}
 
-{{--                                <div class="modal fade" id="diseasesEdit{{ $item->id }}" tabindex="-1"--}}
-{{--                                     role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">--}}
-{{--                                    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">--}}
-{{--                                        <div class="modal-content">--}}
-{{--                                            <div class="modal-header">--}}
-{{--                                                --}}{{--                                                <h2 class="modal-title" id="exampleModalScrollableTitle">{{ $item->title }}</h2>--}}
-{{--                                                <h2 class="fw-bold">{{ $item->title }}</h2>--}}
-
-{{--                                                <div--}}
-{{--                                                    class="btn btn-icon btn-sm btn-active-icon-primary close"--}}
-{{--                                                    data-bs-dismiss="modal" aria-label="Close">--}}
-
-{{--                                <span class="svg-icon svg-icon-1">--}}
-{{--                                    <svg width="24" height="24"--}}
-{{--                                         viewBox="0 0 24 24"--}}
-{{--                                         fill="none"--}}
-{{--                                         xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"--}}
-{{--                                              transform="rotate(-45 6 17.3137)"--}}
-{{--                                              fill="currentColor"/>--}}
-{{--                                        <rect x="7.41422" y="6" width="16" height="2" rx="1"--}}
-{{--                                              transform="rotate(45 7.41422 6)" fill="currentColor"/>--}}
-{{--                                    </svg>--}}
-
-{{--                                </span>--}}
-{{--                                                </div>--}}
-
-
-{{--                                            </div>--}}
-
-{{--                                            <form action="{{ route('admin.diseases.update', [$item->id]) }}"--}}
-{{--                                                  method="POST" enctype="multipart/form-data">--}}
-{{--                                                @csrf--}}
-
-{{--                                                <div class="modal-body">--}}
-
-
-{{--                                                    <div class="fv-row mb-7 text-center">--}}
-{{--                                                        <div class="image-input image-input-outline"--}}
-{{--                                                             data-kt-image-input="true"--}}
-{{--                                                             style="background-image: url('assets/media/svg/files/blank-image.svg')">--}}
-{{--                                                            <!--begin::Preview existing avatar-->--}}
-{{--                                                            <div class="image-input-wrapper w-125px h-125px"--}}
-{{--                                                                 @if($item->image)--}}
-{{--                                                                     style="background-image: url('data:image/jpeg;base64,{{ $item->image }}')"--}}
-{{--                                                                 @else--}}
-{{--                                                                     style="background-image: url('assets/media/sabit/blog.jpg')"--}}
-{{--                                                                @endif--}}
-
-{{--                                                            ></div>--}}
-{{--                                                            <!--end::Preview existing avatar-->--}}
-
-{{--                                                            <!--begin::Label-->--}}
-{{--                                                            <label--}}
-{{--                                                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"--}}
-{{--                                                                data-kt-image-input-action="change"--}}
-{{--                                                                data-bs-toggle="tooltip"--}}
-{{--                                                                title="Change image">--}}
-{{--                                                                <i class="bi bi-pencil-fill fs-7"></i>--}}
-
-{{--                                                                <!--begin::Inputs-->--}}
-{{--                                                                <input type="file" name="diseases_image"--}}
-{{--                                                                       accept=".png, .jpg, .jpeg"/>--}}
-
-{{--                                                                <input type="hidden" name="avatar_remove"/>--}}
-
-{{--                                                                <!--end::Inputs-->--}}
-{{--                                                            </label>--}}
-{{--                                                            <!--end::Label-->--}}
-
-{{--                                                            <!--begin::Cancel-->--}}
-{{--                                                            <span--}}
-{{--                                                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"--}}
-{{--                                                                data-kt-image-input-action="cancel"--}}
-{{--                                                                data-bs-toggle="tooltip"--}}
-{{--                                                                title="Cancel image">--}}
-{{--                                                                     <i class="bi bi-x fs-2"></i>--}}
-{{--                                                            </span>--}}
-{{--                                                            <!--end::Cancel-->--}}
-
-{{--                                                            <!--begin::Remove-->--}}
-{{--                                                            @if($item->image)--}}
-{{--                                                                <span--}}
-{{--                                                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"--}}
-{{--                                                                    data-kt-image-input-action="remove"--}}
-{{--                                                                    data-bs-toggle="tooltip"--}}
-{{--                                                                    title="Remove image">--}}
-{{--                                                                    <i class="bi bi-x fs-2"></i>--}}
-{{--                                                            </span>--}}
-{{--                                                            @endif--}}
-{{--                                                            <!--end::Remove-->--}}
-{{--                                                        </div>--}}
-{{--                                                        <!--end::Image input-->--}}
-{{--                                                    </div>--}}
-
-
-{{--                                                    <div class="fv-row mb-7">--}}
-{{--                                                        <label class="required fs-6 fw-semibold mb-2">diseases--}}
-{{--                                                            Category</label>--}}
-
-{{--                                                        <!--begin::Select2-->--}}
-{{--                                                        <select name="diseases_category" required--}}
-{{--                                                                class="form-select mb-2"--}}
-{{--                                                                data-control="select2"--}}
-{{--                                                                data-hide-search="true"--}}
-{{--                                                                data-placeholder="Select category"--}}
-{{--                                                                id="diseases_category{{ $item->id }}">--}}
-{{--                                                            <option--}}
-{{--                                                                value="{{ $item->category_id }}">{{ $item->category_name }}</option>--}}
-{{--                                                            @foreach($diseases_category as $items)--}}
-{{--                                                                @if ($items->id != $item->category_id)--}}
-{{--                                                                    <option--}}
-{{--                                                                        value="{{ $items->id }}">{{ $items->name }}</option>--}}
-{{--                                                                @endif--}}
-{{--                                                            @endforeach--}}
-{{--                                                        </select>--}}
-{{--                                                        <!--end::Select2-->--}}
-{{--                                                    </div>--}}
-
-
-{{--                                                    <div class="fv-row mb-7">--}}
-{{--                                                        <label class="required fs-6 fw-semibold mb-2">Status</label>--}}
-
-{{--                                                        <!--begin::Select2-->--}}
-{{--                                                        <select name="status" required--}}
-{{--                                                                class="form-select mb-2"--}}
-{{--                                                                data-control="select2"--}}
-{{--                                                                data-hide-search="true"--}}
-{{--                                                                data-placeholder="Select category"--}}
-{{--                                                                id="status{{ $item->id }}">--}}
-{{--                                                            @if($item->status)--}}
-{{--                                                                <option value="1">Active</option>--}}
-{{--                                                                <option value="0">Pending</option>--}}
-{{--                                                            @else--}}
-{{--                                                                <option value="0">Pending</option>--}}
-{{--                                                                <option value="1">Active</option>--}}
-{{--                                                            @endif--}}
-
-{{--                                                        </select>--}}
-{{--                                                        <!--end::Select2-->--}}
-{{--                                                    </div>--}}
-
-
-{{--                                                    <div class="fv-row mb-7">--}}
-{{--                                                        <!--begin::Label-->--}}
-{{--                                                        <label class="required fs-6 fw-semibold mb-2">Title</label>--}}
-{{--                                                        <!--end::Label-->--}}
-
-{{--                                                        <!--begin::Input-->--}}
-{{--                                                        <input type="text" class="form-control "--}}
-{{--                                                               required--}}
-{{--                                                               placeholder="Diseases Title" name="title" id="title"--}}
-{{--                                                               value="{{ $item->title }}"/>--}}
-
-
-{{--                                                    </div>--}}
-
-{{--                                                    <div class="fv-row mb-7">--}}
-{{--                                                        <!--begin::Label-->--}}
-{{--                                                        <label class="required fs-6 fw-semibold mb-2">Content</label>--}}
-{{--                                                        <!--end::Label-->--}}
-
-{{--                                                        <!--begin::Input-->--}}
-{{--                                                        --}}{{--                                    <input type="text" class="form-control form-control-solid"--}}
-{{--                                                        --}}{{--                                           placeholder="AdminBlog Content" name="content" id="content"/>--}}
-
-{{--                                                        <div class="card-body">--}}
-{{--                                                        <textarea id="" name="diseases_content"--}}
-{{--                                                                  required>{!! $item->content !!}</textarea>--}}
-{{--                                                        </div>--}}
-
-
-{{--                                                    </div>--}}
-
-
-{{--                                                </div>--}}
-{{--                                                <div class="modal-footer">--}}
-{{--                                                    <button type="button" class="btn btn-secondary"--}}
-{{--                                                            data-bs-dismiss="modal">--}}
-{{--                                                        Close--}}
-{{--                                                    </button>--}}
-{{--                                                    <button type="submit" class="btn btn-primary">--}}
-{{--                                                        Update--}}
-{{--                                                    </button>--}}
-{{--                                                </div>--}}
-
-{{--                                            </form>--}}
-
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-
-{{--                                --}}{{--                                TODO: Modal update Bitişi     --}}
 
                             @endforeach
 

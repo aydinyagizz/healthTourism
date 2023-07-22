@@ -63,6 +63,7 @@
 
                                         <li><a @if(Route::is('admin.frontend.index'))  style="color: #FF3D1C" @else '' @endif href="{{ route('admin.frontend.index') }}">Home</a></li>
                                         <li ><a  @if(Route::is('admin.frontend.city'))  style="color: #FF3D1C" @else '' @endif href="{{ route('admin.frontend.city') }}">Cities</a></li>
+                                        <li ><a  @if(Route::is('admin.frontend.diseases'))  style="color: #FF3D1C" @else '' @endif href="{{ route('admin.frontend.diseases') }}">Diseases</a></li>
                                         <li><a href="about.html">About</a></li>
                                         <li><a @if(Route::is('admin.frontend.category'))  style="color: #FF3D1C" @else '' @endif href="{{ route('admin.frontend.category') }}">Catagories</a></li>
                                         <li><a href="listing.html">Listing</a></li>
