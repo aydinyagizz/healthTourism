@@ -20,6 +20,9 @@ class AdminFrontendDiseasesController extends Controller
                 ->where('diseases.status', 1)
                 ->paginate(10),
 
+            'city' => DB::table('cities')
+                ->get(),
+
 //            'diseases' => DB::table('diseases')->where('status', 1)
 //                ->paginate(10),
 
@@ -27,4 +30,58 @@ class AdminFrontendDiseasesController extends Controller
 
         return view('adminFrontend.pages.adminFrontendDiseases', $data);
     }
+
+
+//    public function adminFrontendFilterResults(Request $request)
+//    {
+//        $cityId = $request->input('city');
+//        $diseaseId = $request->input('disease');
+//
+//        $query = Disease::with('cities')
+//            ->leftJoin('disease_categories', 'diseases.diseases_category_id', '=', 'disease_categories.id')
+//            ->where('diseases.status', 1);
+//
+//        if ($cityId) {
+//            $query->whereHas('cities', function ($q) use ($cityId) {
+//                $q->where('cities.id', $cityId);
+//            });
+//        }
+//
+//        if ($diseaseId) {
+//            $query->where('diseases.id', $diseaseId);
+//        }
+//
+//        $results = $query->get();
+//
+//        return response()->json($results);
+//    }
+
+
+    public function adminFrontendFilterResults(Request $request)
+    {
+        $cityId = $request->input('city');
+        $diseaseId = $request->input('disease');
+
+
+
+        $query = Disease::with('cities')
+            ->leftJoin('disease_categories', 'diseases.diseases_category_id', '=', 'disease_categories.id')
+            ->where('diseases.status', 1);
+
+        if ($cityId) {
+            $query->whereHas('cities', function ($q) use ($cityId) {
+                $q->where('cities.id', $cityId);
+            });
+        }
+
+        if ($diseaseId) {
+            $query->where('diseases.id', $diseaseId);
+        }
+
+        $results = $query->get();
+
+        return response()->json($results);
+    }
+
+
 }
