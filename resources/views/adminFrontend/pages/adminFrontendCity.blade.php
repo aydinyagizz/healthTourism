@@ -58,84 +58,45 @@
                             </div>
                         </div>
                         <!-- Job Category Listing start -->
+
+                        <form action="{{ route('admin.frontend.city') }}" method="GET">
                         <div class="category-listing mb-50">
-                            <!-- single one -->
                             <div class="single-listing">
-                                <!-- input -->
-                                <div class="input-form">
-                                    <input type="text" placeholder="What are you finding?">
-                                </div>
-                                <!-- Select job items start -->
+
+
                                 <div class="select-job-items1">
-                                    <select name="select1">
-                                        <option value="">Choose categories</option>
-                                        <option value="">Category 1</option>
-                                        <option value="">Category 2</option>
-                                        <option value="">Category 3</option>
+                                    <label for="city_filter">City:</label>
+                                    <select name="city" id="city_filter">
+                                        <option value="">City</option>
+                                        @foreach($cityList as $item)
+                                            <option value="{{ $item->id }}" {{ request('city') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
-                                <!--  Select job items End-->
-                                <!-- Select job items start -->
+
                                 <div class="select-job-items2">
-                                    <select name="select2">
-                                        <option value="">Location</option>
-                                        <option value="">Dhaka</option>
-                                        <option value="">Mirpur</option>
-                                        <option value="">Dannondi</option>
+                                    <label for="category_filter">Diseases Category:</label>
+                                    <select name="category" id="category_filter">
+                                        <option value="">Diseases Category</option>
+                                        @foreach($categories as $item)
+                                            <option value="{{ $item->id }}" {{ request('category') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
-                                <!--  Select job items End-->
-                                <!-- select-Categories start -->
-                                <div class="select-Categories pt-140 pb-20">
-                                    <label class="container">Full Time
-                                        <input type="checkbox" >
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Ratings
-                                        <input type="checkbox" checked="checked active">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <!-- select-Categories End -->
-                                <!-- Select job items start -->
-                                <div class="select-job-items2">
-                                    <select name="select2">
-                                        <option value="">Area (km)</option>
-                                        <option value="">Dhaka- 1km</option>
-                                        <option value="">Dinajpur- 2km</option>
-                                        <option value="">Chittagong - 3km</option>
-                                    </select>
-                                </div>
-                                <!--  Select job items End-->
+
+
+
                             </div>
 
                             <div class="single-listing">
-                                <!-- Range Slider Start -->
-                                <aside class="left_widgets p_filter_widgets price_rangs_aside sidebar_box_shadow">
-                                    <div class="small-section-tittle2">
-                                        <h4>Price range</h4>
-                                    </div>
-                                    <div class="widgets_inner">
-                                        <div class="range_item">
-                                            <!-- <div id="slider-range"></div> -->
-                                            <input type="text" class="js-range-slider" value="" />
-                                            <div class="d-flex align-items-center">
-                                                <div class="price_text">
-                                                    <p>Price :</p>
-                                                </div>
-                                                <div class="price_value d-flex justify-content-center">
-                                                    <input type="text" class="js-input-from" id="amount" readonly />
-                                                    <span>to</span>
-                                                    <input type="text" class="js-input-to" id="amount" readonly />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </aside>
-                                <!-- Range Slider End -->
-                                <a href="#" class="btn list-btn mt-20">Reset</a>
+
+                                <button id="filterButton" class="btn list-btn mt-20">Filter</button>
+                                <a href="{{ route('admin.frontend.city') }}" id="resetButton" class="btn list-btn mt-20">Reset</a>
+
                             </div>
+
                         </div>
+                        </form>
                         <!-- Job Category Listing End -->
                     </div>
                     <!-- Right content -->
@@ -143,15 +104,23 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="count mb-35">
-                                    <span>{{ count($city) }} Listings are available</span>
+                                    <span>{{ $totalCity->count() }} Listings are available</span>
                                 </div>
                             </div>
                         </div>
+
+
+                        @if(count($city) < 1)
+                            <div  class="alert alert-warning ">No results found</div>
+                        @endif
+
+
+
                         <!-- listing Details Stat-->
                         <div class="popular-location ">
                             <div class="container ">
 
-                                <div class="row d-flex justify-content-center">
+                                <div class="row d-flex ">
 
 
 
@@ -177,9 +146,22 @@
 
 
                                                     @foreach(json_decode($item->districts) as $district)
-                                                        <span style="color: white" class="badge bg-secondary">#{{ $district }}</span>
+                                                        @php
+                                                            $trimmedDistrict = trim($district);
+                                                        @endphp
+                                                        <span style="color: white" class="badge bg-secondary">#{{ $trimmedDistrict }}</span>
                                                     @endforeach
                                                     <br>
+
+
+                                                    <ul>
+                                                        @foreach($item->diseases as $disease)
+
+                                                            <li style="color: white">{{ $disease->title }}</li>
+                                                        @endforeach
+                                                    </ul>
+
+
                                                     {{--                            <a href="#" class="location-btn">65 <i class="ti-plus"></i> Location</a>--}}
                                                     <a href="#" ></a>
                                                 </div>
@@ -209,7 +191,7 @@
                                                 <ul class="pagination justify-content-start" >
 
 
-                                                    <li class="page-item">{!! $city->links() !!}</li>
+                                                    <li class="page-item"> {{ $city->appends(request()->except('page'))->links() }}</li>
 
 
 

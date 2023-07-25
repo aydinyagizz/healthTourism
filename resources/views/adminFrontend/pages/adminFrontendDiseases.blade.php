@@ -59,41 +59,46 @@
                         </div>
                     </div>
                     <!-- Job Category Listing start -->
-
-
+{{--                    <form id="filterForm" action="{{ route('adminFrontend.filterResults') }}" method="GET">--}}
+                    <form action="{{ route('admin.frontend.diseases') }}" method="GET">
                     <div class="category-listing mb-50">
                         <!-- single one -->
                         <div class="single-listing">
 
-                            <form >
+
                             <div class="select-job-items1">
-                                <label for="city_filter">Şehir:</label>
-                                <select name="city_filter" id="city_filter">
-                                    <option value="">Choose categories</option>
+                                <label for="city_filter">City:</label>
+                                <select name="city" id="city_filter">
+                                    <option value="">City</option>
                                     @foreach($city as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}" {{ request('city') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="select-job-items2">
-                                <label for="disease_filter">Hastalık:</label>
-                                <select name="disease_filter" id="disease_filter">
-                                    <option value="">Hastalık</option>
-                                    @foreach($diseases as $item)
-                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                <label for="category_filter">Diseases Category:</label>
+                                <select name="category" id="category_filter">
+                                    <option value="">Diseases Category</option>
+                                    @foreach($categories as $item)
+                                        <option value="{{ $item->id }}" {{ request('category') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
-                            </form>
+
 
                         </div>
 
                         <div class="single-listing">
-                            <a href="#" class="btn list-btn mt-20">Reset</a>
+
+                            <button id="filterButton" class="btn list-btn mt-20">Filter</button>
+                            <a href="{{ route('admin.frontend.diseases') }}" id="resetButton" class="btn list-btn mt-20">Reset</a>
+
                         </div>
                     </div>
+
+                    </form>
                     <!-- Job Category Listing End -->
                 </div>
                 <!-- Right content -->
@@ -101,14 +106,15 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="count mb-35">
-                                <span>{{ count($diseases) }} Listings are available</span>
+                                <span>{{ $totalDiseases->count() }} Listings are available</span>
                             </div>
                         </div>
                     </div>
 
 
-                    <div id="noResultsMessage" class="alert alert-warning d-none">Sonuç bulunamadı.</div>
-
+                    @if(count($diseases) < 1)
+                    <div  class="alert alert-warning ">No results found</div>
+                        @endif
 
 
                     <!-- listing Details Stat-->
@@ -168,7 +174,7 @@
                                     <div class="single-wrap d-flex justify-content-center">
                                         <nav aria-label="Page navigation example">
                                             <ul class="pagination justify-content-start">
-                                                {{ $diseases->links() }}
+                                                {{ $diseases->appends(request()->except('page'))->links() }}
                                             </ul>
                                         </nav>
                                     </div>
@@ -324,159 +330,146 @@
 
 
 
+{{--    <script>--}}
+{{--        --}}
+{{--        $(document).ready(function () {--}}
+{{--            $('#city_filter, #disease_filter').on('change', function () {--}}
+{{--                updateResults();--}}
+{{--            });--}}
+
+{{--            function updateResults() {--}}
+{{--                const cityId = $('#city_filter').val();--}}
+{{--                const diseaseId = $('#disease_filter').val();--}}
+
+{{--                // Ajax isteği gönder--}}
+{{--                $.ajax({--}}
+{{--                    url: '{{ route("adminFrontend.filterResults") }}',--}}
+{{--                    method: 'GET',--}}
+{{--                    data: {city: cityId, disease: diseaseId},--}}
+{{--                    dataType: 'json',--}}
+{{--                    success: function (data) {--}}
+{{--                        const listingDetailsArea = $('.listing-details-area .container .row');--}}
+{{--                        listingDetailsArea.empty();--}}
+
+{{--                        if (data.length > 0) {--}}
+{{--                            $.each(data, function (index, item) {--}}
+{{--                                const colDiv = $('<div></div>').addClass('col-lg-6');--}}
+{{--                                const singleListing = $('<div></div>').addClass('single-listing mb-30');--}}
+{{--                                const listImg = $('<div></div>').addClass('list-img');--}}
+
+{{--                                if (item.image) {--}}
+{{--                                    listImg.append($('<img>').attr('src', 'data:image/jpeg;base64,' + item.image).attr('alt', item.title));--}}
+{{--                                } else {--}}
+{{--                                    listImg.append($('<img>').attr('src', '{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}').attr('alt', ''));--}}
+{{--                                }--}}
+
+{{--                                const listCaption = $('<div></div>').addClass('list-caption');--}}
+{{--                                listCaption.append($('<span></span>').text('Open'));--}}
+{{--                                listCaption.append($('<h3></h3>').append($('<a></a>').attr('href', '#').text(item.title)));--}}
+{{--                                listCaption.append($('<p></p>').html(item.content ? item.content.substring(0, 50) + '...' : ''));--}}
+
+
+
+{{--                                // Şehirlerin listesi varsa oluşturulur, yoksa mesaj gösterilir--}}
+{{--                                if (item.cities.length > 0) {--}}
+{{--                                    const listFooter = $('<div></div>').addClass('list-footer');--}}
+{{--                                    const cityList = $('#city');--}}
+
+
+{{--                                    $.each(item.cities, function (index, city) {--}}
+
+
+{{--                                        cityList.append($('<li></li>').text(city.name));--}}
+{{--                                    });--}}
+{{--                                    listFooter.append(cityList);--}}
+{{--                                    listCaption.append(listFooter);--}}
+{{--                                } else {--}}
+{{--                                    listCaption.append($('<div></div>').text('No cities found.'));--}}
+{{--                                }--}}
+
+{{--                                singleListing.append(listImg);--}}
+{{--                                singleListing.append(listCaption);--}}
+{{--                                colDiv.append(singleListing);--}}
+{{--                                listingDetailsArea.append(colDiv);--}}
+{{--                            });--}}
+
+{{--                            $('#noResultsMessage').addClass('d-none');--}}
+{{--                        } else {--}}
+{{--                            // Sonuç yoksa "Sonuç bulunamadı" mesajını göster--}}
+{{--                            $('#noResultsMessage').removeClass('d-none');--}}
+{{--                        }--}}
+{{--                    },--}}
+{{--                    error: function (error) {--}}
+{{--                        console.error(error);--}}
+{{--                    }--}}
+{{--                });--}}
+{{--            }--}}
+{{--        });--}}
+{{--    </script>--}}
+
+
+
+{{-- TODO: ayrı sayfada filtreleme için --}}
+{{--    <script>--}}
+{{--        $(document).ready(function () {--}}
+{{--            $('#filterButton').on('click', function () {--}}
+{{--                updateResults();--}}
+{{--            });--}}
+
+{{--            $('#resetButton').on('click', function () {--}}
+{{--                // Formu resetlemek için form elemanına ulaşıp reset() metodunu çağırıyoruz--}}
+{{--                $('#filterForm')[0].reset();--}}
+
+{{--                // Sonuçları sıfırla--}}
+{{--                $('.listing-details-area .container .row').empty();--}}
+{{--                $('#noResultsMessage').addClass('d-none');--}}
+{{--            });--}}
+
+{{--            function updateResults() {--}}
+{{--                const formData = $('#filterForm').serialize();--}}
+
+{{--                $.ajax({--}}
+{{--                    url: '{{ route("adminFrontend.filterResults") }}',--}}
+{{--                    method: 'GET',--}}
+{{--                    data: formData,--}}
+{{--                    dataType: 'html',--}}
+{{--                    success: function (data) {--}}
+{{--                        // Yenilenen içeriği sayfaya ekleyin--}}
+{{--                        $('.listing-details-area .container .row').html(data);--}}
+
+{{--                        // Sonuç yoksa "Sonuç bulunamadı" mesajını göster--}}
+{{--                        if (data.trim() === '') {--}}
+{{--                            $('#noResultsMessage').removeClass('d-none');--}}
+{{--                        } else {--}}
+{{--                            $('#noResultsMessage').addClass('d-none');--}}
+{{--                        }--}}
+{{--                    },--}}
+{{--                    error: function (error) {--}}
+{{--                        console.error(error);--}}
+{{--                    }--}}
+{{--                });--}}
+{{--            }--}}
+{{--        });--}}
+{{--    </script>--}}
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script>
-        {{--$(document).ready(function () {--}}
-        {{--    $('#city_filter, #disease_filter').on('change', function () {--}}
-        {{--        updateResults();--}}
-        {{--    });--}}
-
-        {{--    function updateResults() {--}}
-        {{--        const cityId = $('#city_filter').val();--}}
-        {{--        const diseaseId = $('#disease_filter').val();--}}
-
-        {{--        // Ajax isteği gönder--}}
-        {{--        $.ajax({--}}
-        {{--            url: '{{ route("adminFrontend.filterResults") }}',--}}
-        {{--            method: 'GET',--}}
-        {{--            data: {city: cityId, disease: diseaseId},--}}
-        {{--            dataType: 'json',--}}
-        {{--            success: function (data) {--}}
-        {{--                const listingDetailsArea = $('.listing-details-area .container .row');--}}
-        {{--                listingDetailsArea.empty();--}}
-
-        {{--                if (data.length > 0) {--}}
-        {{--                    $.each(data, function (index, item) {--}}
-        {{--                        const colDiv = $('<div></div>').addClass('col-lg-6');--}}
-        {{--                        const singleListing = $('<div></div>').addClass('single-listing mb-30');--}}
-        {{--                        const listImg = $('<div></div>').addClass('list-img');--}}
-
-        {{--                        if (item.image) {--}}
-        {{--                            listImg.append($('<img>').attr('src', 'data:image/jpeg;base64,' + item.image).attr('alt', item.title));--}}
-        {{--                        } else {--}}
-        {{--                            listImg.append($('<img>').attr('src', '{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}').attr('alt', ''));--}}
-        {{--                        }--}}
-
-        {{--                        const listCaption = $('<div></div>').addClass('list-caption');--}}
-        {{--                        listCaption.append($('<span></span>').text('Open'));--}}
-        {{--                        listCaption.append($('<h3></h3>').append($('<a></a>').attr('href', '#').text(item.title)));--}}
-        {{--                        listCaption.append($('<p></p>').html(item.content ? item.content.substring(0, 50) + '...' : ''));--}}
-        {{--                        const listFooter = $('<div></div>').addClass('list-footer');--}}
-
-
-        {{--                        $.each(item.cities, function (index, city) {--}}
-
-        {{--                            alert(city.name);--}}
-        {{--                            listFooter.append($('<ul></ul>').append($('<li></li>').text(city.name)));--}}
-        {{--                        });--}}
-
-        {{--                        listCaption.append(listFooter);--}}
-        {{--                        singleListing.append(listImg);--}}
-        {{--                        singleListing.append(listCaption);--}}
-        {{--                        colDiv.append(singleListing);--}}
-        {{--                        listingDetailsArea.append(colDiv);--}}
-        {{--                    });--}}
-
-        {{--                    $('#noResultsMessage').addClass('d-none');--}}
-        {{--                } else {--}}
-        {{--                    // Sonuç yoksa "Sonuç bulunamadı" mesajını göster--}}
-        {{--                    const noResultsMessage = $('<div></div>').addClass('col-lg-12 mt-4').attr('id', 'noResultsMessage').text('Sonuç bulunamadı.');--}}
-        {{--                    listingDetailsArea.append(noResultsMessage);--}}
-        {{--                }--}}
-        {{--            },--}}
-        {{--            error: function (error) {--}}
-        {{--                console.error(error);--}}
-        {{--            }--}}
-        {{--        });--}}
-        {{--    }--}}
-        {{--});--}}
-
-
         $(document).ready(function () {
-            $('#city_filter, #disease_filter').on('change', function () {
-                updateResults();
-            });
+            // Filtreleme yapıldığında seçilenleri select alanlarında göster
+            const cityFilter = '{{ request('city') }}';
+            const categoryFilter = '{{ request('category') }}';
 
-            function updateResults() {
-                const cityId = $('#city_filter').val();
-                const diseaseId = $('#disease_filter').val();
+            if (cityFilter) {
+                $('#city_filter').val(cityFilter);
+            }
 
-                // Ajax isteği gönder
-                $.ajax({
-                    url: '{{ route("adminFrontend.filterResults") }}',
-                    method: 'GET',
-                    data: {city: cityId, disease: diseaseId},
-                    dataType: 'json',
-                    success: function (data) {
-                        const listingDetailsArea = $('.listing-details-area .container .row');
-                        listingDetailsArea.empty();
-
-                        if (data.length > 0) {
-                            $.each(data, function (index, item) {
-                                const colDiv = $('<div></div>').addClass('col-lg-6');
-                                const singleListing = $('<div></div>').addClass('single-listing mb-30');
-                                const listImg = $('<div></div>').addClass('list-img');
-
-                                if (item.image) {
-                                    listImg.append($('<img>').attr('src', 'data:image/jpeg;base64,' + item.image).attr('alt', item.title));
-                                } else {
-                                    listImg.append($('<img>').attr('src', '{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}').attr('alt', ''));
-                                }
-
-                                const listCaption = $('<div></div>').addClass('list-caption');
-                                listCaption.append($('<span></span>').text('Open'));
-                                listCaption.append($('<h3></h3>').append($('<a></a>').attr('href', '#').text(item.title)));
-                                listCaption.append($('<p></p>').html(item.content ? item.content.substring(0, 50) + '...' : ''));
-
-
-
-                                // Şehirlerin listesi varsa oluşturulur, yoksa mesaj gösterilir
-                                if (item.cities.length > 0) {
-                                    const listFooter = $('<div></div>').addClass('list-footer');
-                                    const cityList = $('#city');
-
-                                    alert(item.cities);
-                                    $.each(item.cities, function (index, city) {
-
-
-                                        cityList.append($('<li></li>').text(city.name));
-                                    });
-                                    listFooter.append(cityList);
-                                    listCaption.append(listFooter);
-                                } else {
-                                    listCaption.append($('<div></div>').text('No cities found.'));
-                                }
-
-                                singleListing.append(listImg);
-                                singleListing.append(listCaption);
-                                colDiv.append(singleListing);
-                                listingDetailsArea.append(colDiv);
-                            });
-
-                            $('#noResultsMessage').addClass('d-none');
-                        } else {
-                            // Sonuç yoksa "Sonuç bulunamadı" mesajını göster
-                            $('#noResultsMessage').removeClass('d-none');
-                        }
-                    },
-                    error: function (error) {
-                        console.error(error);
-                    }
-                });
+            if (categoryFilter) {
+                $('#category_filter').val(categoryFilter);
             }
         });
-
-
-
-
-
-
-
     </script>
-
-
-
-
-
 @endsection
 
 @section('js')

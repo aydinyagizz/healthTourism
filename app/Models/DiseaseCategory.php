@@ -21,4 +21,9 @@ class DiseaseCategory extends Model
         ];
 
     }
+
+    public function cities()
+    {
+        return $this->belongsToMany(Citiest::class, 'citiest_disease', 'disease_id', 'citiest_id');
+    }
 }

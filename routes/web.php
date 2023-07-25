@@ -21,7 +21,6 @@ Route::prefix('/')->group(function () {
     Route::get( '/categories', [\App\Http\Controllers\AdminFrontend\AdminFrontendCategoryController::class, 'adminFrontendCategory'])->name('admin.frontend.category');
     Route::get( '/cities', [\App\Http\Controllers\AdminFrontend\AdminFrontendCityController::class, 'adminFrontendCity'])->name('admin.frontend.city');
     Route::get( '/diseases', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendDiseases'])->name('admin.frontend.diseases');
-    Route::get('/filter-results', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendFilterResults'])->name('adminFrontend.filterResults');
 });
 
 
