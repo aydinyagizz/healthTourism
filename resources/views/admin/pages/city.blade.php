@@ -5,7 +5,9 @@
 @endsection
 
 @section('css')
-    <script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.5.1/tinymce.min.js"
+            integrity="sha512-UhysBLt7bspJ0yBkIxTrdubkLVd4qqE4Ek7k22ijq/ZAYe0aadTVXZzFSIwgC9VYnJabw7kg9UMBsiLC77LXyw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 @endsection
 
@@ -147,9 +149,10 @@
 
                                         <div class="d-flex ">
                                             <!--begin::Thumbnail-->
-                                            <a href="#" data-id="{{ $item->id }}" class="symbol symbol-70px"
-                                               data-bs-toggle="modal"
-                                               data-bs-target="#cityEdit{{ $item->id }}">
+                                            <a href="{{ route('admin.city.update', [ $item->id]) }}" data-id="{{ $item->id }}" class="symbol symbol-70px"
+{{--                                               data-bs-toggle="modal"--}}
+{{--                                               data-bs-target="#cityEdit{{ $item->id }}"--}}
+                                            >
                                                 @if($item->image)
                                                     <img src="data:image/jpeg;base64,{{ $item->image }}"
                                                          alt="{{ $item->name }}">
@@ -166,10 +169,11 @@
 
                                             <div class="ms-5">
 
-                                                <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1 "
+                                                <a href="{{ route('admin.city.update', [ $item->id]) }}" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1 "
                                                    data-kt-ecommerce-category-filter="category_name"
-                                                   data-bs-toggle="modal"
-                                                   data-bs-target="#cityEdit{{ $item->id }}">{{ $item->name }}</a>
+{{--                                                   data-bs-toggle="modal"--}}
+{{--                                                   data-bs-target="#cityEdit{{ $item->id }}"--}}
+                                                >{{ $item->name }}</a>
 
                                                 {{--                                                <div class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1"--}}
                                                 {{--                                                   data-kt-ecommerce-category-filter="category_name"--}}
@@ -177,7 +181,8 @@
                                                 {{--                                                   data-bs-target="#exampleModalScrollable{{ $item->id }}">{{ $item->title }}</div>--}}
 
                                                 <!--begin::Description-->
-
+                                                <div
+                                                    class="text-muted fs-7 fw-bold">{!! $item->content ?  Str::limit($item->content, 50, '...') : '' !!}</div>
                                                 <!--end::Description-->
                                             </div>
                                         </div>
@@ -229,8 +234,9 @@
 
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#cityEdit{{ $item->id }}"
+                                                <a href="{{ route('admin.city.update', [ $item->id]) }}"
+{{--                                                   data-bs-toggle="modal"--}}
+{{--                                                   data-bs-target="#cityEdit{{ $item->id }}"--}}
                                                    class="menu-link px-3">
                                                     Edit
                                                 </a>
@@ -262,181 +268,221 @@
 
                                 {{--                                TODO: Modal update Başlangıcı    --}}
 
-                                <div class="modal fade" id="cityEdit{{ $item->id }}" tabindex="-1"
-                                     role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h2 class="modal-title"
-                                                    id="exampleModalScrollableTitle">{{ $item->name }}</h2>
-                                                <h2 class="fw-bold">{{ $item->name }}</h2>
+{{--                                <div class="modal fade" id="cityEdit{{ $item->id }}" tabindex="-1"--}}
+{{--                                     role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">--}}
+{{--                                    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">--}}
+{{--                                        <div class="modal-content">--}}
+{{--                                            <div class="modal-header">--}}
+{{--                                                <h2 class="modal-title"--}}
+{{--                                                    id="exampleModalScrollableTitle">{{ $item->name }}</h2>--}}
+{{--                                                <h2 class="fw-bold">{{ $item->name }}</h2>--}}
 
-                                                <div
-                                                    class="btn btn-icon btn-sm btn-active-icon-primary close"
-                                                    data-bs-dismiss="modal" aria-label="Close">
+{{--                                                <div--}}
+{{--                                                    class="btn btn-icon btn-sm btn-active-icon-primary close"--}}
+{{--                                                    data-bs-dismiss="modal" aria-label="Close">--}}
 
-                                <span class="svg-icon svg-icon-1">
-                                    <svg width="24" height="24"
-                                         viewBox="0 0 24 24"
-                                         fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                                              transform="rotate(-45 6 17.3137)"
-                                              fill="currentColor"/>
-                                        <rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                              transform="rotate(45 7.41422 6)" fill="currentColor"/>
-                                    </svg>
+{{--                                <span class="svg-icon svg-icon-1">--}}
+{{--                                    <svg width="24" height="24"--}}
+{{--                                         viewBox="0 0 24 24"--}}
+{{--                                         fill="none"--}}
+{{--                                         xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"--}}
+{{--                                              transform="rotate(-45 6 17.3137)"--}}
+{{--                                              fill="currentColor"/>--}}
+{{--                                        <rect x="7.41422" y="6" width="16" height="2" rx="1"--}}
+{{--                                              transform="rotate(45 7.41422 6)" fill="currentColor"/>--}}
+{{--                                    </svg>--}}
 
-                                </span>
-                                                </div>
-
-
-                                            </div>
-
-                                            <form action="{{ route('admin.city.update', [$item->id]) }}" method="POST"
-                                                  enctype="multipart/form-data" id="cityEditForm{{ $item->id }}">
-                                                @csrf
-
-                                                <div class="modal-body">
+{{--                                </span>--}}
+{{--                                                </div>--}}
 
 
-                                                    <div class="fv-row mb-7 text-center">
-                                                        <div class="image-input image-input-outline"
-                                                             data-kt-image-input="true"
-                                                             style="background-image: url('assets/media/svg/files/blank-image.svg')">
-                                                            <!--begin::Preview existing avatar-->
-                                                            <div class="image-input-wrapper w-125px h-125px"
-                                                                 @if($item->image)
-                                                                     style="background-image: url('data:image/jpeg;base64,{{ $item->image }}')"
-                                                                 @else
-                                                                     style="background-image: url('assets/media/svg/files/blank-image.svg')"
-                                                                @endif
+{{--                                            </div>--}}
 
-                                                            ></div>
-                                                            <!--end::Preview existing avatar-->
+{{--                                            <form action="{{ route('admin.city.update', [$item->id]) }}" method="POST"--}}
+{{--                                                  enctype="multipart/form-data" id="cityEditForm{{ $item->id }}">--}}
+{{--                                                @csrf--}}
 
-                                                            <!--begin::Label-->
-                                                            <label
-                                                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                                data-kt-image-input-action="change"
-                                                                data-bs-toggle="tooltip"
-                                                                title="Change image">
-                                                                <i class="bi bi-pencil-fill fs-7"></i>
-
-                                                                <!--begin::Inputs-->
-                                                                <input type="file" name="image"
-                                                                       accept=".png, .jpg, .jpeg"/>
-
-                                                                <input type="hidden" name="avatar_remove"/>
-
-                                                                <!--end::Inputs-->
-                                                            </label>
-                                                            <!--end::Label-->
-
-                                                            <!--begin::Cancel-->
-                                                            <span
-                                                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                                data-kt-image-input-action="cancel"
-                                                                data-bs-toggle="tooltip"
-                                                                title="Cancel image">
-                                                                     <i class="bi bi-x fs-2"></i>
-                                                            </span>
-                                                            <!--end::Cancel-->
-
-                                                            <!--begin::Remove-->
-                                                            @if($item->image)
-                                                                <span
-                                                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                                    data-kt-image-input-action="remove"
-                                                                    data-bs-toggle="tooltip"
-                                                                    title="Remove image">
-                                                                    <i class="bi bi-x fs-2"></i>
-                                                            </span>
-                                                            @endif
-                                                            <!--end::Remove-->
-                                                        </div>
-                                                        <!--end::Image input-->
-                                                    </div>
+{{--                                                <div class="modal-body">--}}
 
 
+{{--                                                    <div class="fv-row mb-7 text-center">--}}
+{{--                                                        <div class="image-input image-input-outline"--}}
+{{--                                                             data-kt-image-input="true"--}}
+{{--                                                             style="background-image: url('assets/media/svg/files/blank-image.svg')">--}}
+{{--                                                            <!--begin::Preview existing avatar-->--}}
+{{--                                                            <div class="image-input-wrapper w-125px h-125px"--}}
+{{--                                                                 @if($item->image)--}}
+{{--                                                                     style="background-image: url('data:image/jpeg;base64,{{ $item->image }}')"--}}
+{{--                                                                 @else--}}
+{{--                                                                     style="background-image: url('assets/media/svg/files/blank-image.svg')"--}}
+{{--                                                                @endif--}}
+
+{{--                                                            ></div>--}}
+{{--                                                            <!--end::Preview existing avatar-->--}}
+
+{{--                                                            <!--begin::Label-->--}}
+{{--                                                            <label--}}
+{{--                                                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"--}}
+{{--                                                                data-kt-image-input-action="change"--}}
+{{--                                                                data-bs-toggle="tooltip"--}}
+{{--                                                                title="Change image">--}}
+{{--                                                                <i class="bi bi-pencil-fill fs-7"></i>--}}
+
+{{--                                                                <!--begin::Inputs-->--}}
+{{--                                                                <input type="file" name="image"--}}
+{{--                                                                       accept=".png, .jpg, .jpeg"/>--}}
+
+{{--                                                                <input type="hidden" name="avatar_remove"/>--}}
+
+{{--                                                                <!--end::Inputs-->--}}
+{{--                                                            </label>--}}
+{{--                                                            <!--end::Label-->--}}
+
+{{--                                                            <!--begin::Cancel-->--}}
+{{--                                                            <span--}}
+{{--                                                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"--}}
+{{--                                                                data-kt-image-input-action="cancel"--}}
+{{--                                                                data-bs-toggle="tooltip"--}}
+{{--                                                                title="Cancel image">--}}
+{{--                                                                     <i class="bi bi-x fs-2"></i>--}}
+{{--                                                            </span>--}}
+{{--                                                            <!--end::Cancel-->--}}
+
+{{--                                                            <!--begin::Remove-->--}}
+{{--                                                            @if($item->image)--}}
+{{--                                                                <span--}}
+{{--                                                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"--}}
+{{--                                                                    data-kt-image-input-action="remove"--}}
+{{--                                                                    data-bs-toggle="tooltip"--}}
+{{--                                                                    title="Remove image">--}}
+{{--                                                                    <i class="bi bi-x fs-2"></i>--}}
+{{--                                                            </span>--}}
+{{--                                                            @endif--}}
+{{--                                                            <!--end::Remove-->--}}
+{{--                                                        </div>--}}
+{{--                                                        <!--end::Image input-->--}}
+{{--                                                    </div>--}}
 
 
 
 
 
-                                                    <div class="fv-row mb-7">
-                                                        <!--begin::Label-->
-                                                        <label class="required fs-6 fw-semibold mb-2">Name</label>
-                                                        <!--end::Label-->
-
-                                                        <!--begin::Input-->
-                                                        <input type="text" class="form-control "
-                                                               required
-                                                               placeholder="Name" name="name" id="name"
-                                                               value="{{ $item->name }}"/>
 
 
-                                                    </div>
+{{--                                                    <div class="fv-row mb-7">--}}
+{{--                                                        <!--begin::Label-->--}}
+{{--                                                        <label class="required fs-6 fw-semibold mb-2">Name</label>--}}
+{{--                                                        <!--end::Label-->--}}
 
-                                                    <div class="fv-row mb-7 ">
-
-                                                        <label class="required fs-6 fw-semibold mb-2">Districts</label>
-
-                                                        @php
-                                                            // JSON formatındaki veriyi dizi haline çevirin
-                                                            $districtsArray = json_decode($item->districts);
-
-                                                            // Diziyi virgülle ayrılmış bir dizi olarak düzenleyin
-                                                            $districtsString = implode(', ', $districtsArray);
-                                                        @endphp
+{{--                                                        <!--begin::Input-->--}}
+{{--                                                        <input type="text" class="form-control "--}}
+{{--                                                               required--}}
+{{--                                                               placeholder="Name" name="name" id="name"--}}
+{{--                                                               value="{{ $item->name }}"/>--}}
 
 
-                                                        <textarea class="form-control form-control-solid" id="districts" name="districts"
-                                                                  required>{{ $districtsString }}</textarea>
+{{--                                                    </div>--}}
 
-                                                    </div>
+{{--                                                    <div class="fv-row mb-7 ">--}}
 
+{{--                                                        <label class="required fs-6 fw-semibold mb-2">Districts</label>--}}
 
-                                                    <div class="fv-row mb-7">
-                                                        <label class="required fs-6 fw-semibold mb-2">Featured</label>
+{{--                                                        @php--}}
+{{--                                                            // JSON formatındaki veriyi dizi haline çevirin--}}
+{{--                                                            $districtsArray = json_decode($item->districts);--}}
 
-                                                        <!--begin::Select2-->
-                                                        <select name="featured" required
-                                                                class="form-select mb-2"
-                                                                data-control="select2"
-                                                                data-hide-search="true"
-                                                                data-placeholder="Featured"
-                                                                data-dropdown-parent="#cityEditForm{{ $item->id }}"
-                                                                id="featured{{ $item->id }}">
-                                                            @if($item->featured)
-                                                                <option value="1">Active</option>
-                                                                <option value="0">Pending</option>
-                                                            @else
-                                                                <option value="0">Pending</option>
-                                                                <option value="1">Active</option>
-                                                            @endif
-
-                                                        </select>
-                                                        <!--end::Select2-->
-                                                    </div>
+{{--                                                            // Diziyi virgülle ayrılmış bir dizi olarak düzenleyin--}}
+{{--                                                            $districtsString = implode(', ', $districtsArray);--}}
+{{--                                                        @endphp--}}
 
 
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">
-                                                        Close
-                                                    </button>
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Update
-                                                    </button>
-                                                </div>
+{{--                                                        <textarea class="form-control form-control-solid" id="districts" name="districts"--}}
+{{--                                                                  required>{{ $districtsString }}</textarea>--}}
 
-                                            </form>
+{{--                                                    </div>--}}
 
-                                        </div>
-                                    </div>
-                                </div>
+
+{{--                                                    <div class="fv-row mb-7">--}}
+{{--                                                        <label class="required fs-6 fw-semibold mb-2">Content</label>--}}
+
+
+{{--                                                        <textarea id="city_content_update_{{ $item->id }}" name="city_content_update_{{ $item->id }}"--}}
+{{--                                                                  style="visibility: visible;">{!! $item ? $item->content : '' !!}</textarea>--}}
+
+{{--                                                    </div>--}}
+
+
+{{--                                                    <script>--}}
+{{--                                                        tinymce.init({--}}
+{{--                                                            selector: 'textarea[name="city_content_update_{{ $item->id }}"]',--}}
+{{--                                                            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tableofcontents footnotes mergetags autocorrect typography inlinecss',--}}
+{{--                                                            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | codesample code link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',--}}
+{{--                                                            tinycomments_mode: 'embedded',--}}
+{{--                                                            tinycomments_author: 'Aydın Yağız',--}}
+{{--                                                            codesample_languages: [--}}
+{{--                                                                {text: 'PHP', value: 'php'},--}}
+{{--                                                                {text: 'HTML/XML', value: 'html'},--}}
+{{--                                                                {text: 'CSS', value: 'css'},--}}
+{{--                                                                {text: 'JavaScript', value: 'javascript'},--}}
+{{--                                                                {text: 'C#', value: 'csharp'},--}}
+{{--                                                                {text: 'Java', value: 'java'},--}}
+{{--                                                                {text: 'Python', value: 'python'},--}}
+{{--                                                                {text: 'Ruby', value: 'ruby'},--}}
+{{--                                                                {text: 'Swift', value: 'swift'},--}}
+{{--                                                                {text: 'Kotlin', value: 'kotlin'},--}}
+{{--                                                                {text: 'Objective-C', value: 'objc'},--}}
+{{--                                                                {text: 'C++', value: 'cpp'},--}}
+{{--                                                                {text: 'C', value: 'c'},--}}
+{{--                                                                {text: 'SQL', value: 'sql'}--}}
+{{--                                                                // Diğer programlama dillerini buraya ekleyebilirsiniz--}}
+{{--                                                            ],--}}
+
+{{--                                                        });--}}
+{{--                                                    </script>--}}
+
+
+
+{{--                                                    <div class="fv-row mb-7">--}}
+{{--                                                        <label class="required fs-6 fw-semibold mb-2">Featured</label>--}}
+
+{{--                                                        <!--begin::Select2-->--}}
+{{--                                                        <select name="featured" required--}}
+{{--                                                                class="form-select mb-2"--}}
+{{--                                                                data-control="select2"--}}
+{{--                                                                data-hide-search="true"--}}
+{{--                                                                data-placeholder="Featured"--}}
+{{--                                                                data-dropdown-parent="#cityEditForm{{ $item->id }}"--}}
+{{--                                                                id="featured{{ $item->id }}">--}}
+{{--                                                            @if($item->featured)--}}
+{{--                                                                <option value="1">Active</option>--}}
+{{--                                                                <option value="0">Pending</option>--}}
+{{--                                                            @else--}}
+{{--                                                                <option value="0">Pending</option>--}}
+{{--                                                                <option value="1">Active</option>--}}
+{{--                                                            @endif--}}
+
+{{--                                                        </select>--}}
+{{--                                                        <!--end::Select2-->--}}
+{{--                                                    </div>--}}
+
+
+{{--                                                </div>--}}
+{{--                                                <div class="modal-footer">--}}
+{{--                                                    <button type="button" class="btn btn-secondary"--}}
+{{--                                                            data-bs-dismiss="modal">--}}
+{{--                                                        Close--}}
+{{--                                                    </button>--}}
+{{--                                                    <button type="submit" class="btn btn-primary">--}}
+{{--                                                        Update--}}
+{{--                                                    </button>--}}
+{{--                                                </div>--}}
+
+{{--                                            </form>--}}
+
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
 
                                 {{--                                TODO: Modal update Bitişi     --}}
@@ -612,6 +658,15 @@
 
 
                                 <div class="fv-row mb-7">
+                                    <label class="required fs-6 fw-semibold mb-2">Content</label>
+                                    <div class="card-body">
+                                        <textarea id="city_content" name="city_content" required></textarea>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="fv-row mb-7">
                                     <label class="required fs-6 fw-semibold mb-2">Featured</label>
 
                                     <!--begin::Select2-->
@@ -683,14 +738,33 @@
 
     </div>
 
-    {{--    <script>--}}
-    {{--        CKEDITOR.replace('blog_content');--}}
+    <script>
+        tinymce.init({
+            selector: 'textarea[name="city_content"]',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tableofcontents footnotes mergetags autocorrect typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | codesample code link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Aydın Yağız',
+            codesample_languages: [
+                {text: 'PHP', value: 'php'},
+                {text: 'HTML/XML', value: 'html'},
+                {text: 'CSS', value: 'css'},
+                {text: 'JavaScript', value: 'javascript'},
+                {text: 'C#', value: 'csharp'},
+                {text: 'Java', value: 'java'},
+                {text: 'Python', value: 'python'},
+                {text: 'Ruby', value: 'ruby'},
+                {text: 'Swift', value: 'swift'},
+                {text: 'Kotlin', value: 'kotlin'},
+                {text: 'Objective-C', value: 'objc'},
+                {text: 'C++', value: 'cpp'},
+                {text: 'C', value: 'c'},
+                {text: 'SQL', value: 'sql'}
+                // Diğer programlama dillerini buraya ekleyebilirsiniz
+            ],
 
-    {{--    </script>--}}
-    {{--    <script>--}}
-    {{--        CKEDITOR.replaceAll();--}}
-
-    {{--    </script>--}}
+        });
+    </script>
 @endsection
 
 @section('js')

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\AdminBlog;
 use App\Models\AdminBlogCategory;
 use App\Models\Citiest;
+use App\Models\Disease;
+use App\Models\DiseaseCategory;
 use App\Models\User;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Http\Request;
@@ -39,12 +41,12 @@ class CityController extends Controller
             'name' => 'required',
             'districts' => 'required',
             'featured' => 'required',
-
+            'city_content' => 'required',
         ], [
             'name.required' => 'Name is required',
             'districts.required' => 'Districts is required',
             'featured.required' => 'Featured is required',
-
+            'city_content.required' => 'Content is required',
         ]);
 
         if ($validator->fails()) {
@@ -59,7 +61,7 @@ class CityController extends Controller
 
         $city = new Citiest();
         $city->name = $request->name;
-
+        $city->content = $request->city_content;
         $districts = explode(',', $request->input('districts'));
         $city->districts = json_encode($districts, JSON_UNESCAPED_UNICODE);
 
@@ -90,19 +92,35 @@ class CityController extends Controller
         // return view('admin.pages.blog', $data);
     }
 
+
     public function cityUpdate(Request $request, FlasherInterface $flasher)
+    {
+        $id = $request->id;
+
+        $data = [
+            'admin' => User::where('id', Session::get('adminId'))->first(),
+
+            'city' => Citiest::where('id', $id)->first(),
+        ];
+
+
+        return view('admin.pages.cityUpdate', $data);
+    }
+
+
+    public function cityUpdatePost(Request $request, FlasherInterface $flasher)
     {
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'districts' => 'required',
             'featured' => 'required',
-
+            'city_content' => 'required',
         ], [
             'name.required' => 'Name is required',
             'districts.required' => 'Districts is required',
             'featured.required' => 'Featured is required',
-
+            'city_content.required' => 'Content is required',
         ]);
 
         if ($validator->fails()) {
@@ -110,7 +128,7 @@ class CityController extends Controller
                 $flasher->addError($error);
             }
             // Hata oluştuğunda yapılması gereken diğer işlemler...
-            return Redirect::route('admin.city.list')->withErrors($validator->errors()->all())->withInput();
+            return Redirect::back()->withErrors($validator->errors()->all())->withInput();
         }
 
         $id = $request->id;
@@ -118,29 +136,31 @@ class CityController extends Controller
         //$blogCategory = AdminBlogCategory::where('id', $id)->first();
         $city = Citiest::findOrFail($id);
         $city->name = $request->name;
-
+        $city->content = $request->city_content;
         $districtsArray = explode(', ', $request->input('districts'));
         $districtsJson = json_encode($districtsArray, JSON_UNESCAPED_UNICODE);
         $city->districts = $districtsJson;
+        $city->slug = null;
+
 
         $city->featured = $request->featured;
 
 
-        if (!empty($request->file('image'))) {
+        if (!empty($request->file('city_image'))) {
 
             $this->validate($request, [
-                'image' => 'mimes:jpeg,jpg,png', 'max:4096',
+                'city_image' => 'mimes:jpeg,jpg,png', 'max:4096',
             ], [
-                'image.mimes' => 'image should be in jpg, jpeg, png format.',
-                'image.max' => 'image cannot be larger than 4 MB.',
+                'city_image.mimes' => 'image should be in jpg, jpeg, png format.',
+                'city_image.max' => 'image cannot be larger than 4 MB.',
             ]);
 
-            $image = base64_encode(file_get_contents($request->file('image')->path()));
+            $image = base64_encode(file_get_contents($request->file('city_image')->path()));
 
             $city->image = $image;
         }
 
-        if (empty($request->file('image')) && $request->avatar_remove == 1) {
+        if (empty($request->file('city_image')) && $request->avatar_remove == 1) {
             $city->image = null;
         }
 
@@ -150,7 +170,7 @@ class CityController extends Controller
 
 
         $flasher->addSuccess('City Update Success');
-        return Redirect::route('admin.city.list');
+        return Redirect::route('admin.city.update',[$city->id]);
 
     }
 

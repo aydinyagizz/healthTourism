@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminFrontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Citiest;
 use App\Models\Disease;
 use App\Models\DiseaseCategory;
 use Illuminate\Http\Request;
@@ -64,6 +65,36 @@ class AdminFrontendDiseasesController extends Controller
 
 
 
+    public function adminFrontendDiseasesDetail(Request $request, $slug)
+    {
+        $data = [
+//        'city' => DB::table('cities')
+//            ->paginate(10),
+
+            'diseases' => Disease::with('cities')->where('slug', $slug)
+                ->first(),
+
+            'recentDiseases' => Disease::with('cities')->orderBy('created_at', 'desc')
+                ->take(5)
+                ->get(),
+
+            // 'categories' => DiseaseCategory::where('status', 1)->get(),
+        ];
+
+        $prevDiseases = Disease::where('id', '<', $data['diseases']->id)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        // Sonraki şehir
+        $nextDiseases = Disease::where('id', '>', $data['diseases']->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+
+        return view('adminFrontend.pages.adminFrontendDiseasesDetail', $data, compact('prevDiseases', 'nextDiseases'));
+    }
+
+
 
     public function adminFrontendFilterResults(Request $request)
     {
@@ -93,27 +124,27 @@ class AdminFrontendDiseasesController extends Controller
 //
 //        return response()->json($results);
 
-        $cityId = $request->input('city');
-        $categoryId = $request->input('category');
-
-        $query = Disease::with('cities')
-            ->leftJoin('disease_categories', 'diseases.diseases_category_id', '=', 'disease_categories.id')
-            ->select('diseases.*', 'disease_categories.name as category_name')
-            ->where('diseases.status', 1);
-
-        if ($cityId) {
-            $query->whereHas('cities', function ($q) use ($cityId) {
-                $q->where('cities.id', $cityId);
-            });
-        }
-
-        if ($categoryId) {
-            $query->where('diseases.diseases_category_id', $categoryId);
-        }
-
-        $results = $query->paginate(10);
-
-        return response()->json($results);
+//        $cityId = $request->input('city');
+//        $categoryId = $request->input('category');
+//
+//        $query = Disease::with('cities')
+//            ->leftJoin('disease_categories', 'diseases.diseases_category_id', '=', 'disease_categories.id')
+//            ->select('diseases.*', 'disease_categories.name as category_name')
+//            ->where('diseases.status', 1);
+//
+//        if ($cityId) {
+//            $query->whereHas('cities', function ($q) use ($cityId) {
+//                $q->where('cities.id', $cityId);
+//            });
+//        }
+//
+//        if ($categoryId) {
+//            $query->where('diseases.diseases_category_id', $categoryId);
+//        }
+//
+//        $results = $query->paginate(10);
+//
+//        return response()->json($results);
 
     }
 

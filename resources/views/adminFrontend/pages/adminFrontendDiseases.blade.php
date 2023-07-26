@@ -142,7 +142,7 @@
                                             </div>
                                             <div class="list-caption">
                                                 <span>Open</span>
-                                                <h3><a href="#">{{ $item->title }}</a></h3>
+                                                <h3><a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}">{{ $item->title }}</a></h3>
                                                 <p>{!! $item->content ?  Str::limit($item->content, 50, '...') : '' !!} </p>
                                                 <div class="list-footer">
                                                     @foreach($item->cities as $city)

@@ -1,7 +1,7 @@
 @extends('admin.layout.adminLayout')
 
 @section('title')
-    Disease Update
+    City Update
 @endsection
 
 @section('css')
@@ -22,7 +22,7 @@
 
         <!--begin::Heading-->
         <h1 class="text-dark fw-bold mt-1 mb-1 fs-2">
-            Disease Update <small class="text-muted fs-6 fw-normal ms-1"></small>
+            City Update <small class="text-muted fs-6 fw-normal ms-1"></small>
         </h1>
         <!--end::Heading-->
 
@@ -39,7 +39,7 @@
             </li>
 
             <li class="breadcrumb-item text-dark">
-                Disease Update
+                City Update
             </li>
 
         </ul>
@@ -67,7 +67,7 @@
                     </div>
                     <!--end::Card header-->
 
-                    <form class="form" method="POST" action="{{ route('admin.diseases.update.post',[$diseases->id]) }}"
+                    <form class="form" method="POST" action="{{ route('admin.city.update.post',[$city->id]) }}"
                           {{--                          id="kt_modal_add_blog_form"--}}
                           data-kt-redirect-blog-category="" enctype="multipart/form-data">
                         @csrf
@@ -82,8 +82,8 @@
                                      style="background-image: url('../assets/media/svg/files/blank-image.svg') !important;">
                                     <!--begin::Preview existing avatar-->
                                     <div class="image-input-wrapper w-125px h-125px"
-                                         @if($diseases->image)
-                                             style="background-image: url('data:image/jpeg;base64,{{ $diseases->image }}')"
+                                         @if($city->image)
+                                             style="background-image: url('data:image/jpeg;base64,{{ $city->image }}')"
                                          @else
                                              style="background-image: url('../assets/media/svg/files/blank-image.svg') !important;"
                                         @endif
@@ -100,7 +100,7 @@
                                         <i class="bi bi-pencil-fill fs-7"></i>
 
                                         <!--begin::Inputs-->
-                                        <input type="file" name="diseases_image"
+                                        <input type="file" name="city_image"
                                                accept=".png, .jpg, .jpeg"/>
 
                                         <input type="hidden" name="avatar_remove"/>
@@ -120,7 +120,7 @@
                                     <!--end::Cancel-->
 
                                     <!--begin::Remove-->
-                                    @if($diseases->image)
+                                    @if($city->image)
                                         <span
                                             class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
                                             data-kt-image-input-action="remove"
@@ -135,90 +135,74 @@
                             </div>
 
 
-                            <div class="fv-row mb-7">
-                                <label class="required fs-6 fw-semibold mb-2">Diseases Category</label>
+{{--                            <div class="fv-row mb-7">--}}
+{{--                                <label class="required fs-6 fw-semibold mb-2">Diseases Category</label>--}}
 
-                                <!--begin::Select2-->
-                                <select name="diseases_category" required
-                                        class="form-select mb-2"
-                                        data-control="select2"
-                                        data-hide-search="true"
-                                        data-placeholder="Select category" id="diseases_category">
-                                    <option value=""></option>
-                                    @foreach($diseases_category as $item)
+{{--                                <!--begin::Select2-->--}}
+{{--                                <select name="diseases_category" required--}}
+{{--                                        class="form-select mb-2"--}}
+{{--                                        data-control="select2"--}}
+{{--                                        data-hide-search="true"--}}
+{{--                                        data-placeholder="Select category" id="diseases_category">--}}
+{{--                                    <option value=""></option>--}}
+{{--                                    @foreach($diseases_category as $item)--}}
 
-                                        @if($diseases->diseases_category_id == $item->id)
-                                            <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
-                                        @else
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endif
+{{--                                        @if($diseases->diseases_category_id == $item->id)--}}
+{{--                                            <option value="{{ $item->id }}" selected>{{ $item->name }}</option>--}}
+{{--                                        @else--}}
+{{--                                            <option value="{{ $item->id }}">{{ $item->name }}</option>--}}
+{{--                                        @endif--}}
 
-                                    @endforeach
-                                </select>
-                                <!--end::Select2-->
-                            </div>
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                                <!--end::Select2-->--}}
+{{--                            </div>--}}
 
 
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fs-6 fw-semibold mb-2">Title</label>
+                                <label class="required fs-6 fw-semibold mb-2">Name</label>
                                 <!--end::Label-->
 
                                 <!--begin::Input-->
                                 <input type="text" class="form-control form-control-solid" required
-                                       placeholder="Diseases Title" name="title" id="title"
-                                       value="{{ $diseases ? $diseases->title : '' }}"/>
+                                       placeholder="Name" name="name" id="name"
+                                       value="{{ $city ? $city->name : '' }}"/>
 
 
                             </div>
+
+
+                            <div class="fv-row mb-7 ">
+
+                                <label class="required fs-6 fw-semibold mb-2">Districts</label>
+
+                                @php
+                                    // JSON formatındaki veriyi dizi haline çevirin
+                                    $districtsArray = json_decode($city->districts);
+
+                                    // Diziyi virgülle ayrılmış bir dizi olarak düzenleyin
+                                    $districtsString = implode(', ', $districtsArray);
+                                @endphp
+
+
+                                <textarea class="form-control form-control-solid" id="districts" name="districts"
+                                          required>{{ $districtsString }}</textarea>
+
+                            </div>
+
+
+
+
+
 
 
                             <div class="fv-row mb-7">
-                                <!--begin::Input group-->
-                                <!--begin::Label-->
-                                <label class="form-label required">Cities</label>
-                                <!--end::Label-->
-
-                                <!--begin::Select2-->
-                                <select class="form-select mb-2" data-control="select2" name="cities[]" id="cities"
-                                        data-placeholder="Select an option" data-allow-clear="true"
-
-                                        multiple="multiple">
-                                    {{--                                    @foreach($cities as $item)--}}
-                                    {{--                                        <option value="{{ $item->id }}">{{ $item->name }}</option>--}}
-                                    {{--                                    @endforeach--}}
-
-                                    @foreach($cities as $city)
-                                        @php $isSelected = in_array($city->id, $diseases->cities->pluck('id')->toArray()) @endphp
-                                        <option value="{{ $city->id }}"
-                                                @if($isSelected) selected @endif>{{ $city->name }}</option>
-                                    @endforeach
-
-                                </select>
+                                <label class="required fs-6 fw-semibold mb-2">Content</label>
+                                <textarea id="city_content" name="city_content"
+                                          style="visibility: visible;">{!! $city ? $city->content : '' !!}</textarea>
                             </div>
 
-
-                            <div class="fv-row mb-7">
-                                <label class="required fs-6 fw-semibold mb-2">Status</label>
-
-                                <!--begin::Select2-->
-                                <select name="status" required
-                                        class="form-select mb-2"
-                                        data-control="select2"
-                                        data-hide-search="true"
-                                        data-placeholder="Select category"
-                                        id="status{{ $diseases->id }}">
-                                    @if($diseases->status)
-                                        <option value="1">Active</option>
-                                        <option value="0">Pending</option>
-                                    @else
-                                        <option value="0">Pending</option>
-                                        <option value="1">Active</option>
-                                    @endif
-
-                                </select>
-                                <!--end::Select2-->
-                            </div>
 
 
                             <div class="fv-row mb-7">
@@ -230,8 +214,8 @@
                                         data-control="select2"
                                         data-hide-search="true"
                                         data-placeholder="Select category"
-                                        id="featured{{ $diseases->id }}">
-                                    @if($diseases->featured)
+                                        id="featured{{ $city->id }}">
+                                    @if($city->featured)
                                         <option value="1">Active</option>
                                         <option value="0">Pending</option>
                                     @else
@@ -244,15 +228,6 @@
                             </div>
 
 
-                            <div class="fv-row mb-7">
-                                <label class="required fs-6 fw-semibold mb-2">Content</label>
-
-
-                                <textarea id="diseases_content" name="diseases_content"
-                                          style="visibility: visible;">{!! $diseases ? $diseases->content : '' !!}</textarea>
-
-
-                            </div>
 
                             <div class="mb-10 fv-row d-flex justify-content-end mt-10">
 
@@ -296,7 +271,7 @@
 
     <script>
         tinymce.init({
-            selector: 'textarea[name="diseases_content"]',
+            selector: 'textarea[name="city_content"]',
             plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tableofcontents footnotes mergetags autocorrect typography inlinecss',
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | codesample code link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
             tinycomments_mode: 'embedded',

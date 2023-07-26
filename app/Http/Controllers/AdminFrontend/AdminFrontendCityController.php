@@ -26,7 +26,6 @@ class AdminFrontendCityController extends Controller
 //        return view('adminFrontend.pages.adminFrontendCity', $data);
 
 
-
         $cityId = $request->input('city');
         $categoryId = $request->input('category');
 
@@ -57,5 +56,35 @@ class AdminFrontendCityController extends Controller
             'categories' => DiseaseCategory::where('status', 1)->get(),
         ]);
 
+    }
+
+
+    public function adminFrontendCityDetail(Request $request, $slug)
+    {
+        $data = [
+//        'city' => DB::table('cities')
+//            ->paginate(10),
+
+            'city' => Citiest::with('diseases')->where('slug', $slug)
+                ->first(),
+
+            'recentCity' => Citiest::with('diseases')->orderBy('created_at', 'desc')
+                ->take(5)
+                ->get(),
+
+           // 'categories' => DiseaseCategory::where('status', 1)->get(),
+        ];
+
+        $prevCity = Citiest::where('id', '<', $data['city']->id)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        // Sonraki şehir
+        $nextCity = Citiest::where('id', '>', $data['city']->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+
+        return view('adminFrontend.pages.adminFrontendCityDetail', $data, compact('prevCity', 'nextCity'));
     }
 }

@@ -142,7 +142,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="location-details mb-4">
-                                                    <a href="#" ><p>{{ $item->name }}</p></a>
+                                                    <a href="{{ route('admin.frontend.city.detail',[$item->slug]) }}" ><p>{{ $item->name }}</p></a>
 
 
                                                     @foreach(json_decode($item->districts) as $district)

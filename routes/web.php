@@ -20,7 +20,9 @@ Route::prefix('/')->group(function () {
     Route::get( '/blog', [\App\Http\Controllers\AdminFrontend\AdminFrontendBlogController::class, 'adminFrontendBlog'])->name('admin.frontend.blog');
     Route::get( '/categories', [\App\Http\Controllers\AdminFrontend\AdminFrontendCategoryController::class, 'adminFrontendCategory'])->name('admin.frontend.category');
     Route::get( '/cities', [\App\Http\Controllers\AdminFrontend\AdminFrontendCityController::class, 'adminFrontendCity'])->name('admin.frontend.city');
+    Route::get( '/citiesDetail/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendCityController::class, 'adminFrontendCityDetail'])->name('admin.frontend.city.detail');
     Route::get( '/diseases', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendDiseases'])->name('admin.frontend.diseases');
+    Route::get( '/diseasesDetail/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendDiseasesDetail'])->name('admin.frontend.diseases.detail');
 });
 
 
@@ -75,7 +77,8 @@ Route::prefix('/admin')->middleware(['is_admin', 'role:Admin'])->group(function 
 
     Route::get( '/city', [\App\Http\Controllers\Admin\CityController::class, 'cityList'])->name('admin.city.list');
     Route::post( '/cityAdd', [\App\Http\Controllers\Admin\CityController::class, 'cityAdd'])->name('admin.city.add');
-    Route::post( '/cityUpdate/{id}', [\App\Http\Controllers\Admin\CityController::class, 'cityUpdate'])->name('admin.city.update');
+    Route::get( '/cityUpdate/{id}', [\App\Http\Controllers\Admin\CityController::class, 'cityUpdate'])->name('admin.city.update');
+    Route::post( '/cityUpdatePost/{id}', [\App\Http\Controllers\Admin\CityController::class, 'cityUpdatePost'])->name('admin.city.update.post');
     Route::post( '/cityDelete', [\App\Http\Controllers\Admin\CityController::class, 'cityDelete'])->name('admin.city.delete');
 
 
