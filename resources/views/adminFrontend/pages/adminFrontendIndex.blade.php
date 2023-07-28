@@ -29,7 +29,7 @@
 
                             <div class="select-form">
                                 <div class="select-itms">
-                                    <select name="select" id="select1">
+                                    <select class="form-select form-control nice-select" name="select" id="select1">
                                         <option value="">All Catagories</option>
                                         <option value="">Catagories One</option>
                                         <option value="">Catagories Two</option>

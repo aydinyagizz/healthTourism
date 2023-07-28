@@ -25,7 +25,7 @@
                             </div>
                             <div class="select-form">
                                 <div class="select-itms">
-                                    <select name="select" id="select1">
+                                    <select  class="form-select form-control nice-select" name="select" id="select1">
                                         <option value="">All Catagories</option>
                                         <option value="">Catagories One</option>
                                         <option value="">Catagories Two</option>
@@ -66,7 +66,7 @@
 
                                 <div class="select-job-items1">
                                     <label for="city_filter">City:</label>
-                                    <select name="city" id="city_filter">
+                                    <select  class="form-select form-control nice-select" name="city" id="city_filter">
                                         <option value="">City</option>
                                         @foreach($cityList as $item)
                                             <option value="{{ $item->id }}" {{ request('city') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
@@ -76,7 +76,7 @@
 
                                 <div class="select-job-items2">
                                     <label for="category_filter">Diseases Category:</label>
-                                    <select name="category" id="category_filter">
+                                    <select  class="form-select form-control nice-select" name="category" id="category_filter">
                                         <option value="">Diseases Category</option>
                                         @foreach($categories as $item)
                                             <option value="{{ $item->id }}" {{ request('category') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>

@@ -23,6 +23,9 @@ Route::prefix('/')->group(function () {
     Route::get( '/citiesDetail/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendCityController::class, 'adminFrontendCityDetail'])->name('admin.frontend.city.detail');
     Route::get( '/diseases', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendDiseases'])->name('admin.frontend.diseases');
     Route::get( '/diseasesDetail/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendDiseasesDetail'])->name('admin.frontend.diseases.detail');
+    Route::match(['get', 'post'], '/offer', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOffer'])->name('admin.frontend.offer');
+    Route::post( '/offerPost', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOfferPost'])->name('admin.frontend.offer.post');
+    Route::post('/api/fetch-get-diseases', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOfferGetDiseases'])->name('fetch-get-diseases');
 });
 
 

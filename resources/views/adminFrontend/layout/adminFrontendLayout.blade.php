@@ -30,8 +30,10 @@
 
     @yield('css')
 
-{{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--}}
-{{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>--}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>--}}
+
+    {{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>--}}
 
 </head>
 
@@ -82,8 +84,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="contact.html">Contact</a></li>
-                                        <li class="add-list"><a href="listing_details.html"><i class="ti-plus"></i> add
-                                                Listing</a></li>
+                                        <li class="add-list"><a href="{{ route('admin.frontend.offer') }}"><i class="ti-plus"></i> Get An Offer</a></li>
                                         <li class="login"><a href="#">
                                                 <i class="ti-user"></i> Sign in or Register</a>
                                         </li>
@@ -200,6 +201,10 @@
 
 
 <!-- JS here -->
+
+
+
+
 <!-- All JS Custom Plugins Link Here here -->
 <script src="{{ asset('public/adminFrontend/assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
 <!-- Jquery, Popper, Bootstrap -->
@@ -231,6 +236,8 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="{{ asset('public/adminFrontend/assets/js/plugins.js') }}"></script>
 <script src="{{ asset('public/adminFrontend/assets/js/main.js') }}"></script>
+
+
 
 
 @yield('js')

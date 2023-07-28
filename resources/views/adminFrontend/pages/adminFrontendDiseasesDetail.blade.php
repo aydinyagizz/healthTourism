@@ -241,7 +241,13 @@
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar">
                             <aside class="single_sidebar_widget search_widget">
-                                <form action="#">
+                                <form class="form" action="{{ route('admin.frontend.offer') }}" method="POST"
+                                      id="offerForm">
+                                    @csrf
+
+                                    <input type="hidden" name="category_id" value="{{ $diseases->diseases_category_id }}">
+                                    <input type="hidden" name="diseases_id" value="{{ $diseases->id }}">
+
                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                             type="submit">Get an offer</button>
                                 </form>
