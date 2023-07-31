@@ -34,6 +34,9 @@
                                     <img class="img-fluid" src="data:image/jpeg;base64,{{ $diseases->image }}" alt="{{ $diseases->name }}">
                                 @else
 {{--                                    <img class="img-fluid" src="{{ asset('public/adminFrontend/assets/img/blog/single_blog_1.png') }}" alt="">--}}
+                                    <img class="img-fluid"
+                                        src="{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}"
+                                         alt="{{ $diseases->name }}">
                                 @endif
                             </div>
 
@@ -64,6 +67,9 @@
                                                     <img style="max-width: 100px!important;" class="img-fluid" src="data:image/jpeg;base64,{{ $prevDiseases->image }}" alt="{{ $prevDiseases->name }}">
 
                                                 @else
+                                                    <img style="max-width: 100px!important;" class="img-fluid"
+                                                         src="{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}"
+                                                         alt="{{ $prevDiseases->name }}">
                                                 @endif
 
                                             </a>
@@ -103,6 +109,10 @@
                                                     <img style="max-width: 100px!important;" class="img-fluid" src="data:image/jpeg;base64,{{ $nextDiseases->image }}" alt="{{ $nextDiseases->name }}">
 
                                                 @else
+                                                    <img style="max-width: 100px!important;" class="img-fluid"
+                                                        src="{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}"
+                                                        alt="{{ $nextDiseases->name }}">
+
                                                 @endif
                                             </a>
                                         </div>
@@ -252,9 +262,9 @@
                                             type="submit">Get an offer</button>
                                 </form>
                             </aside>
-                            <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title">Treatments</h4>
-                                <ul class="list cat-list">
+                            <aside class="single_sidebar_widget post_category_widget single_sidebar_widget popular_post_widget">
+                                <h4 class="widget_title">Cities</h4>
+{{--                                <ul class="list cat-list">--}}
                                     @if(count($diseases->cities) == 0)
                                         <li>
                                             <a  class="d-flex">
@@ -263,23 +273,51 @@
                                         </li>
                                     @endif
 
-                                    @foreach($diseases->cities as $item)
-                                    <li>
-                                        <a href="{{ route('admin.frontend.city.detail', [$item->slug]) }}" class="d-flex">
-                                            <p>{{ $item->name }}</p>
-                                        </a>
-                                    </li>
-                                    @endforeach
+{{--                                    @foreach($diseases->cities as $item)--}}
+{{--                                    <li>--}}
+{{--                                        <a href="{{ route('admin.frontend.city.detail', [$item->slug]) }}" class="d-flex">--}}
+{{--                                            <p>{{ $item->name }}</p>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    @endforeach--}}
 
-                                </ul>
+
+
+
+                                @foreach($diseases->cities as $item)
+                                    <div class="media post_item">
+                                        @if($item->image)
+                                            <img style="max-width: 80px!important;"
+                                                 src="data:image/jpeg;base64,{{ $item->image }}" alt="{{ $item->name }}">
+                                        @else
+                                            <img style="max-width: 80px!important;"
+                                                 src="{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}"
+                                                 alt="">
+                                        @endif
+
+                                        <div class="media-body">
+                                            <a href="{{ route('admin.frontend.city.detail',[$item->slug]) }}">
+                                                <p > {{ $item->name }}</p>
+                                            </a>
+                                            {{--                                        <p>January 12, 2019</p>--}}
+                                        </div>
+                                    </div>
+                                @endforeach
+
+{{--                                </ul>--}}
                             </aside>
                             <aside class="single_sidebar_widget popular_post_widget">
-                                <h3 class="widget_title">Recent Diseases</h3>
+                                <h3 class="widget_title">Recently added treatments</h3>
 
                                 @foreach($recentDiseases as $item)
                                 <div class="media post_item">
                                     @if($item->image)
                                         <img style="max-width: 80px!important;" src="data:image/jpeg;base64,{{ $item->image }}" alt="{{ $item->name }}">
+
+                                    @else
+                                        <img style="max-width: 80px!important;"
+                                            src="{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}"
+                                            alt="{{ $item->name }}">
                                     @endif
 
                                     <div class="media-body">

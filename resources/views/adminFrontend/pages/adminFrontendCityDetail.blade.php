@@ -34,12 +34,24 @@
                                      alt="{{ $city->name }}">
                             @else
                                 {{--                                    <img class="img-fluid" src="{{ asset('public/adminFrontend/assets/img/blog/single_blog_1.png') }}" alt="">--}}
+                                <img class="img-fluid" src="{{ asset('public/adminFrontend/assets/img/gallery/location1.png') }}" alt="{{ $city->name }}">
+
                             @endif
                         </div>
 
+
+
                         <div class="blog_details">
-                            <h2>{{ $city->name }}
-                            </h2>
+                            <h2>{{ $city->name }}</h2>
+
+                            <ul class="blog-info-link mt-3 mb-4">
+                                @foreach(json_decode($city->districts) as $district)
+
+                                        <span class="badge badge-secondary">#{{ $district }}</span>
+
+                                @endforeach
+
+                            </ul>
 
                             <p class="excert">
                                 {!! $city->content !!}
@@ -65,6 +77,8 @@
                                                          alt="{{ $prevCity->name }}">
 
                                                 @else
+                                                    <img style="max-width: 100px!important;" class="img-fluid" src="{{ asset('public/adminFrontend/assets/img/gallery/location1.png') }}" alt="{{ $nextCity->name }}">
+
                                                 @endif
 
                                             </a>
@@ -106,6 +120,8 @@
                                                          alt="{{ $nextCity->name }}">
 
                                                 @else
+                                                    <img style="max-width: 100px!important;" class="img-fluid" src="{{ asset('public/adminFrontend/assets/img/gallery/location1.png') }}" alt="{{ $nextCity->name }}">
+
                                                 @endif
                                             </a>
                                         </div>
@@ -253,9 +269,9 @@
                                 </button>
                             </form>
                         </aside>
-                        <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">Treatments</h4>
-                            <ul class="list cat-list">
+                        <aside class="single_sidebar_widget post_category_widget single_sidebar_widget popular_post_widget">
+                            <h4 class="widget_title">Treatments in this city</h4>
+{{--                            <ul class="list cat-list ">--}}
                                 @if(count($city->diseases) == 0)
                                     <li>
                                         <a class="d-flex">
@@ -264,25 +280,51 @@
                                     </li>
                                 @endif
 
-                                @foreach($city->diseases as $item)
-                                    <li>
-                                        <a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}"
-                                           class="d-flex">
-                                            <p>{{ $item->title }}</p>
-                                        </a>
-                                    </li>
-                                @endforeach
+{{--                                @foreach($city->diseases as $item)--}}
 
-                            </ul>
+{{--                                      --}}
+{{--                                    <li>--}}
+{{--                                        <a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}"--}}
+{{--                                           class="d-flex">--}}
+{{--                                            <p>{{ $item->title }}</p>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                @endforeach--}}
+
+
+                                    @foreach($city->diseases as $item)
+                                        <div class="media post_item">
+                                            @if($item->image)
+                                                <img style="max-width: 80px!important;"
+                                                     src="data:image/jpeg;base64,{{ $item->image }}" alt="{{ $item->name }}">
+                                            @else
+                                                <img style="max-width: 80px!important;"
+                                                    src="{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}"
+                                                    alt="">
+                                            @endif
+
+                                            <div class="media-body">
+                                                <a href="{{ route('admin.frontend.diseases.detail',[$item->slug]) }}">
+                                                    <p > {{ $item->title }}</p>
+                                                </a>
+                                                {{--                                        <p>January 12, 2019</p>--}}
+                                            </div>
+                                        </div>
+                                    @endforeach
+
+{{--                            </ul>--}}
                         </aside>
                         <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Recent City</h3>
+                            <h3 class="widget_title">Alternative cities</h3>
 
                             @foreach($recentCity as $item)
                                 <div class="media post_item">
                                     @if($item->image)
                                         <img style="max-width: 80px!important;"
                                              src="data:image/jpeg;base64,{{ $item->image }}" alt="{{ $item->name }}">
+                                    @else
+                                        <img style="max-width: 80px!important;" src="{{ asset('public/adminFrontend/assets/img/gallery/location1.png') }}" alt="{{ $item->name }}">
+
                                     @endif
 
                                     <div class="media-body">
@@ -295,16 +337,16 @@
                             @endforeach
 
                         </aside>
-                        <aside class="single_sidebar_widget tag_cloud_widget">
-                            <h4 class="widget_title">District</h4>
-                            <ul class="list">
-                                @foreach(json_decode($city->districts) as $district)
-                                    <li>
-                                        <a>{{ $district }}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </aside>
+{{--                        <aside class="single_sidebar_widget tag_cloud_widget">--}}
+{{--                            <h4 class="widget_title">District</h4>--}}
+{{--                            <ul class="list">--}}
+{{--                                @foreach(json_decode($city->districts) as $district)--}}
+{{--                                    <li>--}}
+{{--                                        <a>{{ $district }}</a>--}}
+{{--                                    </li>--}}
+{{--                                @endforeach--}}
+{{--                            </ul>--}}
+{{--                        </aside>--}}
 
 
                     </div>

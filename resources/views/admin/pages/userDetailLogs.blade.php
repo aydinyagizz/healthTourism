@@ -149,8 +149,8 @@
                                     <div class="text-gray-600">{!! $user->address !!}
                                     </div>
 
-                                    <div class="fw-bold mt-5">Web Site Name</div>
-                                    <div class="text-gray-600">{!! $user->web_site_name !!}
+                                    <div class="fw-bold mt-5">City</div>
+                                    <div class="text-gray-600">{!! $user->city_name !!}
                                     </div>
 
                                     <div class="fw-bold mt-5">Status</div>
@@ -552,7 +552,7 @@ data-bs-dismiss="modal" aria-label="Close"
                                     <div class="row">
 
 
-                                        <div class="col-md-6 fv-row mb-7">
+                                        <div class="col-md-12 fv-row mb-7">
                                             <!--begin::Label-->
                                             <label class="required fs-6 fw-semibold mb-2">Phone</label>
                                             <!--end::Label-->
@@ -563,14 +563,14 @@ data-bs-dismiss="modal" aria-label="Close"
                                                    value="{{ $user->phone }}"/>
                                         </div>
 
-                                        <div class="col-md-6 fv-row mb-7">
-                                            <label class="required fs-6 fw-semibold mb-2 ">Web Site
-                                                Name</label>
-                                            <input type="text" class="form-control form-control-solid"
-                                                   placeholder="Web Site Name" name="web_site_name"
-                                                   id="web_site_name" required
-                                                   value="{{ $user->web_site_name }}"/>
-                                        </div>
+{{--                                        <div class="col-md-6 fv-row mb-7">--}}
+{{--                                            <label class="required fs-6 fw-semibold mb-2 ">Web Site--}}
+{{--                                                Name</label>--}}
+{{--                                            <input type="text" class="form-control form-control-solid"--}}
+{{--                                                   placeholder="Web Site Name" name="web_site_name"--}}
+{{--                                                   id="web_site_name" required--}}
+{{--                                                   value="{{ $user->web_site_name }}"/>--}}
+{{--                                        </div>--}}
                                     </div>
 
 
@@ -580,6 +580,24 @@ data-bs-dismiss="modal" aria-label="Close"
                                                   placeholder="Address" name="address" id="address"
                                                   cols="30"
                                                   rows="1">{{ $user->address ? $user->address : '' }}</textarea>
+                                    </div>
+
+
+                                    <div class="fv-row mb-7">
+                                        <label class="required fs-6 fw-semibold mb-2">City</label>
+
+                                        <!--begin::Select2-->
+                                        <select data-dropdown-parent="#kt_modal_update_details" name="city" required
+                                                class="form-select mb-2"
+                                                data-control="select2"
+                                                data-hide-search="true"
+                                                data-placeholder="Select category"
+                                                id="city{{ $user->id }}">
+                                            @foreach($cityList as $item)
+                                                <option value="{{ $item->id }}"  @if($user->city  === $item->id) selected @endif>{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <!--end::Select2-->
                                     </div>
 
 

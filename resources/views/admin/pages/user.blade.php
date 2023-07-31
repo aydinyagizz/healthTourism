@@ -207,7 +207,7 @@
                                 <th class="min-w-125px">User</th>
                                 <th class="min-w-125px">Phone</th>
                                 <th class="min-w-125px">Address</th>
-{{--                                <th class="min-w-125px">Web Site Name</th>--}}
+                                <th class="min-w-125px">City</th>
                                 <th class="min-w-125px">Status</th>
                                 <th class="min-w-125px">Featured</th>
                                 <th class="text-end min-w-100px">Actions</th>
@@ -275,7 +275,7 @@
 
                                     <td>{{ $item->address }}</td>
 
-{{--                                    <td>{{ $item->web_site_name }}</td>--}}
+                                    <td>{{ $item->city_name }}</td>
 
 
                                     <td>
@@ -934,10 +934,28 @@
                                               name="address" id="address" cols="30" rows="2"></textarea>
                                 </div>
 
+{{--                                <div class="fv-row mb-7">--}}
+{{--                                    <label class="required fs-6 fw-semibold mb-2">Web Site Name</label>--}}
+{{--                                    <input type="text" class="form-control form-control-solid"--}}
+{{--                                           placeholder="Web Site Name" name="web_site_name" id="web_site_name"/>--}}
+{{--                                </div>--}}
+
                                 <div class="fv-row mb-7">
-                                    <label class="required fs-6 fw-semibold mb-2">Web Site Name</label>
-                                    <input type="text" class="form-control form-control-solid"
-                                           placeholder="Web Site Name" name="web_site_name" id="web_site_name"/>
+                                    <label class="required fs-6 fw-semibold mb-2">City</label>
+
+                                    <!--begin::Select2-->
+                                    <select data-dropdown-parent="#kt_modal_add_users" name="city" required
+                                            class="form-select mb-2"
+                                            data-control="select2"
+                                            data-hide-search="true"
+                                            data-placeholder="Select category"
+                                            id="city">
+                                       @foreach($cityList as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                    <!--end::Select2-->
                                 </div>
 
 

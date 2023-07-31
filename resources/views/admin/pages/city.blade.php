@@ -197,7 +197,7 @@
                                     </td>
 
                                     <td>
-                                        @if($item->featured)
+                                        @if($item->featured == 1)
                                             <div class="badge py-3 px-4 fs-7 badge-light-success">Active</div>
 
                                         @else

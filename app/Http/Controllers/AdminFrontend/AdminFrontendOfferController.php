@@ -7,6 +7,7 @@ use App\Models\Citiest;
 use App\Models\Disease;
 use App\Models\DiseaseCategory;
 use App\Models\FrontendOffer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -29,6 +30,9 @@ class AdminFrontendOfferController extends Controller
             'city' => Citiest::with('diseases')
                 ->get(),
             'country' => DB::table('countries')->get(),
+            'countCity' => Citiest::count(),
+            'countDiseases' => Disease::where('status', 1)->count(),
+            'countUser' => User::where('user_role', 1)->where('status', 1)->count(),
         ];
 
 
@@ -42,10 +46,18 @@ class AdminFrontendOfferController extends Controller
         //$data['states'] = State::where("country_id", $request->country_id)->get(["name", "id"]);
         $data['diseases'] = Disease::where("diseases_category_id", $request->idCategory)
             ->where('status', 1)
-       //     ->orderBy('title', 'ASC')
+            //     ->orderBy('title', 'ASC')
             ->get();
 
         return response()->json($data);
+    }
+
+    public function adminFrontendOfferGetAgencyCount(Request $request)
+    {
+        $cityId = $request->input('service_city_id');
+        $agencyCount = User::where('city', $cityId)->count();
+
+        return response()->json(['agencyCount' => $agencyCount]);
     }
 
 
@@ -80,7 +92,7 @@ class AdminFrontendOfferController extends Controller
         ]);
 
 
-       // dd($request->all());
+        // dd($request->all());
         $offer = new FrontendOffer();
         $offer->name = $request->name;
         $offer->email = $request->email;
@@ -93,14 +105,14 @@ class AdminFrontendOfferController extends Controller
         if (count($dateRange) == 2) {
             $offer->date_range_start = $dateRange[0] ? $dateRange[0] : null; // İlk tarih
             $offer->date_range_end = $dateRange[1] ? $dateRange[1] : null; // İkinci tarih
-        } else{
+        } else {
             $offer->date_range_start = $dateRange[0] ? $dateRange[0] : null; // İlk tarih
             $offer->date_range_end = null; // İkinci tarih
         }
 
         $offer->disease_id = $request->diseases;
-        $offer->diseases_category_id  = $request->category;
-        $offer->service_city  = $request->service_city;
+        $offer->diseases_category_id = $request->category;
+        $offer->service_city = $request->service_city;
         $offer->save();
 
         $message = 'Your request for quotation has been successfully created.'; // İstediğiniz mesajı buraya yazın

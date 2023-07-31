@@ -17,29 +17,10 @@
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-9">
                     <div class="hero-cap text-center pt-50 pb-20">
-                        <h2>Our Listing</h2>
+                        <h2>Diseases</h2>
                     </div>
                     <!--Hero form -->
-                    <form action="#" class="search-box search-box2">
-                        <div class="input-form">
-                            <input type="text" placeholder="What are you looking for?">
-                        </div>
-                        <div class="select-form">
-                            <div class="select-itms">
-                                <select  class="form-select form-control nice-select" name="select" id="select1">
-                                    <option value="">All Catagories</option>
-                                    <option value="">Catagories One</option>
-                                    <option value="">Catagories Two</option>
-                                    <option value="">Catagories Three</option>
-                                    <option value="">Catagories Four</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- Search box -->
-                        <div class="search-form">
-                            <a href="#">Search</a>
-                        </div>
-                    </form>
+
                 </div>
             </div>
         </div>
@@ -144,16 +125,23 @@
                                                 <span>Open</span>
                                                 <h3><a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}">{{ $item->title }}</a></h3>
                                                 <p>{!! $item->content ?  Str::limit($item->content, 50, '...') : '' !!} </p>
-                                                <div class="list-footer">
+{{--                                                <div class="list-footer">--}}
+
+                                                <hr>
+                                                    <ul class="blog-info-link ">
                                                     @foreach($item->cities as $city)
-                                                        <ul id="city">
+
 
                                                             <li>{{ $city->name }}</li>
 
 
-                                                        </ul>
+
                                                     @endforeach
-                                                </div>
+                                                        </ul>
+
+
+
+{{--                                                </div>--}}
                                             </div>
                                         </div>
                                     </div>

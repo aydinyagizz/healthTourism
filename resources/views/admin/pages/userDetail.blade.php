@@ -149,24 +149,32 @@
                                     <div class="text-gray-600">{!! $user->address !!}
                                     </div>
 
-                                    <div class="fw-bold mt-5">Web Site Name</div>
-                                    <div class="text-gray-600">{!! $user->web_site_name !!}
+                                    <div class="fw-bold mt-5">City</div>
+                                    <div class="text-gray-600">{!! $user->city_name !!}
                                     </div>
 
                                     <div class="fw-bold mt-5">Status</div>
                                     @if($user->status)
-                                        <div class="text-gray-600"><div class="badge py-3 px-4 fs-7 badge-light-success">Active</div></div>
+                                        <div class="text-gray-600">
+                                            <div class="badge py-3 px-4 fs-7 badge-light-success">Active</div>
+                                        </div>
 
                                     @else
-                                        <div class="text-gray-600"><div class="badge py-3 px-4 fs-7 badge-light-danger">Pending</div></div>
+                                        <div class="text-gray-600">
+                                            <div class="badge py-3 px-4 fs-7 badge-light-danger">Pending</div>
+                                        </div>
                                     @endif
 
                                     <div class="fw-bold mt-5">Featured</div>
                                     @if($user->featured)
-                                        <div class="text-gray-600"><div class="badge py-3 px-4 fs-7 badge-light-success">Active</div></div>
+                                        <div class="text-gray-600">
+                                            <div class="badge py-3 px-4 fs-7 badge-light-success">Active</div>
+                                        </div>
 
                                     @else
-                                        <div class="text-gray-600"><div class="badge py-3 px-4 fs-7 badge-light-danger">Pending</div></div>
+                                        <div class="text-gray-600">
+                                            <div class="badge py-3 px-4 fs-7 badge-light-danger">Pending</div>
+                                        </div>
                                     @endif
 
                                     <div class="fw-bold mt-5">Last Login</div>
@@ -190,10 +198,10 @@
                     <!--begin:::Tabs-->
                     <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-8">
 
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"--}}
-{{--                               href="#kt_user_view_overview_tab">Overview</a>--}}
-{{--                        </li>--}}
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"--}}
+                        {{--                               href="#kt_user_view_overview_tab">Overview</a>--}}
+                        {{--                        </li>--}}
 
 
                         <!--begin:::Tab item-->
@@ -217,32 +225,32 @@
                     <!--begin:::Tab content-->
                     <div class="tab-content" id="myTabContent">
 
-{{--                        <div class="tab-pane fade show active" id="kt_user_view_overview_tab" role="tabpanel">--}}
-{{--                         --}}
-{{--                            <div class="card card-flush mb-6 mb-xl-9">--}}
-{{--                            --}}
-{{--                                <div class="card-header mt-6">--}}
-{{--                               --}}
-{{--                                    <div class="card-title flex-column">--}}
-{{--                                        <h2 class="mb-1">User's Schedule</h2>--}}
-{{--                                    </div>--}}
-{{--                                    --}}
+                        {{--                        <div class="tab-pane fade show active" id="kt_user_view_overview_tab" role="tabpanel">--}}
+                        {{--                         --}}
+                        {{--                            <div class="card card-flush mb-6 mb-xl-9">--}}
+                        {{--                            --}}
+                        {{--                                <div class="card-header mt-6">--}}
+                        {{--                               --}}
+                        {{--                                    <div class="card-title flex-column">--}}
+                        {{--                                        <h2 class="mb-1">User's Schedule</h2>--}}
+                        {{--                                    </div>--}}
+                        {{--                                    --}}
 
 
-{{--                                </div>--}}
-{{--                                --}}
-{{--                                <div class="card-body p-9 pt-4">--}}
+                        {{--                                </div>--}}
+                        {{--                                --}}
+                        {{--                                <div class="card-body p-9 pt-4">--}}
 
 
-{{--                                    kart içeriği--}}
+                        {{--                                    kart içeriği--}}
 
 
-{{--                                </div>--}}
-{{--                             --}}
-{{--                            </div>--}}
-{{--                      --}}
+                        {{--                                </div>--}}
+                        {{--                             --}}
+                        {{--                            </div>--}}
+                        {{--                      --}}
 
-{{--                        </div>--}}
+                        {{--                        </div>--}}
                         <!--end:::Tab pane-->
 
                         <!--begin:::Tab pane-->
@@ -338,236 +346,292 @@
                                 </div>
 
                                 <div class="card-body pt-0 pb-5">
-                            <form id="kt_modal_update_role_form_user" class="form" action="{{ route('admin.user.permissions', [$user->id]) }}" method="POST">
-                             @csrf
-                                <!--begin::Scroll-->
-                                <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_update_role_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_update_role_header" data-kt-scroll-wrappers="#kt_modal_update_role_scroll" data-kt-scroll-offset="300px">
+                                    <form id="kt_modal_update_role_form_user" class="form"
+                                          action="{{ route('admin.user.permissions', [$user->id]) }}" method="POST">
+                                        @csrf
+                                        <!--begin::Scroll-->
+                                        <div class="d-flex flex-column scroll-y me-n7 pe-7"
+                                             id="kt_modal_update_role_scroll" data-kt-scroll="true"
+                                             data-kt-scroll-activate="{default: false, lg: true}"
+                                             data-kt-scroll-max-height="auto"
+                                             data-kt-scroll-dependencies="#kt_modal_update_role_header"
+                                             data-kt-scroll-wrappers="#kt_modal_update_role_scroll"
+                                             data-kt-scroll-offset="300px">
 
-                                    <div class="fv-row">
+                                            <div class="fv-row">
 
-                                        <div class="table-responsive">
-                                            <!--begin::Table-->
-                                            <table class="table align-middle table-row-dashed fs-6 gy-5">
-                                                <!--begin::Table body-->
-                                                <tbody class="text-gray-600 fw-semibold">
-                                                <!--begin::Table row-->
-                                                <tr>
-                                                    <td class="text-gray-800">
-                                                        Administrator Access
+                                                <div class="table-responsive">
+                                                    <!--begin::Table-->
+                                                    <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                                        <!--begin::Table body-->
+                                                        <tbody class="text-gray-600 fw-semibold">
+                                                        <!--begin::Table row-->
+                                                        <tr>
+                                                            <td class="text-gray-800">
+                                                                Administrator Access
 
-                                                        <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Allows a full access to the system"></i>
-                                                    </td>
-                                                    <td>
-                                                        <!--begin::Checkbox-->
-                                                        <label class="form-check form-check-sm form-check-custom form-check-solid me-9">
-                                                            <input class="form-check-input" type="checkbox" value="" id="kt_roles_select_all_user" />
-                                                            <span class="form-check-label" for="kt_roles_select_all_user">
+                                                                <i class="fas fa-exclamation-circle ms-1 fs-7"
+                                                                   data-bs-toggle="tooltip"
+                                                                   title="Allows a full access to the system"></i>
+                                                            </td>
+                                                            <td>
+                                                                <!--begin::Checkbox-->
+                                                                <label
+                                                                    class="form-check form-check-sm form-check-custom form-check-solid me-9">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                           value="" id="kt_roles_select_all_user"/>
+                                                                    <span class="form-check-label"
+                                                                          for="kt_roles_select_all_user">
                                                         Select all
                                                     </span>
-                                                        </label>
-                                                        <!--end::Checkbox-->
-                                                    </td>
-                                                </tr>
-                                                <!--end::Table row-->
-                                                <!--begin::Table row-->
-                                                <tr>
-                                                    <!--begin::Label-->
-                                                    <td class="text-gray-800">About Us Management</td>
-                                                    <!--end::Label-->
+                                                                </label>
+                                                                <!--end::Checkbox-->
+                                                            </td>
+                                                        </tr>
+                                                        <!--end::Table row-->
+                                                        <!--begin::Table row-->
+                                                        <tr>
+                                                            <!--begin::Label-->
+                                                            <td class="text-gray-800">About Us Management</td>
+                                                            <!--end::Label-->
 
-                                                    <!--begin::Input group-->
-                                                    <td>
-                                                        <!--begin::Wrapper-->
-                                                        <div class="d-flex">
-                                                            <!--begin::Checkbox-->
-                                                            <label class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="about us view" {{ in_array('about us view', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                            <!--begin::Input group-->
+                                                            <td>
+                                                                <!--begin::Wrapper-->
+                                                                <div class="d-flex">
+                                                                    <!--begin::Checkbox-->
+                                                                    <label
+                                                                        class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="about us view"
+                                                                               {{ in_array('about us view', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 View
                                                             </span>
-                                                            </label>
-                                                            <!--end::Checkbox-->
+                                                                    </label>
+                                                                    <!--end::Checkbox-->
 
-                                                            <!--begin::Checkbox-->
-                                                            <label class="form-check form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="about us update" {{ in_array('about us update', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                                    <!--begin::Checkbox-->
+                                                                    <label
+                                                                        class="form-check form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="about us update"
+                                                                               {{ in_array('about us update', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 Update
                                                             </span>
-                                                            </label>
-                                                            <!--end::Checkbox-->
+                                                                    </label>
+                                                                    <!--end::Checkbox-->
 
-                                                        </div>
-                                                        <!--end::Wrapper-->
-                                                    </td>
-                                                    <!--end::Input group-->
-                                                </tr>
+                                                                </div>
+                                                                <!--end::Wrapper-->
+                                                            </td>
+                                                            <!--end::Input group-->
+                                                        </tr>
 
-                                                <tr>
-                                                    <!--begin::Label-->
-                                                    <td class="text-gray-800">Services Management</td>
-                                                    <!--end::Label-->
+                                                        <tr>
+                                                            <!--begin::Label-->
+                                                            <td class="text-gray-800">Services Management</td>
+                                                            <!--end::Label-->
 
-                                                    <!--begin::Input group-->
-                                                    <td>
-                                                        <!--begin::Wrapper-->
-                                                        <div class="d-flex">
-                                                            <!--begin::Checkbox-->
-                                                            <label class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="services view" {{ in_array('services view', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                            <!--begin::Input group-->
+                                                            <td>
+                                                                <!--begin::Wrapper-->
+                                                                <div class="d-flex">
+                                                                    <!--begin::Checkbox-->
+                                                                    <label
+                                                                        class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="services view"
+                                                                               {{ in_array('services view', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 View
                                                             </span>
-                                                            </label>
-                                                            <!--end::Checkbox-->
+                                                                    </label>
+                                                                    <!--end::Checkbox-->
 
-                                                            <label class="form-check form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="services create" {{ in_array('services create', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                                    <label
+                                                                        class="form-check form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="services create"
+                                                                               {{ in_array('services create', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 Create
                                                             </span>
-                                                            </label>
+                                                                    </label>
 
-                                                            <!--begin::Checkbox-->
-                                                            <label class="form-check form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="services update" {{ in_array('services update', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                                    <!--begin::Checkbox-->
+                                                                    <label
+                                                                        class="form-check form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="services update"
+                                                                               {{ in_array('services update', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 Update
                                                             </span>
-                                                            </label>
+                                                                    </label>
 
-                                                            <label class="form-check form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="services delete" {{ in_array('services delete', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                                    <label
+                                                                        class="form-check form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="services delete"
+                                                                               {{ in_array('services delete', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 Delete
                                                             </span>
-                                                            </label>
+                                                                    </label>
 
-                                                        </div>
-                                                        <!--end::Wrapper-->
-                                                    </td>
-                                                    <!--end::Input group-->
-                                                </tr>
+                                                                </div>
+                                                                <!--end::Wrapper-->
+                                                            </td>
+                                                            <!--end::Input group-->
+                                                        </tr>
 
-                                                <tr>
-                                                    <!--begin::Label-->
-                                                    <td class="text-gray-800">Pricing Management</td>
-                                                    <!--end::Label-->
+                                                        <tr>
+                                                            <!--begin::Label-->
+                                                            <td class="text-gray-800">Pricing Management</td>
+                                                            <!--end::Label-->
 
-                                                    <!--begin::Input group-->
-                                                    <td>
-                                                        <!--begin::Wrapper-->
-                                                        <div class="d-flex">
-                                                            <!--begin::Checkbox-->
-                                                            <label class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="pricing view" {{ in_array('pricing view', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                            <!--begin::Input group-->
+                                                            <td>
+                                                                <!--begin::Wrapper-->
+                                                                <div class="d-flex">
+                                                                    <!--begin::Checkbox-->
+                                                                    <label
+                                                                        class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="pricing view"
+                                                                               {{ in_array('pricing view', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 View
                                                             </span>
-                                                            </label>
-                                                            <!--end::Checkbox-->
+                                                                    </label>
+                                                                    <!--end::Checkbox-->
 
-                                                            <label class="form-check form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="pricing create" {{ in_array('pricing create', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                                    <label
+                                                                        class="form-check form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="pricing create"
+                                                                               {{ in_array('pricing create', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 Create
                                                             </span>
-                                                            </label>
+                                                                    </label>
 
-                                                            <!--begin::Checkbox-->
-                                                            <label class="form-check form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="pricing update" {{ in_array('pricing update', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                                    <!--begin::Checkbox-->
+                                                                    <label
+                                                                        class="form-check form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="pricing update"
+                                                                               {{ in_array('pricing update', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 Update
                                                             </span>
-                                                            </label>
+                                                                    </label>
 
-                                                            <label class="form-check form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="pricing delete" {{ in_array('pricing delete', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                                    <label
+                                                                        class="form-check form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="pricing delete"
+                                                                               {{ in_array('pricing delete', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 Delete
                                                             </span>
-                                                            </label>
+                                                                    </label>
 
-                                                        </div>
-                                                        <!--end::Wrapper-->
-                                                    </td>
-                                                    <!--end::Input group-->
-                                                </tr>
+                                                                </div>
+                                                                <!--end::Wrapper-->
+                                                            </td>
+                                                            <!--end::Input group-->
+                                                        </tr>
 
-                                                <tr>
-                                                    <!--begin::Label-->
-                                                    <td class="text-gray-800">Faq Management</td>
-                                                    <!--end::Label-->
+                                                        <tr>
+                                                            <!--begin::Label-->
+                                                            <td class="text-gray-800">Faq Management</td>
+                                                            <!--end::Label-->
 
-                                                    <!--begin::Input group-->
-                                                    <td>
-                                                        <!--begin::Wrapper-->
-                                                        <div class="d-flex">
-                                                            <!--begin::Checkbox-->
-                                                            <label class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="faq view" {{ in_array('faq view', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                            <!--begin::Input group-->
+                                                            <td>
+                                                                <!--begin::Wrapper-->
+                                                                <div class="d-flex">
+                                                                    <!--begin::Checkbox-->
+                                                                    <label
+                                                                        class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="faq view"
+                                                                               {{ in_array('faq view', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 View
                                                             </span>
-                                                            </label>
-                                                            <!--end::Checkbox-->
+                                                                    </label>
+                                                                    <!--end::Checkbox-->
 
-                                                            <label class="form-check form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="faq create" {{ in_array('faq create', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                                    <label
+                                                                        class="form-check form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="faq create"
+                                                                               {{ in_array('faq create', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 Create
                                                             </span>
-                                                            </label>
+                                                                    </label>
 
-                                                            <!--begin::Checkbox-->
-                                                            <label class="form-check form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="faq update" {{ in_array('faq update', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                                    <!--begin::Checkbox-->
+                                                                    <label
+                                                                        class="form-check form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="faq update"
+                                                                               {{ in_array('faq update', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 Update
                                                             </span>
-                                                            </label>
+                                                                    </label>
 
-                                                            <label class="form-check form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input class="form-check-input" type="checkbox" value="faq delete" {{ in_array('faq delete', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
-                                                                <span class="form-check-label">
+                                                                    <label
+                                                                        class="form-check form-check-custom form-check-solid me-5 me-lg-20">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                               value="faq delete"
+                                                                               {{ in_array('faq delete', $userPermissions) ? 'checked' : '' }} name="permissions[]"/>
+                                                                        <span class="form-check-label">
                                                                 Delete
                                                             </span>
-                                                            </label>
+                                                                    </label>
 
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
 
 
-                                                </tbody>
-                                                <!--end::Table body-->
-                                            </table>
-                                            <!--end::Table-->
+                                                        </tbody>
+                                                        <!--end::Table body-->
+                                                    </table>
+                                                    <!--end::Table-->
+                                                </div>
+                                                <!--end::Table wrapper-->
+                                            </div>
+                                            <!--end::Permissions-->
                                         </div>
-                                        <!--end::Table wrapper-->
-                                    </div>
-                                    <!--end::Permissions-->
-                                </div>
-                                <!--end::Scroll-->
+                                        <!--end::Scroll-->
 
-                                <!--begin::Actions-->
-                                <div class="text-center pt-15">
-                                    <button type="reset" class="btn btn-light me-3" data-kt-roles-modal-action="cancel">
-                                        Discard
-                                    </button>
+                                        <!--begin::Actions-->
+                                        <div class="text-center pt-15">
+                                            <button type="reset" class="btn btn-light me-3"
+                                                    data-kt-roles-modal-action="cancel">
+                                                Discard
+                                            </button>
 
-                                    <button type="submit" class="btn btn-primary" data-kt-roles-modal-action="submit">
+                                            <button type="submit" class="btn btn-primary"
+                                                    data-kt-roles-modal-action="submit">
                             <span class="indicator-label">
                                 Submit
                             </span>
-                                        <span class="indicator-progress">
+                                                <span class="indicator-progress">
                                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                             </span>
-                                    </button>
-                                </div>
-                                <!--end::Actions-->
-                            </form>
+                                            </button>
+                                        </div>
+                                        <!--end::Actions-->
+                                    </form>
                                 </div>
 
                             </div>
@@ -611,34 +675,34 @@
 
                                             <!--begin::Table body-->
                                             <tbody class="fs-6 fw-semibold text-gray-600">
-{{--                                            @foreach($logs as $item)--}}
-{{--                                                <tr>--}}
-{{--                                              --}}
-{{--                                                    <td>--}}
-{{--                                                        {{ $item->user_agent }}--}}
-{{--                                                    </td>--}}
-{{--                                             --}}
+                                            {{--                                            @foreach($logs as $item)--}}
+                                            {{--                                                <tr>--}}
+                                            {{--                                              --}}
+                                            {{--                                                    <td>--}}
+                                            {{--                                                        {{ $item->user_agent }}--}}
+                                            {{--                                                    </td>--}}
+                                            {{--                                             --}}
 
-{{--                                              --}}
-{{--                                                    <td>--}}
-{{--                                                        {{ $item->ip_address }}--}}
-{{--                                                    </td>--}}
-{{--                                                 --}}
+                                            {{--                                              --}}
+                                            {{--                                                    <td>--}}
+                                            {{--                                                        {{ $item->ip_address }}--}}
+                                            {{--                                                    </td>--}}
+                                            {{--                                                 --}}
 
-{{--                                               --}}
-{{--                                                    <td>--}}
-{{--                                                        {{ $item ? $item->getLastLoginAttribute() : '' }}--}}
-{{--                                                    </td>--}}
-{{--                                                   --}}
+                                            {{--                                               --}}
+                                            {{--                                                    <td>--}}
+                                            {{--                                                        {{ $item ? $item->getLastLoginAttribute() : '' }}--}}
+                                            {{--                                                    </td>--}}
+                                            {{--                                                   --}}
 
-{{--                                                </tr>--}}
-{{--                                            @endforeach--}}
+                                            {{--                                                </tr>--}}
+                                            {{--                                            @endforeach--}}
                                             </tbody>
                                             <!--end::Table body-->
 
                                         </table>
                                         <!--end::Table-->
-{{--                                        {{ $logs->links() }}--}}
+                                        {{--                                        {{ $logs->links() }}--}}
 
 
                                     </div>
@@ -672,8 +736,9 @@
                     <!--begin::Modal content-->
                     <div class="modal-content">
                         <!--begin::Form-->
-                        <form class="form" action="{{ route('admin.user.update', [$user->id]) }}"  method="POST" enctype="multipart/form-data" id="kt_modal_update_user_form">
-                           @csrf
+                        <form class="form" action="{{ route('admin.user.update', [$user->id]) }}" method="POST"
+                              enctype="multipart/form-data" id="kt_modal_update_user_form">
+                            @csrf
                             <!--begin::Modal header-->
                             <div class="modal-header" id="kt_modal_update_user_header">
                                 <!--begin::Modal title-->
@@ -682,8 +747,8 @@
 
                                 <!--begin::Close-->
                                 <div class="btn btn-icon btn-sm btn-active-icon-primary"
-{{--                                     data-kt-users-modal-action_edit="close"--}}
-data-bs-dismiss="modal" aria-label="Close"
+                                     {{--                                     data-kt-users-modal-action_edit="close"--}}
+                                     data-bs-dismiss="modal" aria-label="Close"
                                 >
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                                     <span class="svg-icon svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24"
@@ -786,7 +851,7 @@ data-bs-dismiss="modal" aria-label="Close"
                                     <div class="row">
 
 
-                                        <div class="col-md-6 fv-row mb-7">
+                                        <div class="col-md-12 fv-row mb-7">
                                             <!--begin::Label-->
                                             <label class="required fs-6 fw-semibold mb-2">Phone</label>
                                             <!--end::Label-->
@@ -797,14 +862,14 @@ data-bs-dismiss="modal" aria-label="Close"
                                                    value="{{ $user->phone }}"/>
                                         </div>
 
-                                        <div class="col-md-6 fv-row mb-7">
-                                            <label class="required fs-6 fw-semibold mb-2 ">Web Site
-                                                Name</label>
-                                            <input type="text" class="form-control form-control-solid"
-                                                   placeholder="Web Site Name" name="web_site_name"
-                                                   id="web_site_name" required
-                                                   value="{{ $user->web_site_name }}"/>
-                                        </div>
+                                        {{--                                        <div class="col-md-6 fv-row mb-7">--}}
+                                        {{--                                            <label class="required fs-6 fw-semibold mb-2 ">Web Site--}}
+                                        {{--                                                Name</label>--}}
+                                        {{--                                            <input type="text" class="form-control form-control-solid"--}}
+                                        {{--                                                   placeholder="Web Site Name" name="web_site_name"--}}
+                                        {{--                                                   id="web_site_name" required--}}
+                                        {{--                                                   value="{{ $user->web_site_name }}"/>--}}
+                                        {{--                                        </div>--}}
                                     </div>
 
 
@@ -814,6 +879,24 @@ data-bs-dismiss="modal" aria-label="Close"
                                                   placeholder="Address" name="address" id="address"
                                                   cols="30"
                                                   rows="1">{{ $user->address ? $user->address : '' }}</textarea>
+                                    </div>
+
+
+                                    <div class="fv-row mb-7">
+                                        <label class="required fs-6 fw-semibold mb-2">City</label>
+
+                                        <!--begin::Select2-->
+                                        <select data-dropdown-parent="#kt_modal_update_details" name="city" required
+                                                class="form-select mb-2"
+                                                data-control="select2"
+                                                data-hide-search="true"
+                                                data-placeholder="Select category"
+                                                id="city{{ $user->id }}">
+                                            @foreach($cityList as $item)
+                                                <option value="{{ $item->id }}"  @if($user->city  === $item->id) selected @endif>{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <!--end::Select2-->
                                     </div>
 
 
@@ -866,8 +949,6 @@ data-bs-dismiss="modal" aria-label="Close"
                             </div>
 
                             <div class="modal-footer flex-center">
-
-
 
 
                                 <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
@@ -1131,7 +1212,7 @@ data-bs-dismiss="modal" aria-label="Close"
 
     {{--    TODO: update password modal end--}}
     <script>
-        $( document ).ready(function() {
+        $(document).ready(function () {
             const handleSelectAll = () => {
                 const selectAll = document.querySelector('#kt_roles_select_all_user');
                 const allCheckboxes = document.querySelectorAll('[type="checkbox"]');

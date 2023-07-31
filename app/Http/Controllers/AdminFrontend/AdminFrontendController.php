@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminFrontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\DiseaseCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,16 @@ class AdminFrontendController extends Controller
             'city' => DB::table('cities')
                 ->where('featured', 1)
                 ->get(),
+
+            'diseases' => DB::table('diseases')
+                ->where('featured', 1)
+                ->get(),
+
+            'cityList' => DB::table('cities')->get(),
+
+            'categories' => DiseaseCategory::where('status', 1)->get(),
+
+
         ];
         return view('adminFrontend.pages.adminFrontendIndex', $data);
     }

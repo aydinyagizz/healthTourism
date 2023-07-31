@@ -26,7 +26,13 @@ class UserController extends Controller
     {
         $data = [
             'admin' => User::where('id', Session::get('adminId'))->first(),
-            'users' => User::where('user_role', 1)->get(),
+           // 'users' => User::where('user_role', 1)->get(),
+            'users' => User::join('cities', 'users.city', '=', 'cities.id')
+                ->where('users.user_role', 1)
+                ->select('users.*', 'cities.name as city_name', 'cities.id as city_id')
+                ->get(),
+
+            'cityList' => DB::table('cities')->orderBy('name')->get(),
             //'users' => DB::table('users')->where('user_role', 1)->get(),
             // 'logs' => UserLog::with('user')->latest()->paginate(10),
             //'userLastLog' => UserLog::where('user_id', $userId)->latest()->first()
@@ -57,8 +63,9 @@ class UserController extends Controller
             'confirm_password' => 'required|min:6|max:20|same:password',
             'phone' => 'required|numeric',
             'address' => 'required',
+            'city' => 'required',
             // 'country' => 'required',
-            'web_site_name' => 'required',
+          //  'web_site_name' => 'required',
         ], [
             'name.required' => 'Name is required',
 
@@ -79,8 +86,9 @@ class UserController extends Controller
             'phone.numeric' => 'Phone must be numeric',
 
             'address.required' => 'Address is required',
+            'city.required' => 'City is required',
             // 'country.required' => 'Country is required',
-            'web_site_name.required' => 'Web site name is required',
+         //   'web_site_name.required' => 'Web site name is required',
         ]);
 
         if ($validator->fails()) {
@@ -99,7 +107,8 @@ class UserController extends Controller
         $user->status = 1;
         $user->phone = Str::of($request->phone)->replaceMatches('/[^A-Za-z0-9]++/', '');
         $user->address = $request->address;
-        $user->web_site_name = $request->web_site_name;
+        $user->city = $request->city;
+     //   $user->web_site_name = $request->web_site_name;
         $user->syncRoles('User');
 
         if (!empty($request->file('user_image'))) {
@@ -173,8 +182,9 @@ class UserController extends Controller
 //            'confirm_password' => 'required|min:6|max:20|same:password',
             'phone' => 'required|numeric',
             'address' => 'required',
+            'city' => 'required',
             // 'country' => 'required',
-            'web_site_name' => 'required',
+        //    'web_site_name' => 'required',
         ], [
             'name.required' => 'Name is required',
 
@@ -195,8 +205,9 @@ class UserController extends Controller
             'phone.numeric' => 'Phone must be numeric',
 
             'address.required' => 'Address is required',
+            'address.city' => 'Address is required',
             // 'country.required' => 'Country is required',
-            'web_site_name.required' => 'Web site name is required',
+    //        'web_site_name.required' => 'Web site name is required',
         ]);
 
         if ($validator->fails()) {
@@ -212,9 +223,11 @@ class UserController extends Controller
         //$blogCategory = AdminBlogCategory::where('id', $id)->first();
         $user = User::findOrFail($id);
         $user->name = $request->name;
+        $user->slug = null;
         $user->phone = Str::of($request->phone)->replaceMatches('/[^A-Za-z0-9]++/', '');
-        $user->web_site_name = $request->web_site_name;
+     //   $user->web_site_name = $request->web_site_name;
         $user->address = $request->address;
+        $user->city = $request->city;
         $user->status = $request->status;
         $user->featured = $request->featured;
         //$user->slug = null;
@@ -254,7 +267,14 @@ class UserController extends Controller
         $id = $request->id;
         $data = [
             'admin' => User::where('id', Session::get('adminId'))->first(),
-            'user' => User::where('id', $id)->first(),
+           // 'user' => User::where('id', $id)->first(),
+
+            'user' => User::join('cities', 'users.city', '=', 'cities.id')
+                ->where('users.id', $id)
+                ->select('users.*', 'cities.name as city_name', 'cities.id as city_id')
+                ->first(),
+            'cityList' => DB::table('cities')->orderBy('name')->get(),
+
             //'users' => DB::table('users')->where('user_role', 1)->get(),
             'logs' => UserLog::where('user_id', $id)->with('user')->latest()->paginate(10),
             'userLastLog' => UserLog::where('user_id', $id)->latest()->first(),
@@ -273,8 +293,13 @@ class UserController extends Controller
         $id = $request->id;
         $data = [
             'admin' => User::where('id', Session::get('adminId'))->first(),
-            'user' => User::where('id', $id)->first(),
-            //'users' => DB::table('users')->where('user_role', 1)->get(),
+            //'user' => User::where('id', $id)->first(),
+            'user' => User::join('cities', 'users.city', '=', 'cities.id')
+                ->where('users.id', $id)
+                ->select('users.*', 'cities.name as city_name', 'cities.id as city_id')
+                ->first(),
+
+            'cityList' => DB::table('cities')->orderBy('name')->get(),
             'logs' => UserLog::where('user_id', $id)->with('user')->latest()->paginate(10),
             'userLastLog' => UserLog::where('user_id', $id)->latest()->first()
         ];

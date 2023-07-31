@@ -1,6 +1,7 @@
 @extends('adminFrontend.layout.adminFrontendLayout')
 
 @section('title')
+    Cities
 @endsection
 
 @section('css')
@@ -16,29 +17,10 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-8 col-lg-9">
                         <div class="hero-cap text-center pt-50 pb-20">
-                            <h2>Our Listing</h2>
+                            <h2>Cities</h2>
                         </div>
                         <!--Hero form -->
-                        <form action="#" class="search-box search-box2">
-                            <div class="input-form">
-                                <input type="text" placeholder="What are you looking for?">
-                            </div>
-                            <div class="select-form">
-                                <div class="select-itms">
-                                    <select  class="form-select form-control nice-select" name="select" id="select1">
-                                        <option value="">All Catagories</option>
-                                        <option value="">Catagories One</option>
-                                        <option value="">Catagories Two</option>
-                                        <option value="">Catagories Three</option>
-                                        <option value="">Catagories Four</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- Search box -->
-                            <div class="search-form">
-                                <a href="#">Search</a>
-                            </div>
-                        </form>
+
                     </div>
                 </div>
             </div>

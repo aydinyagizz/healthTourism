@@ -90,6 +90,16 @@
                         @endif
 
 
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+{{--                            Türkiye'de {{ $countDiseases }} farklı tedavi ihtiyacınız için {{ $countCity }}--}}
+{{--                            adet şehirde toplam {{ $countUser }} acenteden teklif alabilirsiniz--}}
+
+                            In Turkey, you can receive offers from a total of {{ $countUser }} agencies in {{ $countCity }} different cities for a total of {{ $countDiseases }} different treatment needs.
+
+                        </div>
+
+
+
                         <form class="form" action="{{ route('admin.frontend.offer.post') }}" method="POST"
                               id="offerForm">
                             @csrf
@@ -257,7 +267,57 @@
                                 </script>
 
 
+                                <script>
+                                    function updateAgencyCount(selectedServiceCityId) {
+                                        if (selectedServiceCityId !== '') {
+                                            // AJAX isteği yapalım
+                                            $.ajax({
+                                                headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'},
+                                                url: "{{route('fetch.get.agency.count')}}", // Bu URL'i, ilgili rotanızı ayarlayarak değiştirmeniz gerekebilir.
+                                                type: 'POST',
+                                                data: {
+                                                    service_city_id: selectedServiceCityId,
+                                                    _token: '{{ csrf_token() }}',
+                                                },
+                                                success: function (response) {
+                                                    // AJAX isteği başarılı ise acente sayısını gösterelim
+                                                    $("#agencyCountText").text(response.agencyCount);
+                                                    $("#agencyCountInfo").show();
+                                                },
+                                                error: function (xhr, status, error) {
+                                                    // AJAX isteği başarısız olursa hata mesajı verebiliriz
+                                                    console.error(error);
+                                                }
+                                            });
+                                        } else {
+                                            // Şehir seçimi yapılmadıysa mesajı gizleyelim
+                                            $("#agencyCountInfo").hide();
+                                        }
+                                    }
 
+                                    $(document).ready(function () {
+                                        // Şehir seçildiğinde
+                                        $("#service_city").change(function () {
+                                            var selectedServiceCityId =  $('#service_city').val();
+                                            updateAgencyCount(selectedServiceCityId);
+                                        });
+
+                                        // Sayfa yüklendiğinde, varsa otomatik seçilen şehir için AJAX isteği yapalım
+                                        var selectedServiceCityId = "{{ $cityId }}";
+
+                                        updateAgencyCount(selectedServiceCityId);
+                                    });
+                                </script>
+
+
+
+
+                            </div>
+
+
+
+                            <div class="alert alert-info alert-dismissible fade show mt-3" role="alert" id="agencyCountInfo" style="display: none;">
+                                 Your request for a quote will be sent to <span id="agencyCountText"></span> agencies.
                             </div>
 
 
@@ -282,56 +342,47 @@
 
 
 
+
+
+
 {{--            <script>--}}
 {{--                $(document).ready(function () {--}}
+{{--                    // Şehir seçildiğinde--}}
+{{--                    $('#service_city').on('change', function () {--}}
+{{--                    // $("#service_city").change(function () {--}}
+{{--                        var selectedServiceCityId = $('#service_city').val();--}}
 
-{{--                    $('#offerForm').validate({ // initialize the plugin--}}
-{{--                        // errorClass: "error fail-alert",--}}
-{{--                        // validClass: "valid success-alert",--}}
-
-
-
-{{--                        rules: {--}}
-{{--                            service_city: {--}}
-{{--                                select:true--}}
-{{--                            }--}}
-{{--                            ,--}}
-
-
-{{--                            email: {--}}
-{{--                                required: true,--}}
-{{--                                email: true--}}
-{{--                            },--}}
-{{--                            name: {--}}
-{{--                                required: true,--}}
-{{--                            },--}}
-
-{{--                            diseases: {--}}
-{{--                                required: true,--}}
-{{--                            },--}}
-{{--                            phone: {--}}
-{{--                                required: true,--}}
-{{--                                number: true,--}}
-{{--                            },--}}
-{{--                            country: { // "country" seçim öğesi için doğrulama kuralı--}}
-{{--                                required: true,--}}
-{{--                            },--}}
-{{--                            category1: { // "category" seçim öğesi için doğrulama kuralı--}}
-{{--                                required: true,--}}
-{{--                            },--}}
-
+{{--                        if (selectedServiceCityId !== '') {--}}
+{{--                            // AJAX isteği yapalım--}}
+{{--                            $.ajax({--}}
+{{--                                headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'},--}}
+{{--                                //url: '/get-agency-count', // Bu URL'i, ilgili rotanızı ayarlayarak değiştirmeniz gerekebilir.--}}
+{{--                                url: "{{route('fetch.get.agency.count')}}",--}}
+{{--                                type: 'POST',--}}
+{{--                                data: {--}}
+{{--                                    service_city_id: selectedServiceCityId,--}}
+{{--                                    _token: '{{ csrf_token() }}',--}}
+{{--                                },--}}
+{{--                                success: function (response) {--}}
+{{--                                    // AJAX isteği başarılı ise acente sayısını gösterelim--}}
+{{--                                    $("#agencyCountText").text(response.agencyCount);--}}
+{{--                                    $("#agencyCountInfo").show();--}}
+{{--                                },--}}
+{{--                                error: function (xhr, status, error) {--}}
+{{--                                    // AJAX isteği başarısız olursa hata mesajı verebiliriz--}}
+{{--                                    console.error(error);--}}
+{{--                                }--}}
+{{--                            });--}}
+{{--                        } else {--}}
+{{--                            // Şehir seçimi yapılmadıysa mesajı gizleyelim--}}
+{{--                            $("#agencyCountInfo").hide();--}}
 {{--                        }--}}
-
-
-
-
 {{--                    });--}}
-
-
-
-
 {{--                });--}}
 {{--            </script>--}}
+
+
+
 
 
 

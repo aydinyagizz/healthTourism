@@ -26,12 +26,10 @@
     <link rel="stylesheet" href="{{ asset('public/adminFrontend/assets/css/style.css') }}">
 
 
-
-
     @yield('css')
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>--}}
+    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>--}}
 
     {{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>--}}
 
@@ -60,7 +58,8 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="#"><img src="{{ asset('public/adminFrontend/assets/img/logo/logo.png') }}" alt=""></a>
+                                <a href="#"><img src="{{ asset('public/adminFrontend/assets/img/logo/logo.png') }}"
+                                                 alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-8">
@@ -69,22 +68,27 @@
                                 <nav>
                                     <ul id="navigation">
 
-                                        <li><a @if(Route::is('admin.frontend.index'))  style="color: #FF3D1C" @else '' @endif href="{{ route('admin.frontend.index') }}">Home</a></li>
-                                        <li ><a  @if(Route::is('admin.frontend.city'))  style="color: #FF3D1C" @else '' @endif href="{{ route('admin.frontend.city') }}">Cities</a></li>
-                                        <li ><a  @if(Route::is('admin.frontend.diseases'))  style="color: #FF3D1C" @else '' @endif href="{{ route('admin.frontend.diseases') }}">Diseases</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a @if(Route::is('admin.frontend.category'))  style="color: #FF3D1C" @else '' @endif href="{{ route('admin.frontend.category') }}">Catagories</a></li>
-                                        <li><a href="listing.html">Listing</a></li>
-                                        <li><a href="#" @if(Route::is('admin.frontend.blog'))  style='color: #FF3D1C' @else '' @endif>Page</a>
-                                            <ul class="submenu">
-                                                <li><a @if(Route::is('admin.frontend.blog'))  style='color: #FF3D1C' @else '' @endif href="{{ route('admin.frontend.blog') }}">Blog</a></li>
-                                                <li><a href="blog_details.html">Blog Details</a></li>
-                                                <li><a href="elements.html">Element</a></li>
-                                                <li><a href="listing_details.html">Listing details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li class="add-list"><a href="{{ route('admin.frontend.offer') }}"><i class="ti-plus"></i> Get An Offer</a></li>
+                                        <li><a @if(Route::is('admin.frontend.index'))  style="color: #FF3D1C" @else
+                                                ''
+                                            @endif href="{{ route('admin.frontend.index') }}">Home</a></li>
+                                        <li><a @if(Route::is('admin.frontend.city'))  style="color: #FF3D1C" @else
+                                                ''
+                                            @endif href="{{ route('admin.frontend.city') }}">Cities</a></li>
+                                        <li><a @if(Route::is('admin.frontend.diseases'))  style="color: #FF3D1C" @else
+                                                ''
+                                            @endif href="{{ route('admin.frontend.diseases') }}">Diseases</a></li>
+
+
+
+{{--                                        <li><a @if(Route::is('admin.frontend.blog'))  style="color: #FF3D1C" @else--}}
+{{--                                                ''--}}
+{{--                                            @endif href="{{ route('admin.frontend.blog') }}">Blog</a></li>--}}
+
+
+
+                                        <li class="add-list"><a href="{{ route('admin.frontend.offer') }}"><i
+                                                    class="ti-plus"></i> Get An Offer</a></li>
+
                                         <li class="login"><a href="#">
                                                 <i class="ti-user"></i> Sign in or Register</a>
                                         </li>
@@ -121,7 +125,9 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="#"><img src="{{ asset('public/adminFrontend/assets/img/logo/logo2_footer.png') }}" alt=""></a>
+                                    <a href="#"><img
+                                            src="{{ asset('public/adminFrontend/assets/img/logo/logo2_footer.png') }}"
+                                            alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -131,10 +137,10 @@
                             <div class="footer-tittle">
                                 <h4>Quick Link</h4>
                                 <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Listing</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="{{ route('admin.frontend.index') }}">Home</a></li>
+                                    <li><a href="#">Cities</a></li>
+                                    <li><a href="#">Diseases</a></li>
+{{--                                    <li><a href="#">Contact</a></li>--}}
                                 </ul>
                             </div>
                         </div>
@@ -142,12 +148,11 @@
                     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Categories</h4>
+                                <h4>Contracts</h4>
                                 <ul>
-                                    <li><a href="#">Reasonable Hotel</a></li>
-                                    <li><a href="#">Popular Restaurant</a></li>
-                                    <li><a href="#">Easy Shopping</a></li>
-                                    <li><a href="#">Night Life</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">FAQ</a></li>
+
                                 </ul>
                             </div>
                         </div>
@@ -156,10 +161,16 @@
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
                                 <h4>Download App</h4>
+
+                               <p>Soon</p>
+
                                 <ul>
-                                    <li class="app-log"><a href="#"><img src="{{ asset('public/adminFrontend/assets/img/gallery/app-logo.png') }}"
-                                                                         alt=""></a></li>
-                                    <li><a href="#"><img src="{{ asset('public/adminFrontend/assets/img/gallery/app-logo2.png') }}" alt=""></a></li>
+                                    <li class="app-log"><a href="#"><img
+                                                src="{{ asset('public/adminFrontend/assets/img/gallery/app-logo.png') }}"
+                                                alt=""></a></li>
+                                    <li><a href="#"><img
+                                                src="{{ asset('public/adminFrontend/assets/img/gallery/app-logo2.png') }}"
+                                                alt=""></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -172,9 +183,8 @@
                         <div class="footer-copy-right">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                                All rights reserved | This template is made with <i class="fa fa-heart"
-                                                                                    aria-hidden="true"></i> by <a
-                                    href="#" target="_blank">Colorlib</a>
+                                All rights reserved | This template is made with by <a
+                                    href="https://buberka.com" target="_blank">Buberka</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
@@ -201,8 +211,6 @@
 
 
 <!-- JS here -->
-
-
 
 
 <!-- All JS Custom Plugins Link Here here -->
@@ -236,8 +244,6 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="{{ asset('public/adminFrontend/assets/js/plugins.js') }}"></script>
 <script src="{{ asset('public/adminFrontend/assets/js/main.js') }}"></script>
-
-
 
 
 @yield('js')

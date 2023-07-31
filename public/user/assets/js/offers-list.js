@@ -1,8 +1,8 @@
 "use strict";
 
-var KTUsersList = function () {
+var KTUserOffersList = function () {
     // Define shared variables
-    var table = document.getElementById('kt_table_users');
+    var table = document.getElementById('kt_table_offers');
     var datatable;
     var toolbarBase;
     var toolbarSelected;
@@ -53,9 +53,10 @@ var KTUsersList = function () {
             "pageLength": 10,
             //"lengthChange": true,
             'columnDefs': [
-                { orderable: false, targets: 0 }, // Disable ordering on column 0 (checkbox)
+               // { orderable: false, targets: 0 }, // Disable ordering on column 0 (checkbox)
                 // TODO: tabloda sayısını eklediğimiz değere göre düzelt
-                { orderable: false, targets: 7 }, // Disable ordering on column 6 (actions)
+                { orderable: false, targets: 5 }, // Disable ordering on column 6 (actions)
+
             ],
            // columns: [
            //      { data: 'content', name: 'content',   width: '30%',
@@ -79,7 +80,7 @@ var KTUsersList = function () {
 
     // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
     var handleSearchDatatable = () => {
-        const filterSearch = document.querySelector('[data-kt-users-table-filter="search"]');
+        const filterSearch = document.querySelector('[data-kt-offers-table-filter="search"]');
         filterSearch.addEventListener('keyup', function (e) {
             datatable.search(e.target.value).draw();
         });
@@ -116,12 +117,12 @@ var KTUsersList = function () {
     // Reset Filter
     var handleResetForm = () => {
         // Select reset button
-        const resetButton = document.querySelector('[data-kt-users-table-filter="reset"]');
+        const resetButton = document.querySelector('[data-kt-offers-table-filter="reset"]');
 
         // Reset datatable
         resetButton.addEventListener('click', function () {
             // Select filter options
-            const filterForm = document.querySelector('[data-kt-users-table-filter="form"]');
+            const filterForm = document.querySelector('[data-kt-offers-table-filter="form"]');
             const selectOptions = filterForm.querySelectorAll('select');
 
             // Reset select2 values -- more info: https://select2.org/programmatic-control/add-select-clear-items
@@ -138,7 +139,7 @@ var KTUsersList = function () {
     // Delete subscirption
     var handleDeleteRows = () => {
         // Select all delete buttons
-        const deleteButtons = table.querySelectorAll('[data-kt-users-table-filter="delete_row"]');
+        const deleteButtons = table.querySelectorAll('[data-kt-offers-table-filter="delete_row"]');
 
         deleteButtons.forEach(d => {
             // Delete button on click
@@ -153,7 +154,7 @@ var KTUsersList = function () {
 
                 // TODO: company list tablosunda tekli silme işlemi burada olacak
 
-                const userId = parent.querySelectorAll('td')[1].querySelectorAll('a')[0].getAttribute('data-id');
+                const offersId = parent.querySelectorAll('td')[1].querySelectorAll('a')[0].getAttribute('data-id');
                 //TODO: idsini aldık ajax ile silme işlemi kaldı.
 
                 // console.log('user ıd ' + userId);
@@ -200,12 +201,12 @@ var KTUsersList = function () {
                                 }
                             });
 
-                            var deleteUrl = document.getElementById('delete-url-users').value;
+                            var deleteUrl = document.getElementById('delete-url-user-offers').value;
 
                             $.ajax({
                                 url: deleteUrl,
                                 type: 'POST',
-                                data: { userId: userId},
+                                data: { offersId: offersId},
                                 success: function(response){
                                     // Silme işlemi tamamlandıktan sonra yapılacaklar
                                    // alert("Silme tamam!");
@@ -246,10 +247,10 @@ var KTUsersList = function () {
         const checkboxes = table.querySelectorAll('[type="checkbox"]');
 
         // Select elements
-        toolbarBase = document.querySelector('[data-kt-users-table-toolbar="base"]');
-        toolbarSelected = document.querySelector('[data-kt-users-table-toolbar="selected"]');
-        selectedCount = document.querySelector('[data-kt-users-table-select="selected_count"]');
-        const deleteSelected = document.querySelector('[data-kt-users-table-select="delete_selected"]');
+        toolbarBase = document.querySelector('[data-kt-offers-table-toolbar="base"]');
+        toolbarSelected = document.querySelector('[data-kt-offers-table-toolbar="selected"]');
+        selectedCount = document.querySelector('[data-kt-offers-table-select="selected_count"]');
+        const deleteSelected = document.querySelector('[data-kt-offers-table-select="delete_selected"]');
 
         // Toggle delete selected toolbar
         checkboxes.forEach(c => {
@@ -309,7 +310,7 @@ var KTUsersList = function () {
                                         }
                                     });
 
-                                    var deleteUrl = document.getElementById('delete-url-users').value;
+                                    var deleteUrl = document.getElementById('delete-url-user-offers').value;
 
                                     $.ajax({
                                         url: deleteUrl,
@@ -405,5 +406,5 @@ var KTUsersList = function () {
 
 // On document ready
 KTUtil.onDOMContentLoaded(function () {
-    KTUsersList.init();
+    KTUserOffersList.init();
 });

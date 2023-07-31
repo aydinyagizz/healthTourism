@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/')->group(function () {
     Route::get( '/', [\App\Http\Controllers\AdminFrontend\AdminFrontendController::class, 'adminFrontendIndex'])->name('admin.frontend.index');
     Route::get( '/blog', [\App\Http\Controllers\AdminFrontend\AdminFrontendBlogController::class, 'adminFrontendBlog'])->name('admin.frontend.blog');
-    Route::get( '/categories', [\App\Http\Controllers\AdminFrontend\AdminFrontendCategoryController::class, 'adminFrontendCategory'])->name('admin.frontend.category');
     Route::get( '/cities', [\App\Http\Controllers\AdminFrontend\AdminFrontendCityController::class, 'adminFrontendCity'])->name('admin.frontend.city');
     Route::get( '/citiesDetail/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendCityController::class, 'adminFrontendCityDetail'])->name('admin.frontend.city.detail');
     Route::get( '/diseases', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendDiseases'])->name('admin.frontend.diseases');
@@ -26,6 +25,7 @@ Route::prefix('/')->group(function () {
     Route::match(['get', 'post'], '/offer', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOffer'])->name('admin.frontend.offer');
     Route::post( '/offerPost', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOfferPost'])->name('admin.frontend.offer.post');
     Route::post('/api/fetch-get-diseases', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOfferGetDiseases'])->name('fetch-get-diseases');
+    Route::post('/api/fetch-agency-count', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOfferGetAgencyCount'])->name('fetch.get.agency.count');
 });
 
 
@@ -142,6 +142,9 @@ Route::prefix('/user')->middleware(['is_user', 'role:User'])->group(function () 
 
     Route::get( '/frontendHome', [\App\Http\Controllers\User\UserHomeController::class, 'homeList'])->name('user.home.list');
     Route::post( '/homeUpdate', [\App\Http\Controllers\User\UserHomeController::class, 'homeUpdate'])->name('user.home.update');
+
+    Route::get( '/offers', [\App\Http\Controllers\User\UserOffersController::class, 'offersList'])->name('user.offers.list');
+
 });
 
 

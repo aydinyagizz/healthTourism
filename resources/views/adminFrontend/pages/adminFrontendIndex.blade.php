@@ -21,32 +21,59 @@
                             <h1>Discover Great Places</h1>
                         </div>
                         <!--Hero form -->
-                        <form action="#" class="search-box">
+
+                        <style>
+                            /* If you have a separate CSS file, add this there */
+                            select#city_filter {
+                                padding: 11px 19px 11px 30px;
+                            }
+
+
+                        </style>
+
+
+                        <form class="search-box" action="{{ route('admin.frontend.city') }}" method="GET">
+
                             <div class="input-form">
-                                <input type="text" placeholder="What are you looking for?">
+                                <div class="select-form" style="width: 100%">
+                                    <div class="select-itms">
+                                        <select class="form-select form-control nice-select" name="city"
+                                                id="city_filter">
+                                            <option value="">City</option>
+                                            @foreach($cityList as $item)
+                                                <option
+                                                    value="{{ $item->id }}" {{ request('city') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
 
 
-                            <div class="select-form">
+                            <div class="select-form ">
                                 <div class="select-itms">
-                                    <select class="form-select form-control nice-select" name="select" id="select1">
-                                        <option value="">All Catagories</option>
-                                        <option value="">Catagories One</option>
-                                        <option value="">Catagories Two</option>
-                                        <option value="">Catagories Three</option>
-                                        <option value="">Catagories Four</option>
+                                    <select class="form-select form-control nice-select" name="category"
+                                            id="category_filter">
+                                        <option value="">Diseases Category</option>
+                                        @foreach($categories as $item)
+                                            <option
+                                                value="{{ $item->id }}" {{ request('category') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
 
 
-
                             <div class="search-form">
-                                <a href="#">Search</a>
+                                <a href="#" onclick="submitForm()">Search</a>
+
                             </div>
 
-
-
+                            <script>
+                                function submitForm() {
+                                    document.querySelector('.search-box').submit();
+                                }
+                            </script>
 
 
                         </form>
@@ -65,7 +92,7 @@
                     <!-- Section Tittle -->
                     <div class="section-tittle text-center mb-80">
                         <span>Most visited places</span>
-                        <h2>Popular Locations</h2>
+                        <h2>Featured Cities</h2>
                     </div>
                 </div>
             </div>
@@ -73,34 +100,34 @@
 
                 @foreach($city as $item)
 
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-location mb-30">
+                            <div class="location-img">
+                                @if($item->image)
+                                    <img src="data:image/jpeg;base64,{{ $item->image }}"
+                                         alt="{{ $item->name }}">
+                                @else
 
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-location mb-30">
-                        <div class="location-img">
-                            @if($item->image)
-                                <img src="data:image/jpeg;base64,{{ $item->image }}"
-                                     alt="{{ $item->name }}">
-                            @else
+                                    {{--                                <img src="{{ asset('public/admin/assets/media/svg/files/blank-image.svg') }}"--}}
+                                    {{--                                     alt="{{ $item->name }}">--}}
 
-{{--                                <img src="{{ asset('public/admin/assets/media/svg/files/blank-image.svg') }}"--}}
-{{--                                     alt="{{ $item->name }}">--}}
-
-                            <img src="{{ asset('public/adminFrontend/assets/img/gallery/location1.png') }}" alt="{{ $item->name }}">
-                            @endif
-                        </div>
-                        <div class="location-details mb-4">
-                            <a href="#" ><p>{{ $item->name }}</p></a>
+                                    <img src="{{ asset('public/adminFrontend/assets/img/gallery/location1.png') }}"
+                                         alt="{{ $item->name }}">
+                                @endif
+                            </div>
+                            <div class="location-details mb-4">
+                                <a href="#"><p>{{ $item->name }}</p></a>
 
 
-                            @foreach(json_decode($item->districts) as $district)
-                            <span style="color: white"  class="badge bg-secondary">#{{ $district }}</span>
-                            @endforeach
-                            <br>
-{{--                            <a href="#" class="location-btn">65 <i class="ti-plus"></i> Location</a>--}}
-                            <a href="#" ></a>
+                                @foreach(json_decode($item->districts) as $district)
+                                    <span style="color: white" class="badge bg-secondary">#{{ $district }}</span>
+                                @endforeach
+                                <br>
+                                {{--                            <a href="#" class="location-btn">65 <i class="ti-plus"></i> Location</a>--}}
+                                <a href="#"></a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
 
 
@@ -122,7 +149,7 @@
                     <!-- Section Tittle -->
                     <div class="section-tittle section-tittle2 text-center mb-80">
                         <span>Easy to explore</span>
-                        <h2>How It Works</h2>
+                        <h2 style="color: black">How It Works</h2>
                     </div>
                 </div>
             </div>
@@ -133,8 +160,8 @@
                             <span class="flaticon-list"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="#">1. Choose a Category</a></h5>
-                            <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>
+                            <h5 style="color: black"><a style="color: black" href="#">1. Select Your City</a></h5>
+                            {{--                            <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>--}}
                         </div>
                         <!-- Shpape -->
                         <img class="shape1 d-none d-lg-block"
@@ -147,8 +174,8 @@
                             <span class="flaticon-problem"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="#">2. what you want</a></h5>
-                            <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>
+                            <h5 style="color: black"><a style="color: black" href="#">2. Choose Your Disease</a></h5>
+                            {{--                            <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>--}}
                         </div>
                         <img class="shape2 d-none d-lg-block"
                              src="{{ asset('public/adminFrontend/assets/img/icon/serices2.png') }}" alt="">
@@ -160,8 +187,8 @@
                             <span class="flaticon-respect"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="#">3. Go out & Explore</a></h5>
-                            <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>
+                            <h5 style="color: black"><a style="color: black" href="#">3. Get An Offer</a></h5>
+                            {{--                            <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>--}}
                         </div>
                     </div>
                 </div>
@@ -177,58 +204,63 @@
                     <!-- Section Tittle -->
                     <div class="section-tittle text-center mb-80">
                         <span>We are offering for you</span>
-                        <h2>Featured Categories</h2>
+                        <h2>Featured Diseases</h2>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-icon">
-                            <span class="flaticon-bed"></span>
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="catagori.html">Leving Hotel</a></h5>
-                            <p>Must explain your how this keind denoun pleasure</p>
-                            <a href="catagori.html">View Details</a>
+
+            <div class="listing-details-area">
+                <div class="container">
+
+                    <div class="row">
+
+
+                        @foreach($diseases as $item)
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="single-listing mb-30">
+                                    <div class="list-img">
+                                        @if($item->image)
+                                            <img src="data:image/jpeg;base64,{{ $item->image }}"
+                                                 alt="{{ $item->title }}">
+                                        @else
+                                            <img
+                                                src="{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}"
+                                                alt="">
+                                            {{--                                               <span>Open</span>--}}
+                                        @endif
+                                    </div>
+                                    <div class="list-caption">
+                                        <span>Open</span>
+                                        <h3>
+                                            <a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}">{{ $item->title }}</a>
+                                        </h3>
+                                        <p>{!! $item->content ?  Str::limit($item->content, 50, '...') : '' !!} </p>
+                                        {{--                                <div class="list-footer">--}}
+                                        {{--                                    @foreach($item->cities as $city)--}}
+                                        {{--                                        <ul id="city">--}}
+
+                                        {{--                                            <li>{{ $city->name }}</li>--}}
+
+
+                                        {{--                                        </ul>--}}
+                                        {{--                                    @endforeach--}}
+                                        {{--                                </div>--}}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+
+                    </div>
+
+                    <!-- More Btn -->
+                    <div class="row justify-content-center">
+                        <div class="room-btn pt-20">
+                            <a href="{{route('admin.frontend.diseases')}}" class="btn view-btn1">View All </a>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-icon">
-                            <span class="flaticon-drink"></span>
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="catagori.html">Night Life</a></h5>
-                            <p>Must explain your how this keind denoun pleasure</p>
-                            <a href="catagori.html">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-icon">
-                            <span class="flaticon-home"></span>
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="catagori.html">Culture Place</a></h5>
-                            <p>Must explain your how this keind denoun pleasure</p>
-                            <a href="catagori.html">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-icon">
-                            <span class="flaticon-food"></span>
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="catagori.html">Resturent</a></h5>
-                            <p>Must explain your how this keind denoun pleasure</p>
-                            <a href="catagori.html">View Details</a>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -306,7 +338,9 @@
                                 <!-- founder -->
                                 <div class="testimonial-founder d-flex align-items-center justify-content-center mb-30">
                                     <div class="founder-img">
-                                        <img src="{{ asset('public/adminFrontend/assets/img/testmonial/Homepage_testi.png') }}" alt="">
+                                        <img
+                                            src="{{ asset('public/adminFrontend/assets/img/testmonial/Homepage_testi.png') }}"
+                                            alt="">
                                     </div>
                                     <div class="founder-text">
                                         <span>Oliva jems</span>
@@ -328,7 +362,9 @@
                                 <!-- founder -->
                                 <div class="testimonial-founder d-flex align-items-center justify-content-center mb-30">
                                     <div class="founder-img">
-                                        <img src="{{ asset('public/adminFrontend/assets/img/testmonial/Homepage_testi.png') }}" alt="">
+                                        <img
+                                            src="{{ asset('public/adminFrontend/assets/img/testmonial/Homepage_testi.png') }}"
+                                            alt="">
                                     </div>
                                     <div class="founder-text">
                                         <span>Oliva jems</span>
@@ -344,84 +380,10 @@
     </div>
     <!-- Testimonial End -->
     <!-- Subscribe Area Start -->
-    <div class="subscribe-area section-bg pt-150 pb-150" data-background="assets/img/gallery/section_bg04.jpg">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-8">
-                    <!-- Section Tittle -->
-                    <div class="section-tittle section-tittle2 text-center mb-40">
-                        <span>Subscribe out newslatter</span>
-                        <h2>Subscribe For Newsletter</h2>
-                    </div>
-                    <!--Hero form -->
-                    <form action="#" class="search-box">
-                        <div class="input-form">
-                            <input type="text" placeholder="What are you looking for?">
-                        </div>
-                        <div class="search-form">
-                            <a href="#">Send Now</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Subscribe Area End -->
     <!-- Blog Ara Start -->
-    <div class="home-blog-area section-padding30">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Section Tittle -->
-                    <div class="section-tittle text-center mb-70">
-                        <span>Our blog</span>
-                        <h2>News and tips</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-team mb-30">
-                        <div class="team-img">
-                            <img src="{{ asset('public/adminFrontend/assets/img/gallery/home_blog1.png') }}" alt="">
-                        </div>
-                        <div class="team-caption">
-                            <span>HEALTH & CARE</span>
-                            <h3><a href="blog.html">The Best SPA Salons For
-                                    Your Relaxation</a></h3>
-                            <p>October 6, 2020by Steve</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-team mb-30">
-                        <div class="team-img">
-                            <img src="{{ asset('public/adminFrontend/assets/img/gallery/home_blog2.png') }}" alt="">
-                        </div>
-                        <div class="team-caption">
-                            <span>HEALTH & CARE</span>
-                            <h3><a href="blog.html">The Best SPA Salons For
-                                    Your Relaxation</a></h3>
-                            <p>October 6, 2020by Steve</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-team mb-30">
-                        <div class="team-img">
-                            <img src="{{ asset('public/adminFrontend/assets/img/gallery/home_blog3.png') }}" alt="">
-                        </div>
-                        <div class="team-caption">
-                            <span>HEALTH & CARE</span>
-                            <h3><a href="blog.html">The Best SPA Salons For
-                                    Your Relaxation</a></h3>
-                            <p>October 6, 2020by Steve</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Blog Ara End -->
 
 @endsection
