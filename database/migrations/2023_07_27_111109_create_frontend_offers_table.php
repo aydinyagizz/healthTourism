@@ -24,6 +24,7 @@ return new class extends Migration
            // $table->string('date_range')->nullable();
             $table->date('date_range_start')->nullable();
             $table->date('date_range_end')->nullable();
+            $table->string('status')->default('unprocessed')->comment('"unprocessed" (İşleme alınmadı) "approved" (Onay) "rejected" (Red) "under_review" (Görüşülüyor)');
             $table->timestamps();
 
             $table->foreign('disease_id')->references('id')->on('diseases')->onDelete('cascade');

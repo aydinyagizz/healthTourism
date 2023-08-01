@@ -201,190 +201,138 @@
                         </a>
 
 
-                        <a href="{{ route('user.home.list') }}">
-                            <div
-                                class="menu-item   {{ Route::is('user.home.list') ? 'show' : '' }} menu-accordion mb-1">
-                            <span class="menu-link"><span class="menu-icon">
+{{--                        <a href="{{ route('user.home.list') }}">--}}
+{{--                            <div--}}
+{{--                                class="menu-item   {{ Route::is('user.home.list') ? 'show' : '' }} menu-accordion mb-1">--}}
+{{--                            <span class="menu-link"><span class="menu-icon">--}}
 
-                                 <i style="font-size: 17px!important;" class="fa fa-home" aria-hidden="true"></i>
+{{--                                 <i style="font-size: 17px!important;" class="fa fa-home" aria-hidden="true"></i>--}}
 
-                                 </span>
-                                <span class="menu-title">Home
-                                </span>
-                                <span class=""></span></span>
-
-
-                            </div>
-                        </a>
+{{--                                 </span>--}}
+{{--                                <span class="menu-title">Home--}}
+{{--                                </span>--}}
+{{--                                <span class=""></span></span>--}}
 
 
-                        @can('about us view')
-                        <a href="{{ route('user.about.us.list') }}">
-                            <div
-                                class="menu-item   {{ Route::is('user.about.us.list') ? 'show' : '' }} menu-accordion mb-1">
-                            <span class="menu-link"><span class="menu-icon">
-
-                                 <i style="font-size: 17px!important;" class="fa fa-info-circle" aria-hidden="true"></i>
-
-                                 </span>
-                                <span class="menu-title">About Us
-                                </span>
-                                <span class=""></span></span>
+{{--                            </div>--}}
+{{--                        </a>--}}
 
 
-                            </div>
-                        </a>
-                        @endcan
+{{--                        @can('about us view')--}}
+{{--                        <a href="{{ route('user.about.us.list') }}">--}}
+{{--                            <div--}}
+{{--                                class="menu-item   {{ Route::is('user.about.us.list') ? 'show' : '' }} menu-accordion mb-1">--}}
+{{--                            <span class="menu-link"><span class="menu-icon">--}}
 
-                        @can('services view')
-                        <a href="{{ route('user.services.list') }}">
-                            <div
-                                class="menu-item   {{ Route::is('user.services.list') ? 'show' : '' }} menu-accordion mb-1">
-                            <span class="menu-link"><span class="menu-icon">
+{{--                                 <i style="font-size: 17px!important;" class="fa fa-info-circle" aria-hidden="true"></i>--}}
 
-                                <i style="font-size: 17px!important;" class="fa fa-wrench" aria-hidden="true"></i>
-
-                                 </span>
-                                <span class="menu-title">Services
-                                </span>
-                                <span class=""></span></span>
+{{--                                 </span>--}}
+{{--                                <span class="menu-title">About Us--}}
+{{--                                </span>--}}
+{{--                                <span class=""></span></span>--}}
 
 
-                            </div>
-                        </a>
-                        @endcan
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        @endcan--}}
 
-                        @can('pricing view')
-                        <a href="{{ route('user.pricing.list') }}">
-                            <div
-                                class="menu-item   {{ Route::is('user.pricing.list') ? 'show' : '' }} menu-accordion mb-1">
-                            <span class="menu-link"><span class="menu-icon">
+{{--                        @can('services view')--}}
+{{--                        <a href="{{ route('user.services.list') }}">--}}
+{{--                            <div--}}
+{{--                                class="menu-item   {{ Route::is('user.services.list') ? 'show' : '' }} menu-accordion mb-1">--}}
+{{--                            <span class="menu-link"><span class="menu-icon">--}}
 
-                                <i style="font-size: 17px!important;" class="fa fa-money-check-dollar"></i>
+{{--                                <i style="font-size: 17px!important;" class="fa fa-wrench" aria-hidden="true"></i>--}}
 
-                                 </span>
-                                <span class="menu-title">Pricing
-                                </span>
-                                <span class=""></span></span>
-
-
-                            </div>
-                        </a>
-                        @endcan
-
-                        @can('faq view')
-                        <a href="{{ route('user.faq.list') }}">
-                            <div
-                                class="menu-item   {{ Route::is('user.faq.list') ? 'show' : '' }} menu-accordion mb-1">
-                            <span class="menu-link"><span class="menu-icon">
-
-                                <i style="font-size: 17px!important;" class="fa fa-question-circle"
-                                   aria-hidden="true"></i>
-
-                                 </span>
-                                <span class="menu-title">FAQ
-                                </span>
-                                <span class=""></span></span>
+{{--                                 </span>--}}
+{{--                                <span class="menu-title">Services--}}
+{{--                                </span>--}}
+{{--                                <span class=""></span></span>--}}
 
 
-                            </div>
-                        </a>
-                        @endcan
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        @endcan--}}
+
+{{--                        @can('pricing view')--}}
+{{--                        <a href="{{ route('user.pricing.list') }}">--}}
+{{--                            <div--}}
+{{--                                class="menu-item   {{ Route::is('user.pricing.list') ? 'show' : '' }} menu-accordion mb-1">--}}
+{{--                            <span class="menu-link"><span class="menu-icon">--}}
+
+{{--                                <i style="font-size: 17px!important;" class="fa fa-money-check-dollar"></i>--}}
+
+{{--                                 </span>--}}
+{{--                                <span class="menu-title">Pricing--}}
+{{--                                </span>--}}
+{{--                                <span class=""></span></span>--}}
 
 
-                        <a href="{{ route('user.social.media.list') }}">
-                            <div
-                                class="menu-item   {{ Route::is('user.social.media.list') ? 'show' : '' }} menu-accordion mb-1">
-                            <span class="menu-link"><span class="menu-icon">
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        @endcan--}}
 
-                                    <i style="font-size: 17px!important;" class="fa fa-plus" aria-hidden="true"></i>
+{{--                        @can('faq view')--}}
+{{--                        <a href="{{ route('user.faq.list') }}">--}}
+{{--                            <div--}}
+{{--                                class="menu-item   {{ Route::is('user.faq.list') ? 'show' : '' }} menu-accordion mb-1">--}}
+{{--                            <span class="menu-link"><span class="menu-icon">--}}
 
-                                 </span>
-                                <span class="menu-title">Social Media
-                                </span>
-                                <span class=""></span></span>
+{{--                                <i style="font-size: 17px!important;" class="fa fa-question-circle"--}}
+{{--                                   aria-hidden="true"></i>--}}
 
-
-                            </div>
-                        </a>
-
-
-                        <a href="{{ route('user.config') }}">
-                            <div
-                                class="menu-item   {{ Route::is('user.config') ? 'show' : '' }} menu-accordion mb-1">
-                            <span class="menu-link"><span class="menu-icon">
-
-                                  <i style="font-size: 17px!important;" class="fa fa-cog" aria-hidden="true"></i>
-
-                                 </span>
-                                <span class="menu-title">Config
-                                </span>
-                                <span class=""></span></span>
+{{--                                 </span>--}}
+{{--                                <span class="menu-title">FAQ--}}
+{{--                                </span>--}}
+{{--                                <span class=""></span></span>--}}
 
 
-                            </div>
-                        </a>
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        @endcan--}}
 
 
-                        {{--                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">--}}
-                        {{--                          <span class="menu-link"><span class="menu-icon">--}}
-                        {{--<span class="svg-icon svg-icon-2">--}}
-                        {{--    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-                        {{--<path d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"--}}
-                        {{--      fill="currentColor"/>--}}
-                        {{--<path d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z" fill="currentColor"/>--}}
-                        {{--<path opacity="0.3"--}}
-                        {{--      d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"--}}
-                        {{--      fill="currentColor"/>--}}
-                        {{--</svg>--}}
-                        {{--</span>--}}
-                        {{--                                  <!--end::Svg Icon--></span><span class="menu-title">Pages</span><span--}}
-                        {{--                                  class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->--}}
-                        {{--                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->--}}
-                        {{--                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"--}}
-                        {{--                                                                                href="indexe720.html?page=pages/about"><span--}}
-                        {{--                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span--}}
-                        {{--                                            class="menu-title">About Us</span></a><!--end:Menu link--></div>--}}
-                        {{--                                <!--end:Menu item--><!--begin:Menu item-->--}}
-                        {{--                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"--}}
-                        {{--                                                                                href="index5d3e.html?page=pages/invoice"><span--}}
-                        {{--                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span--}}
-                        {{--                                            class="menu-title">Invoice</span></a><!--end:Menu link--></div>--}}
-                        {{--                                <!--end:Menu item--><!--begin:Menu item-->--}}
-                        {{--                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"--}}
-                        {{--                                                                                href="index1ba8.html?page=pages/faq"><span--}}
-                        {{--                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span--}}
-                        {{--                                            class="menu-title">FAQ</span></a><!--end:Menu link--></div>--}}
-                        {{--                                <!--end:Menu item--><!--begin:Menu item-->--}}
-                        {{--                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"--}}
-                        {{--                                                                                href="index064c.html?page=pages/wizard"><span--}}
-                        {{--                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span--}}
-                        {{--                                            class="menu-title">Wizard</span></a><!--end:Menu link--></div>--}}
-                        {{--                                <!--end:Menu item--><!--begin:Menu item-->--}}
-                        {{--                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"--}}
-                        {{--                                                                                href="index2ab2.html?page=pages/pricing"><span--}}
-                        {{--                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span--}}
-                        {{--                                            class="menu-title">Pricing</span></a><!--end:Menu link--></div>--}}
-                        {{--                                <!--end:Menu item--></div><!--end:Menu sub--></div>--}}
+{{--                        <a href="{{ route('user.social.media.list') }}">--}}
+{{--                            <div--}}
+{{--                                class="menu-item   {{ Route::is('user.social.media.list') ? 'show' : '' }} menu-accordion mb-1">--}}
+{{--                            <span class="menu-link"><span class="menu-icon">--}}
+
+{{--                                    <i style="font-size: 17px!important;" class="fa fa-plus" aria-hidden="true"></i>--}}
+
+{{--                                 </span>--}}
+{{--                                <span class="menu-title">Social Media--}}
+{{--                                </span>--}}
+{{--                                <span class=""></span></span>--}}
 
 
-                        <!--begin:Menu item-->
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <!--end:Menu item--><!--begin:Menu item-->
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
+{{--                            </div>--}}
+{{--                        </a>--}}
 
-                        <!--end:Menu item--><!--begin:Menu item-->
-                        <!--end:Menu item--><!--begin:Menu item-->
+
+{{--                        <a href="{{ route('user.config') }}">--}}
+{{--                            <div--}}
+{{--                                class="menu-item   {{ Route::is('user.config') ? 'show' : '' }} menu-accordion mb-1">--}}
+{{--                            <span class="menu-link"><span class="menu-icon">--}}
+
+{{--                                  <i style="font-size: 17px!important;" class="fa fa-cog" aria-hidden="true"></i>--}}
+
+{{--                                 </span>--}}
+{{--                                <span class="menu-title">Config--}}
+{{--                                </span>--}}
+{{--                                <span class=""></span></span>--}}
+
+
+{{--                            </div>--}}
+{{--                        </a>--}}
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
                 <!--end::Menu-->    </div>
@@ -1510,9 +1458,11 @@
                         <!--end::Activities-->
 
 
-                        <a class="btn btn-icon btn-active-light-primary position-relative w-35px h-35px w-md-40px h-md-40px"
-                           href="{{ route('user.frontend.index', [$user->slug]) }}" target="_blank"><i
-                                style="font-size: 17px!important;" class="fa fa-globe" aria-hidden="true"></i></a>
+
+{{--                        TODO: Web sitesi açma linki ve iconu--}}
+{{--                        <a class="btn btn-icon btn-active-light-primary position-relative w-35px h-35px w-md-40px h-md-40px"--}}
+{{--                           href="{{ route('user.frontend.index', [$user->slug]) }}" target="_blank"><i--}}
+{{--                                style="font-size: 17px!important;" class="fa fa-globe" aria-hidden="true"></i></a>--}}
 
 
                         <!--begin::Notifications-->
@@ -7587,6 +7537,7 @@
 <script src="{{ asset('public/user/assets/js/social-media-list.js') }}"></script>
 
 <script src="{{ asset('public/user/assets/js/offers-list.js') }}"></script>
+<script src="{{ asset('public/user/assets/js/user-offer-export.js') }}"></script>
 {{--<script src="{{ asset('public/user/assets/js/frontend-home.js') }}"></script>--}}
 
 

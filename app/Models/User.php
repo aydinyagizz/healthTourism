@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserLog::class);
     }
+
+//    public function userOfferStatuses()
+//    {
+//        return $this->hasMany(UserOfferStatus::class, 'user_id');
+//    }
 }

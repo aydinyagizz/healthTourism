@@ -111,39 +111,41 @@ Route::prefix('/user')->middleware(['is_user', 'role:User'])->group(function () 
     Route::post( '/edit/email', [\App\Http\Controllers\User\UserEditController::class, 'userEditEmail'])->name('user.edit.email');
     Route::post( '/edit/password', [\App\Http\Controllers\User\UserEditController::class, 'userEditPassword'])->name('user.edit.password');
 
-
-    Route::get('/config', [\App\Http\Controllers\User\UserConfigController::class, 'userConfig'])->name('user.config');
-    Route::post( '/config/template', [\App\Http\Controllers\User\UserConfigController::class, 'userConfigTemplate'])->name('user.config.template');
-
-    Route::get( '/aboutUs', [\App\Http\Controllers\User\UserAboutUsController::class, 'aboutUsList'])->name('user.about.us.list')->middleware(['permission:about us view']);
-    Route::post( '/aboutUsUpdate', [\App\Http\Controllers\User\UserAboutUsController::class, 'aboutUsUpdate'])->name('user.about.us.update')->middleware('permission:about us update');
-
-    Route::get( '/services', [\App\Http\Controllers\User\UserServicesController::class, 'servicesList'])->name('user.services.list')->middleware(['permission:services view']);
-    Route::post( '/servicesAdd', [\App\Http\Controllers\User\UserServicesController::class, 'servicesAdd'])->name('user.services.add')->middleware('permission:services create');
-    Route::post( '/servicesDelete', [\App\Http\Controllers\User\UserServicesController::class, 'servicesDelete'])->name('user.services.delete')->middleware('permission:services delete');
-    Route::post( '/servicesUpdate/{id}', [\App\Http\Controllers\User\UserServicesController::class, 'servicesUpdate'])->name('user.services.update')->middleware('permission:services update');
-
-    Route::get( '/pricing', [\App\Http\Controllers\User\UserPricingController::class, 'pricingList'])->name('user.pricing.list')->middleware(['permission:pricing view']);
-    Route::post( '/pricingAdd', [\App\Http\Controllers\User\UserPricingController::class, 'pricingAdd'])->name('user.pricing.add')->middleware('permission:pricing create');
-    Route::post( '/pricingDelete', [\App\Http\Controllers\User\UserPricingController::class, 'pricingDelete'])->name('user.pricing.delete')->middleware('permission:pricing delete');
-    Route::post( '/pricingUpdate/{id}', [\App\Http\Controllers\User\UserPricingController::class, 'pricingUpdate'])->name('user.pricing.update')->middleware('permission:pricing update');
-
-    Route::get( '/faq', [\App\Http\Controllers\User\UserFaqController::class, 'faqList'])->name('user.faq.list')->middleware(['permission:faq view']);
-    //middleware(['permission:faq view', 'permission:faq create'])
-    Route::post( '/faqAdd', [\App\Http\Controllers\User\UserFaqController::class, 'faqAdd'])->name('user.faq.add')->middleware('permission:faq create');
-    Route::post( '/faqDelete', [\App\Http\Controllers\User\UserFaqController::class, 'faqDelete'])->name('user.faq.delete')->middleware('permission:faq delete');
-    Route::post( '/faqUpdate/{id}', [\App\Http\Controllers\User\UserFaqController::class, 'faqUpdate'])->name('user.faq.update')->middleware('permission:faq update');
-
-    Route::get( '/socialMedia', [\App\Http\Controllers\User\UserSocialMediaController::class, 'socialMediaList'])->name('user.social.media.list');
-    Route::post( '/socialMediaAdd', [\App\Http\Controllers\User\UserSocialMediaController::class, 'socialMediaAdd'])->name('user.social.media.add');
-    Route::post( '/socialMediaDelete', [\App\Http\Controllers\User\UserSocialMediaController::class, 'socialMediaDelete'])->name('user.social.media.delete');
-    Route::post( '/socialMediaUpdate/{id}', [\App\Http\Controllers\User\UserSocialMediaController::class, 'socialMediaUpdate'])->name('user.social.media.update');
-
-
-    Route::get( '/frontendHome', [\App\Http\Controllers\User\UserHomeController::class, 'homeList'])->name('user.home.list');
-    Route::post( '/homeUpdate', [\App\Http\Controllers\User\UserHomeController::class, 'homeUpdate'])->name('user.home.update');
+//
+//    Route::get('/config', [\App\Http\Controllers\User\UserConfigController::class, 'userConfig'])->name('user.config');
+//    Route::post( '/config/template', [\App\Http\Controllers\User\UserConfigController::class, 'userConfigTemplate'])->name('user.config.template');
+//
+//    Route::get( '/aboutUs', [\App\Http\Controllers\User\UserAboutUsController::class, 'aboutUsList'])->name('user.about.us.list')->middleware(['permission:about us view']);
+//    Route::post( '/aboutUsUpdate', [\App\Http\Controllers\User\UserAboutUsController::class, 'aboutUsUpdate'])->name('user.about.us.update')->middleware('permission:about us update');
+//
+//    Route::get( '/services', [\App\Http\Controllers\User\UserServicesController::class, 'servicesList'])->name('user.services.list')->middleware(['permission:services view']);
+//    Route::post( '/servicesAdd', [\App\Http\Controllers\User\UserServicesController::class, 'servicesAdd'])->name('user.services.add')->middleware('permission:services create');
+//    Route::post( '/servicesDelete', [\App\Http\Controllers\User\UserServicesController::class, 'servicesDelete'])->name('user.services.delete')->middleware('permission:services delete');
+//    Route::post( '/servicesUpdate/{id}', [\App\Http\Controllers\User\UserServicesController::class, 'servicesUpdate'])->name('user.services.update')->middleware('permission:services update');
+//
+//    Route::get( '/pricing', [\App\Http\Controllers\User\UserPricingController::class, 'pricingList'])->name('user.pricing.list')->middleware(['permission:pricing view']);
+//    Route::post( '/pricingAdd', [\App\Http\Controllers\User\UserPricingController::class, 'pricingAdd'])->name('user.pricing.add')->middleware('permission:pricing create');
+//    Route::post( '/pricingDelete', [\App\Http\Controllers\User\UserPricingController::class, 'pricingDelete'])->name('user.pricing.delete')->middleware('permission:pricing delete');
+//    Route::post( '/pricingUpdate/{id}', [\App\Http\Controllers\User\UserPricingController::class, 'pricingUpdate'])->name('user.pricing.update')->middleware('permission:pricing update');
+//
+//    Route::get( '/faq', [\App\Http\Controllers\User\UserFaqController::class, 'faqList'])->name('user.faq.list')->middleware(['permission:faq view']);
+//    //middleware(['permission:faq view', 'permission:faq create'])
+//    Route::post( '/faqAdd', [\App\Http\Controllers\User\UserFaqController::class, 'faqAdd'])->name('user.faq.add')->middleware('permission:faq create');
+//    Route::post( '/faqDelete', [\App\Http\Controllers\User\UserFaqController::class, 'faqDelete'])->name('user.faq.delete')->middleware('permission:faq delete');
+//    Route::post( '/faqUpdate/{id}', [\App\Http\Controllers\User\UserFaqController::class, 'faqUpdate'])->name('user.faq.update')->middleware('permission:faq update');
+//
+//    Route::get( '/socialMedia', [\App\Http\Controllers\User\UserSocialMediaController::class, 'socialMediaList'])->name('user.social.media.list');
+//    Route::post( '/socialMediaAdd', [\App\Http\Controllers\User\UserSocialMediaController::class, 'socialMediaAdd'])->name('user.social.media.add');
+//    Route::post( '/socialMediaDelete', [\App\Http\Controllers\User\UserSocialMediaController::class, 'socialMediaDelete'])->name('user.social.media.delete');
+//    Route::post( '/socialMediaUpdate/{id}', [\App\Http\Controllers\User\UserSocialMediaController::class, 'socialMediaUpdate'])->name('user.social.media.update');
+//
+//
+//    Route::get( '/frontendHome', [\App\Http\Controllers\User\UserHomeController::class, 'homeList'])->name('user.home.list');
+//    Route::post( '/homeUpdate', [\App\Http\Controllers\User\UserHomeController::class, 'homeUpdate'])->name('user.home.update');
 
     Route::get( '/offers', [\App\Http\Controllers\User\UserOffersController::class, 'offersList'])->name('user.offers.list');
+
+    Route::post('/offer/update-status/{id}', [\App\Http\Controllers\User\UserOffersController::class, 'updateStatus'])->name('offer.update-status');
 
 });
 

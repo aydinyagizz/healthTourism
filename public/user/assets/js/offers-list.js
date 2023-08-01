@@ -47,7 +47,7 @@ var KTUserOffersList = function () {
 
         // Init datatable --- more info on datatables: https://datatables.net/manual/
         datatable = $(table).DataTable({
-            "info": false,
+            "info": true,
             'order': [],
             //"autoWidth": true,
             "pageLength": 10,
@@ -55,7 +55,7 @@ var KTUserOffersList = function () {
             'columnDefs': [
                // { orderable: false, targets: 0 }, // Disable ordering on column 0 (checkbox)
                 // TODO: tabloda sayısını eklediğimiz değere göre düzelt
-                { orderable: false, targets: 5 }, // Disable ordering on column 6 (actions)
+                { orderable: false, targets: 9 }, // Disable ordering on column 6 (actions)
 
             ],
            // columns: [
@@ -78,6 +78,9 @@ var KTUserOffersList = function () {
         });
     }
 
+
+
+
     // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
     var handleSearchDatatable = () => {
         const filterSearch = document.querySelector('[data-kt-offers-table-filter="search"]');
@@ -85,6 +88,27 @@ var KTUserOffersList = function () {
             datatable.search(e.target.value).draw();
         });
     }
+
+    // Handle status filter dropdown
+    var handleStatusFilter = () => {
+         const filterStatus = document.querySelector('[data-kt-offers-table-filter="category"]');
+        // const filterStatus = document.getElementById('category_filter');
+        $(filterStatus).on('change', e => {
+
+          let value = e.target.value;
+            //  let value = filterStatus.value;
+            if(value === 'all'){
+                value = '';
+            }
+            datatable.column(8).search(value).draw();
+        });
+
+    }
+
+
+
+
+
 
     // Filter Datatable
     // var handleFilterDatatable = () => {
@@ -392,13 +416,15 @@ var KTUserOffersList = function () {
             if (!table) {
                 return;
             }
-
+            handleStatusFilter();
             initUserTable();
             initToggleToolbar();
             handleSearchDatatable();
             handleResetForm();
             handleDeleteRows();
-           // handleFilterDatatable();
+
+
+
 
         }
     }
