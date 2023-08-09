@@ -20,8 +20,8 @@ Route::prefix('/')->group(function () {
     Route::get( '/blog', [\App\Http\Controllers\AdminFrontend\AdminFrontendBlogController::class, 'adminFrontendBlog'])->name('admin.frontend.blog');
     Route::get( '/cities', [\App\Http\Controllers\AdminFrontend\AdminFrontendCityController::class, 'adminFrontendCity'])->name('admin.frontend.city');
     Route::get( '/citiesDetail/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendCityController::class, 'adminFrontendCityDetail'])->name('admin.frontend.city.detail');
-    Route::get( '/diseases', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendDiseases'])->name('admin.frontend.diseases');
-    Route::get( '/diseasesDetail/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendDiseasesDetail'])->name('admin.frontend.diseases.detail');
+    Route::get( '/treatment', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendDiseases'])->name('admin.frontend.diseases');
+    Route::get( '/treatmentDetail/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendDiseasesDetail'])->name('admin.frontend.diseases.detail');
     Route::match(['get', 'post'], '/offer', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOffer'])->name('admin.frontend.offer');
     Route::post( '/offerPost', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOfferPost'])->name('admin.frontend.offer.post');
     Route::post('/api/fetch-get-diseases', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOfferGetDiseases'])->name('fetch-get-diseases');
@@ -90,11 +90,12 @@ Route::prefix('/admin')->middleware(['is_admin', 'role:Admin'])->group(function 
     Route::post( '/diseaseCategoryDelete', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryDelete'])->name('admin.disease.category.delete');
     Route::post( '/diseaseCategoryUpdate/{id}', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryUpdate'])->name('admin.disease.category.update');
 
-    Route::get( '/diseases', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesList'])->name('admin.diseases.list');
-    Route::post( '/diseasesAdd', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesAdd'])->name('admin.diseases.add');
-    Route::post( '/diseasesDelete', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesDelete'])->name('admin.diseases.delete');
-    Route::get( '/diseasesUpdate/{id}', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesUpdate'])->name('admin.diseases.update');
-    Route::post( '/diseasesUpdatePost/{id}', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesUpdatePost'])->name('admin.diseases.update.post');
+//    Route::get( '/diseases', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesList'])->name('admin.diseases.list');
+    Route::get( '/treatment', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesList'])->name('admin.diseases.list');
+    Route::post( '/treatmentAdd', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesAdd'])->name('admin.diseases.add');
+    Route::post( '/treatmentDelete', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesDelete'])->name('admin.diseases.delete');
+    Route::get( '/treatmentUpdate/{id}', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesUpdate'])->name('admin.diseases.update');
+    Route::post( '/treatmentUpdatePost/{id}', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesUpdatePost'])->name('admin.diseases.update.post');
 
 });
 

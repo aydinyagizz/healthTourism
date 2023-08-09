@@ -1,7 +1,7 @@
 @extends('adminFrontend.layout.adminFrontendLayout')
 
 @section('title')
-    Diseases
+    Treatment
 @endsection
 
 @section('css')
@@ -11,13 +11,64 @@
 
 @section('content')
 
+
+    <style>
+
+
+        @media (min-width: 641px) {
+
+            .img-diseases {
+                width: 355px !important;
+                height: 247px !important;
+            }
+
+
+
+            /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+        }
+        @media (min-width: 961px) {
+
+
+            .img-diseases {
+                width: 355px !important;
+                height: 247px !important;
+            }
+
+            /* tablet, landscape iPad, lo-res laptops ands desktops */
+        }
+
+        @media (min-width: 1025px) {
+
+
+            .img-diseases {
+                width: 355px !important;
+                height: 247px !important;
+            }
+
+            /* big landscape tablets, laptops, and desktops */
+        }
+
+        @media (min-width: 1281px) {
+
+
+            .img-diseases {
+                width: 355px !important;
+                height: 247px !important;
+            }
+
+            /* hi-res laptops and desktops */
+        }
+
+
+    </style>
+
     <!-- Hero Start-->
     <div class="hero-area3 hero-overly2 d-flex align-items-center ">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-9">
                     <div class="hero-cap text-center pt-50 pb-20">
-                        <h2>Diseases</h2>
+                        <h2>Treatment</h2>
                     </div>
                     <!--Hero form -->
 
@@ -112,27 +163,28 @@
                                         <div class="single-listing mb-30">
                                             <div class="list-img">
                                                 @if($item->image)
-                                                    <img src="data:image/jpeg;base64,{{ $item->image }}"
-                                                         alt="{{ $item->title }}">
+                                                    <a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}"><img class="img-diseases" src="data:image/jpeg;base64,{{ $item->image }}"
+                                                                                                                                alt="{{ $item->title }}"></a>
                                                 @else
-                                                    <img
+                                                    <a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}"><img
                                                         src="{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}"
-                                                        alt="">
+                                                        alt=""></a>
                                                     {{--                                               <span>Open</span>--}}
                                                 @endif
                                             </div>
                                             <div class="list-caption">
-                                                <span>Open</span>
+                                                <span><a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}">Detail</a></span>
                                                 <h3><a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}">{{ $item->title }}</a></h3>
-                                                <p>{!! $item->content ?  Str::limit($item->content, 50, '...') : '' !!} </p>
-{{--                                                <div class="list-footer">--}}
+{{--                                                <p>{!! $item->content ?  Str::limit($item->content, 50, '...') : '' !!} </p>--}}
+
+
+                                                {{--                                                <div class="list-footer">--}}
 
                                                 <hr>
                                                     <ul class="blog-info-link ">
                                                     @foreach($item->cities as $city)
 
-
-                                                            <li>{{ $city->name }}</li>
+                                                         <li ><a style="color: #FF3D1C" href="{{ route('admin.frontend.city.detail', [$city->slug]) }}">#{{ $city->name }}</a></li>
 
 
 

@@ -71,9 +71,9 @@
         <div class="container box_1170">
 
 
-            <div class="section-top-border">
-                <div class="row">
-                    <div class="col-lg-10 col-md-10">
+            <div class="section-top-border ">
+                <div class="row ">
+                    <div class="col-lg-10 col-md-12">
                         <h3 class="mb-30">Get An Offer</h3>
 
                         @if(session('message'))
@@ -94,7 +94,7 @@
 {{--                            Türkiye'de {{ $countDiseases }} farklı tedavi ihtiyacınız için {{ $countCity }}--}}
 {{--                            adet şehirde toplam {{ $countUser }} acenteden teklif alabilirsiniz--}}
 
-                            In Turkey, you can receive offers from a total of {{ $countUser }} agencies in {{ $countCity }} different cities for a total of {{ $countDiseases }} different treatment needs.
+                            In Turkey, you can receive offers from a total of <strong>{{ $countUser }} AGENCIES</strong> in <strong>{{ $countCity }} different CITIES</strong> for a total of <strong>{{ $countDiseases }} different TREATMENTS</strong> needs.
 
                         </div>
 
@@ -317,7 +317,7 @@
 
 
                             <div class="alert alert-info alert-dismissible fade show mt-3" role="alert" id="agencyCountInfo" style="display: none;">
-                                 Your request for a quote will be sent to <span id="agencyCountText"></span> agencies.
+                                 Your request for a quote will be sent to <strong><span id="agencyCountText"></span> AGENCIES.</strong>
                             </div>
 
 

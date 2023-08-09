@@ -9,6 +9,69 @@
 
 @section('content')
 
+    <style>
+
+
+        @media (min-width: 641px) {
+            .location-img {
+                width: 370px !important;
+                height: 246px !important;
+            }
+
+            .img-diseases {
+                width: 360px !important;
+                height: 240px !important;
+            }
+
+
+
+        /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+        }
+        @media (min-width: 961px) {
+            .location-img {
+                width: 370px !important;
+                height: 246px !important;
+            }
+
+            .img-diseases {
+                width: 360px !important;
+                height: 240px !important;
+            }
+
+            /* tablet, landscape iPad, lo-res laptops ands desktops */
+        }
+
+        @media (min-width: 1025px) {
+            .location-img {
+                width: 370px !important;
+                height: 246px !important;
+            }
+
+            .img-diseases {
+                width: 360px !important;
+                height: 240px !important;
+            }
+
+            /* big landscape tablets, laptops, and desktops */
+        }
+
+        @media (min-width: 1281px) {
+            .location-img {
+                width: 370px !important;
+                height: 246px !important;
+            }
+
+            .img-diseases {
+                width: 360px !important;
+                height: 240px !important;
+            }
+
+            /* hi-res laptops and desktops */
+        }
+
+
+    </style>
+
     <!-- Hero Area Start-->
     <div class="slider-area hero-overly">
         <div class="single-slider hero-overly  slider-height d-flex align-items-center">
@@ -17,8 +80,9 @@
                     <div class="col-xl-8 col-lg-9">
                         <!-- Hero Caption -->
                         <div class="hero__caption">
-                            <span>Explore the city</span>
-                            <h1>Discover Great Places</h1>
+                            <span>Perfect Harmony of Health and Vacation</span>
+                            <h1 style="font-size: 45px!important;">Just One Flight Away from Treatment and
+                                Discoveries!</h1>
                         </div>
                         <!--Hero form -->
 
@@ -32,7 +96,7 @@
                         </style>
 
 
-                        <form class="search-box" action="{{ route('admin.frontend.city') }}" method="GET">
+                        <form class="search-box" action="{{ route('admin.frontend.diseases') }}" method="GET">
 
                             <div class="input-form">
                                 <div class="select-form" style="width: 100%">
@@ -116,7 +180,8 @@
                                 @endif
                             </div>
                             <div class="location-details mb-4">
-                                <a href="#"><p>{{ $item->name }}</p></a>
+                                <a href="{{ route('admin.frontend.city.detail',[$item->slug]) }}">
+                                    <p>{{ $item->name }}</p></a>
 
 
                                 @foreach(json_decode($item->districts) as $district)
@@ -216,25 +281,30 @@
 
 
                         @foreach($diseases as $item)
-                            <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="single-listing mb-30">
                                     <div class="list-img">
                                         @if($item->image)
-                                            <img src="data:image/jpeg;base64,{{ $item->image }}"
-                                                 alt="{{ $item->title }}">
+                                            <a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}"><img
+                                                    class="img-diseases" src="data:image/jpeg;base64,{{ $item->image }}"
+                                                    alt="{{ $item->title }}"></a>
                                         @else
-                                            <img
-                                                src="{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}"
-                                                alt="">
+                                            <a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}"><img
+                                                    class="img-diseases"
+                                                    src="{{ asset('public/adminFrontend/assets/img/gallery/list1.png') }}"
+                                                    alt=""></a>
                                             {{--                                               <span>Open</span>--}}
                                         @endif
                                     </div>
                                     <div class="list-caption">
-                                        <span>Open</span>
+                                        <span><a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}">Detail</a></span>
                                         <h3>
                                             <a href="{{ route('admin.frontend.diseases.detail', [$item->slug]) }}">{{ $item->title }}</a>
                                         </h3>
-                                        <p>{!! $item->content ?  Str::limit($item->content, 50, '...') : '' !!} </p>
+                                        {{--                                        <p>{!! $item->content ?  Str::limit($item->content, 100, '...') : '' !!} </p>--}}
+
+
+
                                         {{--                                <div class="list-footer">--}}
                                         {{--                                    @foreach($item->cities as $city)--}}
                                         {{--                                        <ul id="city">--}}

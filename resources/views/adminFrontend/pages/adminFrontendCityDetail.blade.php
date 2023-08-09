@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="hero-cap text-center pt-50">
-                        <h2>City : {{ $city->name }}</h2>
+                        <h2>{{ $city->name }}</h2>
                     </div>
                 </div>
             </div>

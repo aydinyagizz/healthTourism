@@ -9,7 +9,55 @@
 
 @section('content')
 
+    <style>
 
+
+        @media (min-width: 641px) {
+            .location-img {
+                width: 370px !important;
+                height: 246px !important;
+            }
+
+
+
+
+            /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+        }
+        @media (min-width: 961px) {
+            .location-img {
+                width: 370px !important;
+                height: 246px !important;
+            }
+
+
+
+            /* tablet, landscape iPad, lo-res laptops ands desktops */
+        }
+
+        @media (min-width: 1025px) {
+            .location-img {
+                width: 370px !important;
+                height: 246px !important;
+            }
+
+
+
+            /* big landscape tablets, laptops, and desktops */
+        }
+
+        @media (min-width: 1281px) {
+            .location-img {
+                width: 370px !important;
+                height: 246px !important;
+            }
+
+
+
+            /* hi-res laptops and desktops */
+        }
+
+
+    </style>
 
         <!-- Hero Start-->
         <div class="hero-area3 hero-overly2 d-flex align-items-center ">
@@ -105,13 +153,12 @@
                                 <div class="row d-flex ">
 
 
-
                                     @foreach($city as $item)
 
                                             <div class="col-lg-6 ">
 
                                             <div class="single-location mb-30">
-                                                <div class="location-img">
+                                                <div class="location-img" >
                                                     @if($item->image)
                                                         <img src="data:image/jpeg;base64,{{ $item->image }}"
                                                              alt="{{ $item->name }}">
@@ -136,12 +183,12 @@
                                                     <br>
 
 
-                                                    <ul>
-                                                        @foreach($item->diseases as $disease)
+{{--                                                    <ul>--}}
+{{--                                                        @foreach($item->diseases as $disease)--}}
 
-                                                            <li style="color: white">{{ $disease->title }}</li>
-                                                        @endforeach
-                                                    </ul>
+{{--                                                            <li style="color: white">{{ $disease->title }}</li>--}}
+{{--                                                        @endforeach--}}
+{{--                                                    </ul>--}}
 
 
                                                     {{--                            <a href="#" class="location-btn">65 <i class="ti-plus"></i> Location</a>--}}

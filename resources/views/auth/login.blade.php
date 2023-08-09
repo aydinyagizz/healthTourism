@@ -20,16 +20,16 @@ License: For each use you must have a valid license purchased only from above li
 <head>
     <title>Login</title>
     <meta charset="utf-8"/>
-    <meta name="description" content="Rider HTML Pro - Bootstrap 5 HTML Multipurpose Admin Dashboard Theme"/>
+    <meta name="description" content="Holiday & Health Turkey is a BUBERKA product."/>
     <meta name="keywords"
-          content="Rider, bootstrap, bootstrap 5, dmin themes, free admin themes, bootstrap admin, bootstrap dashboard"/>
+          content="BUBERKA, Holiday, Health, Health Turkey, tedavi, cities, city, Treatment"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="Rider HTML Pro - Bootstrap 5 HTML Multipurpose Admin Dashboard Theme"/>
-    <meta property="og:url" content="https://keenthemes.com/products/rider-html-pro"/>
-    <meta property="og:site_name" content="Keenthemes | Rider HTML Pro"/>
-    <link rel="canonical" href="https://preview.keenthemes.com/rider-html-pro"/>
+    <meta property="og:title" content="Holiday & Health Turkey is a BUBERKA product."/>
+{{--    <meta property="og:url" content="https://keenthemes.com/products/rider-html-pro"/>--}}
+    <meta property="og:site_name" content="Holiday & Health Turkey"/>
+{{--    <link rel="canonical" href="https://preview.keenthemes.com/rider-html-pro"/>--}}
     <link rel="shortcut icon" href="{{ asset('public/admin/assets/media/logos/favicon.ico') }}"/>
 
     <!--begin::Fonts(mandatory for all pages)-->
@@ -104,15 +104,18 @@ License: For each use you must have a valid license purchased only from above li
                 <!--begin::Header-->
                 <div class="d-flex flex-row-fluid flex-column flex-center text-center p-10 pt-lg-20">
                     <!--begin::Logo-->
-                    <a href="index708f.html?page=index" class="py-9 mb-10">
-                        <img alt="Logo" src="{{ asset('public/admin/assets/media/logos/logo-compact-light.svg') }}"
+                    <a href="{{ route('admin.frontend.index') }}" class="py-9 mb-10">
+{{--                        <img alt="Logo" src="{{ asset('public/admin/assets/media/logos/logo-compact-light.svg') }}"--}}
+{{--                             class="h-70px"/>--}}
+
+                        <img alt="Logo" src="{{ asset('public/adminFrontend/assets/logo/buberkalogo.png') }}"
                              class="h-70px"/>
                     </a>
                     <!--end::Logo-->
 
                     <!--begin::Title-->
                     <h1 class="fw-bold fs-2qx pb-5 pb-md-10 text-white">
-                        Welcome to Rider
+                        Welcome to Holiday & Health Turkey
                     </h1>
                     <!--end::Title-->
 
@@ -152,17 +155,19 @@ License: For each use you must have a valid license purchased only from above li
                         <div class="text-center mb-10">
                             <!--begin::Title-->
                             <h1 class="text-dark mb-3">
-                                Sign In to Rider HTML Pro </h1>
+                                Sign In to Holiday & Health Turkey </h1>
                             <!--end::Title-->
 
                             <!--begin::Link-->
-                            <div class="text-gray-400 fw-semibold fs-4">
-                                New Here?
 
-                                <a href="{{ route('register') }}" class="link-primary fw-bold">
-                                    Create an Account
-                                </a>
-                            </div>
+{{--                            <div class="text-gray-400 fw-semibold fs-4">--}}
+{{--                                New Here?--}}
+
+{{--                                <a href="{{ route('register') }}" class="link-primary fw-bold">--}}
+{{--                                    Create an Account--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+
                             <!--end::Link-->
                         </div>
                         <!--begin::Heading-->
@@ -191,7 +196,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--end::Label-->
 
                                 <!--begin::Link-->
-                                <a href="index08d9.html?page=authentication/sign-in/password-reset"
+                                <a href="#"
                                    class="link-primary fs-6 fw-bold">
                                     Forgot Password ?
                                 </a>

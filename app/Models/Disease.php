@@ -22,6 +22,12 @@ class Disease extends Model
 
     }
 
+
+    public function category()
+    {
+        return $this->belongsTo(DiseaseCategory::class, 'diseases_category_id');
+    }
+
     public function cities()
     {
        // return $this->belongsToMany(Citiest::class);

@@ -71,7 +71,7 @@ class AdminFrontendDiseasesController extends Controller
 //        'city' => DB::table('cities')
 //            ->paginate(10),
 
-            'diseases' => Disease::with('cities')->where('slug', $slug)
+            'diseases' => Disease::with('cities', 'category')->where('slug', $slug)
                 ->first(),
 
             'recentDiseases' => Disease::with('cities')->orderBy('created_at', 'desc')

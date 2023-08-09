@@ -10,7 +10,8 @@
 
 
     {{--    <link rel="manifest" href="site.webmanifest">--}}
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/adminFrontend/assets/logo/buberkalogo.png') }}">
+
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('public/adminFrontend/assets/css/bootstrap.min.css') }}">
@@ -33,6 +34,8 @@
 
     {{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>--}}
 
+
+
 </head>
 
 <body>
@@ -42,7 +45,9 @@
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-                <img src="{{ asset('public/adminFrontend/assets/img/logo/loder.jpg') }}" alt="">
+{{--                <img src="{{ asset('public/adminFrontend/assets/img/logo/loder.jpg') }}" alt="">--}}
+                <img src="{{ asset('public/adminFrontend/assets/logo/buberkalogo.png') }}" alt="">
+
             </div>
         </div>
     </div>
@@ -58,7 +63,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="#"><img src="{{ asset('public/adminFrontend/assets/img/logo/logo.png') }}"
+                                <a href="{{ route('admin.frontend.index') }}"><img width="200px" src="{{ asset('public/adminFrontend/assets/logo/buberkalogo.png') }}"
                                                  alt=""></a>
                             </div>
                         </div>
@@ -76,7 +81,7 @@
                                             @endif href="{{ route('admin.frontend.city') }}">Cities</a></li>
                                         <li><a @if(Route::is('admin.frontend.diseases'))  style="color: #FF3D1C" @else
                                                 ''
-                                            @endif href="{{ route('admin.frontend.diseases') }}">Diseases</a></li>
+                                            @endif href="{{ route('admin.frontend.diseases') }}">Treatment</a></li>
 
 
 
@@ -125,8 +130,8 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="#"><img
-                                            src="{{ asset('public/adminFrontend/assets/img/logo/logo2_footer.png') }}"
+                                    <a href="{{ route('admin.frontend.index') }}"><img width="200px"
+                                            src="{{ asset('public/adminFrontend/assets/logo/buberkalogo.png') }}"
                                             alt=""></a>
                                 </div>
                             </div>
@@ -139,7 +144,7 @@
                                 <ul>
                                     <li><a href="{{ route('admin.frontend.index') }}">Home</a></li>
                                     <li><a href="#">Cities</a></li>
-                                    <li><a href="#">Diseases</a></li>
+                                    <li><a href="#">Treatment</a></li>
 {{--                                    <li><a href="#">Contact</a></li>--}}
                                 </ul>
                             </div>
