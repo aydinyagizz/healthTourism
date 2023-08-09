@@ -10,7 +10,7 @@
 
 
     {{--    <link rel="manifest" href="site.webmanifest">--}}
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/adminFrontend/assets/logo/buberkalogo.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/adminFrontend/assets/logo/HOLIDAYHEALTH.png') }}">
 
 
     <!-- CSS here -->
@@ -46,7 +46,7 @@
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
 {{--                <img src="{{ asset('public/adminFrontend/assets/img/logo/loder.jpg') }}" alt="">--}}
-                <img src="{{ asset('public/adminFrontend/assets/logo/buberkalogo.png') }}" alt="">
+                <img src="{{ asset('public/adminFrontend/assets/logo/HOLIDAYHEALTH.png') }}" alt="">
 
             </div>
         </div>
@@ -63,7 +63,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="{{ route('admin.frontend.index') }}"><img width="200px" src="{{ asset('public/adminFrontend/assets/logo/buberkalogo.png') }}"
+                                <a href="{{ route('admin.frontend.index') }}"><img width="250px" src="{{ asset('public/adminFrontend/assets/logo/healthlogo.png') }}"
                                                  alt=""></a>
                             </div>
                         </div>
@@ -130,8 +130,8 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="{{ route('admin.frontend.index') }}"><img width="200px"
-                                            src="{{ asset('public/adminFrontend/assets/logo/buberkalogo.png') }}"
+                                    <a href="{{ route('admin.frontend.index') }}"><img width="250px"
+                                            src="{{ asset('public/adminFrontend/assets/logo/healthlogo.png') }}"
                                             alt=""></a>
                                 </div>
                             </div>
