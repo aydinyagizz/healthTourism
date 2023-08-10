@@ -105,9 +105,9 @@
                                 </div>
 
                                 <div class="select-job-items2">
-                                    <label for="category_filter">Diseases Category:</label>
+                                    <label for="category_filter">Treatment Category:</label>
                                     <select  class="form-select form-control nice-select" name="category" id="category_filter">
-                                        <option value="">Diseases Category</option>
+                                        <option value="">Treatment Category</option>
                                         @foreach($categories as $item)
                                             <option value="{{ $item->id }}" {{ request('category') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
                                         @endforeach

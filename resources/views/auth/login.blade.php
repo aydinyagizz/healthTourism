@@ -18,7 +18,7 @@ License: For each use you must have a valid license purchased only from above li
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
 <head>
-    <title>Login</title>
+    <title>Login | Holıday & Health Turkey</title>
     <meta charset="utf-8"/>
     <meta name="description" content="Holiday & Health Turkey is a BUBERKA product."/>
     <meta name="keywords"
@@ -27,9 +27,9 @@ License: For each use you must have a valid license purchased only from above li
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Holiday & Health Turkey is a BUBERKA product."/>
-{{--    <meta property="og:url" content="https://keenthemes.com/products/rider-html-pro"/>--}}
+    {{--    <meta property="og:url" content="https://keenthemes.com/products/rider-html-pro"/>--}}
     <meta property="og:site_name" content="Holiday & Health Turkey"/>
-{{--    <link rel="canonical" href="https://preview.keenthemes.com/rider-html-pro"/>--}}
+    {{--    <link rel="canonical" href="https://preview.keenthemes.com/rider-html-pro"/>--}}
     <link rel="shortcut icon" href="{{ asset('public/admin/assets/media/logos/favicon.ico') }}"/>
 
     <!--begin::Fonts(mandatory for all pages)-->
@@ -98,18 +98,20 @@ License: For each use you must have a valid license purchased only from above li
     <!--begin::Authentication - Sign-in -->
     <div class="d-flex flex-column flex-lg-row flex-column-fluid">
         <!--begin::Aside-->
-        <div class="d-flex flex-column flex-lg-row-auto w-xl-600px bg-primary positon-xl-relative">
+        <div class="d-flex flex-column flex-lg-row-auto w-xl-600px bg-primary positon-xl-relative"
+             style="background: black!important;">
             <!--begin::Wrapper-->
             <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
                 <!--begin::Header-->
                 <div class="d-flex flex-row-fluid flex-column flex-center text-center p-10 pt-lg-20">
                     <!--begin::Logo-->
                     <a href="{{ route('admin.frontend.index') }}" class="py-9 mb-10">
-{{--                        <img alt="Logo" src="{{ asset('public/admin/assets/media/logos/logo-compact-light.svg') }}"--}}
-{{--                             class="h-70px"/>--}}
+                        {{--                        <img alt="Logo" src="{{ asset('public/admin/assets/media/logos/logo-compact-light.svg') }}"--}}
+                        {{--                             class="h-70px"/>--}}
 
-                        <img alt="Logo" src="{{ asset('public/adminFrontend/assets/logo/buberkalogo.png') }}"
-                             class="h-70px"/>
+                        <img alt="Logo" width="300px"
+                             src="{{ asset('public/adminFrontend/assets/logo/healthlogo.png') }}"
+                        />
                     </a>
                     <!--end::Logo-->
 
@@ -121,8 +123,7 @@ License: For each use you must have a valid license purchased only from above li
 
                     <!--begin::Description-->
                     <p class="text-white fw-semibold fs-2">
-                        Discover Simply Amazing Admin Dashboard <br/>
-                        With The Stunning Design System
+                        Health Tourism Agencies Offer Receiving Platform
                     </p>
                     <!--end::Description-->
                 </div>
@@ -130,8 +131,17 @@ License: For each use you must have a valid license purchased only from above li
 
                 <!--begin::Illustration-->
                 <div class="d-flex flex-row-auto flex-center">
-                    <img src="{{ asset('public/admin/assets/media/illustrations/dozzy-1/2.png') }}" alt=""
-                         class="h-200px h-lg-350px mb-10"/>
+                    <img
+                        {{--                        src="{{ asset('public/admin/assets/media/illustrations/dozzy-1/2.png') }}" --}}
+                        width="300px"
+                        src="{{ asset('public/adminFrontend/assets/logo/buberkalogo.png') }}"
+                        alt=""
+                        class=" mb-10"/>
+
+
+                </div>
+                <div class="d-flex flex-row-auto flex-center">
+                <p class="text-white fw-semibold fs-2">Holiday & Health Turkey is a <a href="https://buberka.com" target="_blank">BUBERKA</a> product.</p>
                 </div>
                 <!--end::Illustration-->
             </div>
@@ -160,13 +170,13 @@ License: For each use you must have a valid license purchased only from above li
 
                             <!--begin::Link-->
 
-{{--                            <div class="text-gray-400 fw-semibold fs-4">--}}
-{{--                                New Here?--}}
+                            {{--                            <div class="text-gray-400 fw-semibold fs-4">--}}
+                            {{--                                New Here?--}}
 
-{{--                                <a href="{{ route('register') }}" class="link-primary fw-bold">--}}
-{{--                                    Create an Account--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
+                            {{--                                <a href="{{ route('register') }}" class="link-primary fw-bold">--}}
+                            {{--                                    Create an Account--}}
+                            {{--                                </a>--}}
+                            {{--                            </div>--}}
 
                             <!--end::Link-->
                         </div>

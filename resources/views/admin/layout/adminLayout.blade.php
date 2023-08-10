@@ -6,19 +6,19 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8"/>
-    <meta name="description" content="Rider HTML Pro - Bootstrap 5 HTML Multipurpose Admin Dashboard Theme"/>
+    <meta name="description" content=""/>
     <meta name="keywords"
-          content="Rider, bootstrap, bootstrap 5, dmin themes, free admin themes, bootstrap admin, bootstrap dashboard"/>
+          content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Rider HTML Pro - Bootstrap 5 HTML Multipurpose Admin Dashboard Theme"/>
-    <meta property="og:url" content="https://keenthemes.com/products/rider-html-pro"/>
-    <meta property="og:site_name" content="Keenthemes | Rider HTML Pro"/>
+{{--    <meta property="og:url" content="https://keenthemes.com/products/rider-html-pro"/>--}}
+    <meta property="og:site_name" content=""/>
 
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title> @yield("title") </title>
+    <title>Holıday & Health Turkey | @yield("title") </title>
 
 
 {{--    <link rel="canonical" href="https://preview.keenthemes.com/rider-html-pro"/>--}}
@@ -244,7 +244,7 @@
                                     <i class="fa fa-list-alt fa-3x" aria-hidden="true"></i>
 
                                  </span>
-                                <span class="menu-title">Diseases Category
+                                <span class="menu-title">Treatment Category
                                 </span>
                                 <span class=""></span></span>
 
@@ -260,7 +260,7 @@
                                     <i class="fa fa-images fa-3x" aria-hidden="true"></i>
 
                                  </span>
-                                <span class="menu-title">Disease
+                                <span class="menu-title">Treatment
                                 </span>
                                 <span class=""></span></span>
 

@@ -17,11 +17,11 @@
 
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title> @yield("title") </title>
+    <title>@yield("title") | Holıday & Health Turkey</title>
 
 
     {{--    <link rel="canonical" href="https://preview.keenthemes.com/rider-html-pro"/>--}}
-    <link rel="shortcut icon" href="{{ asset('public/user/assets/media/logos/favicon.ico') }}"/>
+    <link rel="shortcut icon" href="{{ asset('public/adminFrontend/assets/logo/HOLIDAYHEALTH.png') }}"/>
 
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"/><!--end::Fonts-->
@@ -126,10 +126,10 @@
             <!--begin::Brand-->
             <div class="aside-logo flex-column-auto pt-9 pb-7 px-9" id="kt_aside_logo">
                 <!--begin::Logo-->
-                <a href="#">
-                    <img alt="Logo" src="{{ asset('public/user/assets/media/logos/logo-default.svg') }}"
+                <a href="{{ route('user.index') }}">
+                    <img width="150px" alt="Logo" src="{{ asset('public/adminFrontend/assets/logo/healthlogo.png') }}"
                          class="max-h-50px logo-default"/>
-                    <img alt="Logo" src="{{ asset('public/user/assets/media/logos/logo-compact.svg') }}"
+                    <img alt="Logo" src="{{ asset('public/adminFrontend/assets/logo/HOLIDAYHEALTH.png') }}"
                          class="max-h-50px logo-minimize"/>
                 </a>
                 <!--end::Logo-->
@@ -160,28 +160,28 @@
                         <!--begin:Menu item-->
 
 
-                        <a href="{{ route('user.index') }}">
-                            <div
-                                class="menu-item   {{ Route::is('user.index') ? 'show' : '' }} menu-accordion mb-1">
-                            <span class="menu-link"><span class="menu-icon">
-<span class="svg-icon svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                       xmlns="http://www.w3.org/2000/svg">
-<rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/>
-<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor"/>
-<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor"/>
-<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor"/>
-</svg>
-</span>
+{{--                        <a href="{{ route('user.index') }}">--}}
+{{--                            <div--}}
+{{--                                class="menu-item   {{ Route::is('user.index') ? 'show' : '' }} menu-accordion mb-1">--}}
+{{--                            <span class="menu-link"><span class="menu-icon">--}}
+{{--<span class="svg-icon svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--                                       xmlns="http://www.w3.org/2000/svg">--}}
+{{--<rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/>--}}
+{{--<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor"/>--}}
+{{--<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor"/>--}}
+{{--<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor"/>--}}
+{{--</svg>--}}
+{{--</span>--}}
 
 
-                                 </span>
-                                <span class="menu-title">Dashboards
-                                </span>
-                                <span class=""></span></span>
+{{--                                 </span>--}}
+{{--                                <span class="menu-title">Dashboards--}}
+{{--                                </span>--}}
+{{--                                <span class=""></span></span>--}}
 
 
-                            </div>
-                        </a>
+{{--                            </div>--}}
+{{--                        </a>--}}
 
 
                         <a href="{{ route('user.offers.list') }}">
@@ -199,6 +199,8 @@
 
                             </div>
                         </a>
+
+
 
 
 {{--                        <a href="{{ route('user.home.list') }}">--}}
@@ -419,8 +421,8 @@
                         <!--end::Aside Toggle-->
 
                         <!--begin::Logo-->
-                        <a href="index708f.html?page=index" class="d-lg-none">
-                            <img alt="Logo" src="assets/media/logos/logo-compact.svg" class="max-h-40px"/>
+                        <a href="{{ route('user.index') }}" class="d-lg-none">
+                            <img width="50px" alt="Logo" src="{{ asset('public/adminFrontend/assets/logo/HOLIDAYHEALTH.png') }}" class="max-h-40px"/>
                         </a>
                         <!--end::Logo-->
                     </div>
@@ -1465,353 +1467,361 @@
 {{--                                style="font-size: 17px!important;" class="fa fa-globe" aria-hidden="true"></i></a>--}}
 
 
-                        <!--begin::Notifications-->
                         <div class="d-flex align-items-center ms-2 ms-lg-3">
-                            <!--begin::Menu wrapper-->
-                            <div
-                                class="btn btn-icon btn-active-light-primary position-relative w-35px h-35px w-md-40px h-md-40px"
-                                data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-attach="parent"
-                                data-kt-menu-placement="bottom-end">
-                                <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
-                                <span class="svg-icon svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24"
-                                                                       fill="none" xmlns="http://www.w3.org/2000/svg">
-<path
-    d="M11.2929 2.70711C11.6834 2.31658 12.3166 2.31658 12.7071 2.70711L15.2929 5.29289C15.6834 5.68342 15.6834 6.31658 15.2929 6.70711L12.7071 9.29289C12.3166 9.68342 11.6834 9.68342 11.2929 9.29289L8.70711 6.70711C8.31658 6.31658 8.31658 5.68342 8.70711 5.29289L11.2929 2.70711Z"
-    fill="currentColor"/>
-<path
-    d="M11.2929 14.7071C11.6834 14.3166 12.3166 14.3166 12.7071 14.7071L15.2929 17.2929C15.6834 17.6834 15.6834 18.3166 15.2929 18.7071L12.7071 21.2929C12.3166 21.6834 11.6834 21.6834 11.2929 21.2929L8.70711 18.7071C8.31658 18.3166 8.31658 17.6834 8.70711 17.2929L11.2929 14.7071Z"
-    fill="currentColor"/>
-<path opacity="0.3"
-      d="M5.29289 8.70711C5.68342 8.31658 6.31658 8.31658 6.70711 8.70711L9.29289 11.2929C9.68342 11.6834 9.68342 12.3166 9.29289 12.7071L6.70711 15.2929C6.31658 15.6834 5.68342 15.6834 5.29289 15.2929L2.70711 12.7071C2.31658 12.3166 2.31658 11.6834 2.70711 11.2929L5.29289 8.70711Z"
-      fill="currentColor"/>
-<path opacity="0.3"
-      d="M17.2929 8.70711C17.6834 8.31658 18.3166 8.31658 18.7071 8.70711L21.2929 11.2929C21.6834 11.6834 21.6834 12.3166 21.2929 12.7071L18.7071 15.2929C18.3166 15.6834 17.6834 15.6834 17.2929 15.2929L14.7071 12.7071C14.3166 12.3166 14.3166 11.6834 14.7071 11.2929L17.2929 8.70711Z"
-      fill="currentColor"/>
-</svg>
-</span>
-                                <!--end::Svg Icon-->        </div>
-
-                            <!--begin::Menu-->
-                            <div class="menu menu-sub menu-sub-dropdown menu-column w-350px" data-kt-menu="true">
-                                <!--begin::Card-->
-                                <div class="card">
-                                    <!--begin::Card header-->
-                                    <div class="card-header">
-                                        <h3 class="card-title">
-                                            Notifications
-                                            <span class="badge badge-light-success fs-7 fw-500 ms-3">24 reports</span>
-                                        </h3>
-                                    </div>
-                                    <!--end::Card header-->
-
-                                    <!--begin::Card body-->
-                                    <div class="card-body p-0">
-                                        <!--begin::Notifications-->
-                                        <div class="mh-350px scroll-y py-3">
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">
-                                                <!--begin::Symbol-->
-                                                <div class="symbol symbol-40px symbol-circle me-5">
-                        <span class="symbol-label bg-light-warning">
-                            <!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
-<span class="svg-icon svg-icon-warning svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-<path opacity="0.3"
-      d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z"
-      fill="currentColor"/>
-<path
-    d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z"
-    fill="currentColor"/>
-</svg>
-</span>
-                            <!--end::Svg Icon-->                        </span>
-                                                </div>
-                                                <!--end::Symbol-->
-
-                                                <!--begin::Title-->
-                                                <div class="mb-1 pe-3 flex-grow-1">
-                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">Developer
-                                                        Library added</a>
-                                                    <div class="text-gray-400 fw-semibold fs-7">2 hours ago</div>
-                                                </div>
-                                                <!--end::Title-->
-                                            </div>
-                                            <!--end::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">
-                                                <!--begin::Symbol-->
-                                                <div class="symbol symbol-40px symbol-circle me-5">
-                        <span class="symbol-label bg-light-danger">
-                            <!--begin::Svg Icon | path: icons/duotune/finance/fin002.svg-->
-<span class="svg-icon svg-icon-danger svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                       xmlns="http://www.w3.org/2000/svg">
-<path d="M22 7H2V11H22V7Z" fill="currentColor"/>
-<path opacity="0.3"
-      d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19ZM14 14C14 13.4 13.6 13 13 13H5C4.4 13 4 13.4 4 14C4 14.6 4.4 15 5 15H13C13.6 15 14 14.6 14 14ZM16 15.5C16 16.3 16.7 17 17.5 17H18.5C19.3 17 20 16.3 20 15.5C20 14.7 19.3 14 18.5 14H17.5C16.7 14 16 14.7 16 15.5Z"
-      fill="currentColor"/>
-</svg>
-</span>
-                            <!--end::Svg Icon-->                        </span>
-                                                </div>
-                                                <!--end::Symbol-->
-
-                                                <!--begin::Title-->
-                                                <div class="mb-1 pe-3 flex-grow-1">
-                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">Credit
-                                                        card expired</a>
-                                                    <div class="text-gray-400 fw-semibold fs-7">1 day ago</div>
-                                                </div>
-                                                <!--end::Title-->
-                                            </div>
-                                            <!--end::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">
-                                                <!--begin::Symbol-->
-                                                <div class="symbol symbol-40px symbol-circle me-5">
-                        <span class="symbol-label bg-light-primary">
-                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
-<span class="svg-icon svg-icon-primary svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-<path
-    d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"
-    fill="currentColor"/>
-<path opacity="0.3" d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z"
-      fill="currentColor"/>
-<path opacity="0.3"
-      d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z"
-      fill="currentColor"/>
-</svg>
-</span>
-                            <!--end::Svg Icon-->                        </span>
-                                                </div>
-                                                <!--end::Symbol-->
-
-                                                <!--begin::Title-->
-                                                <div class="mb-1 pe-3 flex-grow-1">
-                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">New
-                                                        Order placed</a>
-                                                    <div class="text-gray-400 fw-semibold fs-7">5 days ago</div>
-                                                </div>
-                                                <!--end::Title-->
-                                            </div>
-                                            <!--end::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">
-                                                <!--begin::Symbol-->
-                                                <div class="symbol symbol-40px symbol-circle me-5">
-                        <span class="symbol-label bg-light-info">
-                            <!--begin::Svg Icon | path: icons/duotune/communication/com006.svg-->
-<span class="svg-icon svg-icon-info svg-icon-1"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                                     xmlns="http://www.w3.org/2000/svg">
-<path opacity="0.3"
-      d="M16.5 9C16.5 13.125 13.125 16.5 9 16.5C4.875 16.5 1.5 13.125 1.5 9C1.5 4.875 4.875 1.5 9 1.5C13.125 1.5 16.5 4.875 16.5 9Z"
-      fill="currentColor"/>
-<path
-    d="M9 16.5C10.95 16.5 12.75 15.75 14.025 14.55C13.425 12.675 11.4 11.25 9 11.25C6.6 11.25 4.57499 12.675 3.97499 14.55C5.24999 15.75 7.05 16.5 9 16.5Z"
-    fill="currentColor"/>
-<rect x="7" y="6" width="4" height="4" rx="2" fill="currentColor"/>
-</svg>
-</span>
-                            <!--end::Svg Icon-->                        </span>
-                                                </div>
-                                                <!--end::Symbol-->
-
-                                                <!--begin::Title-->
-                                                <div class="mb-1 pe-3 flex-grow-1">
-                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">New
-                                                        user library added</a>
-                                                    <div class="text-gray-400 fw-semibold fs-7">2 weeks ago</div>
-                                                </div>
-                                                <!--end::Title-->
-                                            </div>
-                                            <!--end::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">
-                                                <!--begin::Symbol-->
-                                                <div class="symbol symbol-40px symbol-circle me-5">
-                        <span class="symbol-label bg-light-primary">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen030.svg-->
-<span class="svg-icon svg-icon-primary svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-<path
-    d="M18.3721 4.65439C17.6415 4.23815 16.8052 4 15.9142 4C14.3444 4 12.9339 4.73924 12.003 5.89633C11.0657 4.73913 9.66 4 8.08626 4C7.19611 4 6.35789 4.23746 5.62804 4.65439C4.06148 5.54462 3 7.26056 3 9.24232C3 9.81001 3.08941 10.3491 3.25153 10.8593C4.12155 14.9013 9.69287 20 12.0034 20C14.2502 20 19.875 14.9013 20.7488 10.8593C20.9109 10.3491 21 9.81001 21 9.24232C21.0007 7.26056 19.9383 5.54462 18.3721 4.65439Z"
-    fill="currentColor"/>
-</svg>
-</span>
-                            <!--end::Svg Icon-->                        </span>
-                                                </div>
-                                                <!--end::Symbol-->
-
-                                                <!--begin::Title-->
-                                                <div class="mb-1 pe-3 flex-grow-1">
-                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">Mark
-                                                        Simpson liked your page</a>
-                                                    <div class="text-gray-400 fw-semibold fs-7">1 month ago</div>
-                                                </div>
-                                                <!--end::Title-->
-                                            </div>
-                                            <!--end::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">
-                                                <!--begin::Symbol-->
-                                                <div class="symbol symbol-40px symbol-circle me-5">
-                        <span class="symbol-label bg-light-success">
-                            <!--begin::Svg Icon | path: icons/duotune/files/fil016.svg-->
-<span class="svg-icon svg-icon-success svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-<path opacity="0.3" d="M10 4H21C21.6 4 22 4.4 22 5V7H10V4Z" fill="currentColor"/>
-<path opacity="0.3"
-      d="M10.3 15.3L11 14.6L8.70002 12.3C8.30002 11.9 7.7 11.9 7.3 12.3C6.9 12.7 6.9 13.3 7.3 13.7L10.3 16.7C9.9 16.3 9.9 15.7 10.3 15.3Z"
-      fill="currentColor"/>
-<path
-    d="M10.4 3.60001L12 6H21C21.6 6 22 6.4 22 7V19C22 19.6 21.6 20 21 20H3C2.4 20 2 19.6 2 19V4C2 3.4 2.4 3 3 3H9.20001C9.70001 3 10.2 3.20001 10.4 3.60001ZM11.7 16.7L16.7 11.7C17.1 11.3 17.1 10.7 16.7 10.3C16.3 9.89999 15.7 9.89999 15.3 10.3L11 14.6L8.70001 12.3C8.30001 11.9 7.69999 11.9 7.29999 12.3C6.89999 12.7 6.89999 13.3 7.29999 13.7L10.3 16.7C10.5 16.9 10.8 17 11 17C11.2 17 11.5 16.9 11.7 16.7Z"
-    fill="currentColor"/>
-</svg>
-</span>
-                            <!--end::Svg Icon-->                        </span>
-                                                </div>
-                                                <!--end::Symbol-->
-
-                                                <!--begin::Title-->
-                                                <div class="mb-1 pe-3 flex-grow-1">
-                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">New
-                                                        project saved</a>
-                                                    <div class="text-gray-400 fw-semibold fs-7">2 hours ago</div>
-                                                </div>
-                                                <!--end::Title-->
-                                            </div>
-                                            <!--end::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">
-                                                <!--begin::Symbol-->
-                                                <div class="symbol symbol-40px symbol-circle me-5">
-                        <span class="symbol-label bg-light-warning">
-                            <!--begin::Svg Icon | path: icons/duotune/coding/cod001.svg-->
-<span class="svg-icon svg-icon-warning svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-<path opacity="0.3"
-      d="M22.1 11.5V12.6C22.1 13.2 21.7 13.6 21.2 13.7L19.9 13.9C19.7 14.7 19.4 15.5 18.9 16.2L19.7 17.2999C20 17.6999 20 18.3999 19.6 18.7999L18.8 19.6C18.4 20 17.8 20 17.3 19.7L16.2 18.9C15.5 19.3 14.7 19.7 13.9 19.9L13.7 21.2C13.6 21.7 13.1 22.1 12.6 22.1H11.5C10.9 22.1 10.5 21.7 10.4 21.2L10.2 19.9C9.4 19.7 8.6 19.4 7.9 18.9L6.8 19.7C6.4 20 5.7 20 5.3 19.6L4.5 18.7999C4.1 18.3999 4.1 17.7999 4.4 17.2999L5.2 16.2C4.8 15.5 4.4 14.7 4.2 13.9L2.9 13.7C2.4 13.6 2 13.1 2 12.6V11.5C2 10.9 2.4 10.5 2.9 10.4L4.2 10.2C4.4 9.39995 4.7 8.60002 5.2 7.90002L4.4 6.79993C4.1 6.39993 4.1 5.69993 4.5 5.29993L5.3 4.5C5.7 4.1 6.3 4.10002 6.8 4.40002L7.9 5.19995C8.6 4.79995 9.4 4.39995 10.2 4.19995L10.4 2.90002C10.5 2.40002 11 2 11.5 2H12.6C13.2 2 13.6 2.40002 13.7 2.90002L13.9 4.19995C14.7 4.39995 15.5 4.69995 16.2 5.19995L17.3 4.40002C17.7 4.10002 18.4 4.1 18.8 4.5L19.6 5.29993C20 5.69993 20 6.29993 19.7 6.79993L18.9 7.90002C19.3 8.60002 19.7 9.39995 19.9 10.2L21.2 10.4C21.7 10.5 22.1 11 22.1 11.5ZM12.1 8.59998C10.2 8.59998 8.6 10.2 8.6 12.1C8.6 14 10.2 15.6 12.1 15.6C14 15.6 15.6 14 15.6 12.1C15.6 10.2 14 8.59998 12.1 8.59998Z"
-      fill="currentColor"/>
-<path
-    d="M17.1 12.1C17.1 14.9 14.9 17.1 12.1 17.1C9.30001 17.1 7.10001 14.9 7.10001 12.1C7.10001 9.29998 9.30001 7.09998 12.1 7.09998C14.9 7.09998 17.1 9.29998 17.1 12.1ZM12.1 10.1C11 10.1 10.1 11 10.1 12.1C10.1 13.2 11 14.1 12.1 14.1C13.2 14.1 14.1 13.2 14.1 12.1C14.1 11 13.2 10.1 12.1 10.1Z"
-    fill="currentColor"/>
-</svg>
-</span>
-                            <!--end::Svg Icon-->                        </span>
-                                                </div>
-                                                <!--end::Symbol-->
-
-                                                <!--begin::Title-->
-                                                <div class="mb-1 pe-3 flex-grow-1">
-                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">Review
-                                                        privacy policy</a>
-                                                    <div class="text-gray-400 fw-semibold fs-7">1 day ago</div>
-                                                </div>
-                                                <!--end::Title-->
-                                            </div>
-                                            <!--end::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">
-                                                <!--begin::Symbol-->
-                                                <div class="symbol symbol-40px symbol-circle me-5">
-                        <span class="symbol-label bg-light-danger">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
-<span class="svg-icon svg-icon-danger svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                       xmlns="http://www.w3.org/2000/svg">
-<path
-    d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z"
-    fill="currentColor"/>
-<path opacity="0.5"
-      d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z"
-      fill="currentColor"/>
-<path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="currentColor"/>
-</svg>
-</span>
-                            <!--end::Svg Icon-->                        </span>
-                                                </div>
-                                                <!--end::Symbol-->
-
-                                                <!--begin::Title-->
-                                                <div class="mb-1 pe-3 flex-grow-1">
-                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">Order
-                                                        deleted</a>
-                                                    <div class="text-gray-400 fw-semibold fs-7">5 days ago</div>
-                                                </div>
-                                                <!--end::Title-->
-                                            </div>
-                                            <!--end::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">
-                                                <!--begin::Symbol-->
-                                                <div class="symbol symbol-40px symbol-circle me-5">
-                        <span class="symbol-label bg-light-primary">
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr029.svg-->
-<span class="svg-icon svg-icon-primary svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-<path
-    d="M14.5 20.7259C14.6 21.2259 14.2 21.826 13.7 21.926C13.2 22.026 12.6 22.0259 12.1 22.0259C9.5 22.0259 6.9 21.0259 5 19.1259C1.4 15.5259 1.09998 9.72592 4.29998 5.82592L5.70001 7.22595C3.30001 10.3259 3.59999 14.8259 6.39999 17.7259C8.19999 19.5259 10.8 20.426 13.4 19.926C13.9 19.826 14.4 20.2259 14.5 20.7259ZM18.4 16.8259L19.8 18.2259C22.9 14.3259 22.7 8.52593 19 4.92593C16.7 2.62593 13.5 1.62594 10.3 2.12594C9.79998 2.22594 9.4 2.72595 9.5 3.22595C9.6 3.72595 10.1 4.12594 10.6 4.02594C13.1 3.62594 15.7 4.42595 17.6 6.22595C20.5 9.22595 20.7 13.7259 18.4 16.8259Z"
-    fill="currentColor"/>
-<path opacity="0.3"
-      d="M2 3.62592H7C7.6 3.62592 8 4.02592 8 4.62592V9.62589L2 3.62592ZM16 14.4259V19.4259C16 20.0259 16.4 20.4259 17 20.4259H22L16 14.4259Z"
-      fill="currentColor"/>
-</svg>
-</span>
-                            <!--end::Svg Icon-->                        </span>
-                                                </div>
-                                                <!--end::Symbol-->
-
-                                                <!--begin::Title-->
-                                                <div class="mb-1 pe-3 flex-grow-1">
-                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">System
-                                                        update reminder</a>
-                                                    <div class="text-gray-400 fw-semibold fs-7">2 weeks ago</div>
-                                                </div>
-                                                <!--end::Title-->
-                                            </div>
-                                            <!--end::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">
-                                                <!--begin::Symbol-->
-                                                <div class="symbol symbol-40px symbol-circle me-5">
-                        <span class="symbol-label bg-light-warning">
-                            <!--begin::Svg Icon | path: icons/duotune/finance/fin002.svg-->
-<span class="svg-icon svg-icon-warning svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-<path d="M22 7H2V11H22V7Z" fill="currentColor"/>
-<path opacity="0.3"
-      d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19ZM14 14C14 13.4 13.6 13 13 13H5C4.4 13 4 13.4 4 14C4 14.6 4.4 15 5 15H13C13.6 15 14 14.6 14 14ZM16 15.5C16 16.3 16.7 17 17.5 17H18.5C19.3 17 20 16.3 20 15.5C20 14.7 19.3 14 18.5 14H17.5C16.7 14 16 14.7 16 15.5Z"
-      fill="currentColor"/>
-</svg>
-</span>
-                            <!--end::Svg Icon-->                        </span>
-                                                </div>
-                                                <!--end::Symbol-->
-
-                                                <!--begin::Title-->
-                                                <div class="mb-1 pe-3 flex-grow-1">
-                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">Credit
-                                                        card expiring</a>
-                                                    <div class="text-gray-400 fw-semibold fs-7">1 week ago</div>
-                                                </div>
-                                                <!--end::Title-->
-                                            </div>
-                                            <!--end::Item-->
-                                        </div>
-                                        <!--end::Notifications-->
-                                    </div>
-                                    <!--end::Card header-->
-
-                                    <!--begin::Card footer-->
-                                    <div class="card-footer text-center py-5">
-                                        <a href="index6330.html?page=account/activity"
-                                           class="btn btn-light btn-active-light-primary btn-sm">All Notifications</a>
-                                    </div>
-                                    <!--end::Card footer-->
-                                </div>
-                                <!--end::Card-->
-                            </div>
-                            <!--end::Menu-->        <!--end::Menu wrapper-->
+                            <a target="_blank" href="https://wa.me/+9008503462314">
+                            <i style="font-size: 16px" class="fab fa-whatsapp "></i>
+                            </a>
                         </div>
+
+
+
+                        <!--begin:: TODO: Notifications-->
+{{--                        <div class="d-flex align-items-center ms-2 ms-lg-3">--}}
+{{--                            <!--begin::Menu wrapper-->--}}
+{{--                            <div--}}
+{{--                                class="btn btn-icon btn-active-light-primary position-relative w-35px h-35px w-md-40px h-md-40px"--}}
+{{--                                data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-attach="parent"--}}
+{{--                                data-kt-menu-placement="bottom-end">--}}
+{{--                                <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->--}}
+{{--                                <span class="svg-icon svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24"--}}
+{{--                                                                       fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--<path--}}
+{{--    d="M11.2929 2.70711C11.6834 2.31658 12.3166 2.31658 12.7071 2.70711L15.2929 5.29289C15.6834 5.68342 15.6834 6.31658 15.2929 6.70711L12.7071 9.29289C12.3166 9.68342 11.6834 9.68342 11.2929 9.29289L8.70711 6.70711C8.31658 6.31658 8.31658 5.68342 8.70711 5.29289L11.2929 2.70711Z"--}}
+{{--    fill="currentColor"/>--}}
+{{--<path--}}
+{{--    d="M11.2929 14.7071C11.6834 14.3166 12.3166 14.3166 12.7071 14.7071L15.2929 17.2929C15.6834 17.6834 15.6834 18.3166 15.2929 18.7071L12.7071 21.2929C12.3166 21.6834 11.6834 21.6834 11.2929 21.2929L8.70711 18.7071C8.31658 18.3166 8.31658 17.6834 8.70711 17.2929L11.2929 14.7071Z"--}}
+{{--    fill="currentColor"/>--}}
+{{--<path opacity="0.3"--}}
+{{--      d="M5.29289 8.70711C5.68342 8.31658 6.31658 8.31658 6.70711 8.70711L9.29289 11.2929C9.68342 11.6834 9.68342 12.3166 9.29289 12.7071L6.70711 15.2929C6.31658 15.6834 5.68342 15.6834 5.29289 15.2929L2.70711 12.7071C2.31658 12.3166 2.31658 11.6834 2.70711 11.2929L5.29289 8.70711Z"--}}
+{{--      fill="currentColor"/>--}}
+{{--<path opacity="0.3"--}}
+{{--      d="M17.2929 8.70711C17.6834 8.31658 18.3166 8.31658 18.7071 8.70711L21.2929 11.2929C21.6834 11.6834 21.6834 12.3166 21.2929 12.7071L18.7071 15.2929C18.3166 15.6834 17.6834 15.6834 17.2929 15.2929L14.7071 12.7071C14.3166 12.3166 14.3166 11.6834 14.7071 11.2929L17.2929 8.70711Z"--}}
+{{--      fill="currentColor"/>--}}
+{{--</svg>--}}
+{{--</span>--}}
+{{--                                <!--end::Svg Icon-->        </div>--}}
+
+{{--                            <!--begin::Menu-->--}}
+{{--                            <div class="menu menu-sub menu-sub-dropdown menu-column w-350px" data-kt-menu="true">--}}
+{{--                                <!--begin::Card-->--}}
+{{--                                <div class="card">--}}
+{{--                                    <!--begin::Card header-->--}}
+{{--                                    <div class="card-header">--}}
+{{--                                        <h3 class="card-title">--}}
+{{--                                            Notifications--}}
+{{--                                            <span class="badge badge-light-success fs-7 fw-500 ms-3">24 reports</span>--}}
+{{--                                        </h3>--}}
+{{--                                    </div>--}}
+{{--                                    <!--end::Card header-->--}}
+
+{{--                                    <!--begin::Card body-->--}}
+{{--                                    <div class="card-body p-0">--}}
+{{--                                        <!--begin::Notifications-->--}}
+{{--                                        <div class="mh-350px scroll-y py-3">--}}
+{{--                                            <!--begin::Item-->--}}
+{{--                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">--}}
+{{--                                                <!--begin::Symbol-->--}}
+{{--                                                <div class="symbol symbol-40px symbol-circle me-5">--}}
+{{--                        <span class="symbol-label bg-light-warning">--}}
+{{--                            <!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->--}}
+{{--<span class="svg-icon svg-icon-warning svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--                                                        xmlns="http://www.w3.org/2000/svg">--}}
+{{--<path opacity="0.3"--}}
+{{--      d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z"--}}
+{{--      fill="currentColor"/>--}}
+{{--<path--}}
+{{--    d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z"--}}
+{{--    fill="currentColor"/>--}}
+{{--</svg>--}}
+{{--</span>--}}
+{{--                            <!--end::Svg Icon-->                        </span>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Symbol-->--}}
+
+{{--                                                <!--begin::Title-->--}}
+{{--                                                <div class="mb-1 pe-3 flex-grow-1">--}}
+{{--                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">Developer--}}
+{{--                                                        Library added</a>--}}
+{{--                                                    <div class="text-gray-400 fw-semibold fs-7">2 hours ago</div>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Title-->--}}
+{{--                                            </div>--}}
+{{--                                            <!--end::Item-->--}}
+{{--                                            <!--begin::Item-->--}}
+{{--                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">--}}
+{{--                                                <!--begin::Symbol-->--}}
+{{--                                                <div class="symbol symbol-40px symbol-circle me-5">--}}
+{{--                        <span class="symbol-label bg-light-danger">--}}
+{{--                            <!--begin::Svg Icon | path: icons/duotune/finance/fin002.svg-->--}}
+{{--<span class="svg-icon svg-icon-danger svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--                                                       xmlns="http://www.w3.org/2000/svg">--}}
+{{--<path d="M22 7H2V11H22V7Z" fill="currentColor"/>--}}
+{{--<path opacity="0.3"--}}
+{{--      d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19ZM14 14C14 13.4 13.6 13 13 13H5C4.4 13 4 13.4 4 14C4 14.6 4.4 15 5 15H13C13.6 15 14 14.6 14 14ZM16 15.5C16 16.3 16.7 17 17.5 17H18.5C19.3 17 20 16.3 20 15.5C20 14.7 19.3 14 18.5 14H17.5C16.7 14 16 14.7 16 15.5Z"--}}
+{{--      fill="currentColor"/>--}}
+{{--</svg>--}}
+{{--</span>--}}
+{{--                            <!--end::Svg Icon-->                        </span>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Symbol-->--}}
+
+{{--                                                <!--begin::Title-->--}}
+{{--                                                <div class="mb-1 pe-3 flex-grow-1">--}}
+{{--                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">Credit--}}
+{{--                                                        card expired</a>--}}
+{{--                                                    <div class="text-gray-400 fw-semibold fs-7">1 day ago</div>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Title-->--}}
+{{--                                            </div>--}}
+{{--                                            <!--end::Item-->--}}
+{{--                                            <!--begin::Item-->--}}
+{{--                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">--}}
+{{--                                                <!--begin::Symbol-->--}}
+{{--                                                <div class="symbol symbol-40px symbol-circle me-5">--}}
+{{--                        <span class="symbol-label bg-light-primary">--}}
+{{--                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->--}}
+{{--<span class="svg-icon svg-icon-primary svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--                                                        xmlns="http://www.w3.org/2000/svg">--}}
+{{--<path--}}
+{{--    d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"--}}
+{{--    fill="currentColor"/>--}}
+{{--<path opacity="0.3" d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z"--}}
+{{--      fill="currentColor"/>--}}
+{{--<path opacity="0.3"--}}
+{{--      d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z"--}}
+{{--      fill="currentColor"/>--}}
+{{--</svg>--}}
+{{--</span>--}}
+{{--                            <!--end::Svg Icon-->                        </span>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Symbol-->--}}
+
+{{--                                                <!--begin::Title-->--}}
+{{--                                                <div class="mb-1 pe-3 flex-grow-1">--}}
+{{--                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">New--}}
+{{--                                                        Order placed</a>--}}
+{{--                                                    <div class="text-gray-400 fw-semibold fs-7">5 days ago</div>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Title-->--}}
+{{--                                            </div>--}}
+{{--                                            <!--end::Item-->--}}
+{{--                                            <!--begin::Item-->--}}
+{{--                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">--}}
+{{--                                                <!--begin::Symbol-->--}}
+{{--                                                <div class="symbol symbol-40px symbol-circle me-5">--}}
+{{--                        <span class="symbol-label bg-light-info">--}}
+{{--                            <!--begin::Svg Icon | path: icons/duotune/communication/com006.svg-->--}}
+{{--<span class="svg-icon svg-icon-info svg-icon-1"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"--}}
+{{--                                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--<path opacity="0.3"--}}
+{{--      d="M16.5 9C16.5 13.125 13.125 16.5 9 16.5C4.875 16.5 1.5 13.125 1.5 9C1.5 4.875 4.875 1.5 9 1.5C13.125 1.5 16.5 4.875 16.5 9Z"--}}
+{{--      fill="currentColor"/>--}}
+{{--<path--}}
+{{--    d="M9 16.5C10.95 16.5 12.75 15.75 14.025 14.55C13.425 12.675 11.4 11.25 9 11.25C6.6 11.25 4.57499 12.675 3.97499 14.55C5.24999 15.75 7.05 16.5 9 16.5Z"--}}
+{{--    fill="currentColor"/>--}}
+{{--<rect x="7" y="6" width="4" height="4" rx="2" fill="currentColor"/>--}}
+{{--</svg>--}}
+{{--</span>--}}
+{{--                            <!--end::Svg Icon-->                        </span>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Symbol-->--}}
+
+{{--                                                <!--begin::Title-->--}}
+{{--                                                <div class="mb-1 pe-3 flex-grow-1">--}}
+{{--                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">New--}}
+{{--                                                        user library added</a>--}}
+{{--                                                    <div class="text-gray-400 fw-semibold fs-7">2 weeks ago</div>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Title-->--}}
+{{--                                            </div>--}}
+{{--                                            <!--end::Item-->--}}
+{{--                                            <!--begin::Item-->--}}
+{{--                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">--}}
+{{--                                                <!--begin::Symbol-->--}}
+{{--                                                <div class="symbol symbol-40px symbol-circle me-5">--}}
+{{--                        <span class="symbol-label bg-light-primary">--}}
+{{--                            <!--begin::Svg Icon | path: icons/duotune/general/gen030.svg-->--}}
+{{--<span class="svg-icon svg-icon-primary svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--                                                        xmlns="http://www.w3.org/2000/svg">--}}
+{{--<path--}}
+{{--    d="M18.3721 4.65439C17.6415 4.23815 16.8052 4 15.9142 4C14.3444 4 12.9339 4.73924 12.003 5.89633C11.0657 4.73913 9.66 4 8.08626 4C7.19611 4 6.35789 4.23746 5.62804 4.65439C4.06148 5.54462 3 7.26056 3 9.24232C3 9.81001 3.08941 10.3491 3.25153 10.8593C4.12155 14.9013 9.69287 20 12.0034 20C14.2502 20 19.875 14.9013 20.7488 10.8593C20.9109 10.3491 21 9.81001 21 9.24232C21.0007 7.26056 19.9383 5.54462 18.3721 4.65439Z"--}}
+{{--    fill="currentColor"/>--}}
+{{--</svg>--}}
+{{--</span>--}}
+{{--                            <!--end::Svg Icon-->                        </span>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Symbol-->--}}
+
+{{--                                                <!--begin::Title-->--}}
+{{--                                                <div class="mb-1 pe-3 flex-grow-1">--}}
+{{--                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">Mark--}}
+{{--                                                        Simpson liked your page</a>--}}
+{{--                                                    <div class="text-gray-400 fw-semibold fs-7">1 month ago</div>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Title-->--}}
+{{--                                            </div>--}}
+{{--                                            <!--end::Item-->--}}
+{{--                                            <!--begin::Item-->--}}
+{{--                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">--}}
+{{--                                                <!--begin::Symbol-->--}}
+{{--                                                <div class="symbol symbol-40px symbol-circle me-5">--}}
+{{--                        <span class="symbol-label bg-light-success">--}}
+{{--                            <!--begin::Svg Icon | path: icons/duotune/files/fil016.svg-->--}}
+{{--<span class="svg-icon svg-icon-success svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--                                                        xmlns="http://www.w3.org/2000/svg">--}}
+{{--<path opacity="0.3" d="M10 4H21C21.6 4 22 4.4 22 5V7H10V4Z" fill="currentColor"/>--}}
+{{--<path opacity="0.3"--}}
+{{--      d="M10.3 15.3L11 14.6L8.70002 12.3C8.30002 11.9 7.7 11.9 7.3 12.3C6.9 12.7 6.9 13.3 7.3 13.7L10.3 16.7C9.9 16.3 9.9 15.7 10.3 15.3Z"--}}
+{{--      fill="currentColor"/>--}}
+{{--<path--}}
+{{--    d="M10.4 3.60001L12 6H21C21.6 6 22 6.4 22 7V19C22 19.6 21.6 20 21 20H3C2.4 20 2 19.6 2 19V4C2 3.4 2.4 3 3 3H9.20001C9.70001 3 10.2 3.20001 10.4 3.60001ZM11.7 16.7L16.7 11.7C17.1 11.3 17.1 10.7 16.7 10.3C16.3 9.89999 15.7 9.89999 15.3 10.3L11 14.6L8.70001 12.3C8.30001 11.9 7.69999 11.9 7.29999 12.3C6.89999 12.7 6.89999 13.3 7.29999 13.7L10.3 16.7C10.5 16.9 10.8 17 11 17C11.2 17 11.5 16.9 11.7 16.7Z"--}}
+{{--    fill="currentColor"/>--}}
+{{--</svg>--}}
+{{--</span>--}}
+{{--                            <!--end::Svg Icon-->                        </span>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Symbol-->--}}
+
+{{--                                                <!--begin::Title-->--}}
+{{--                                                <div class="mb-1 pe-3 flex-grow-1">--}}
+{{--                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">New--}}
+{{--                                                        project saved</a>--}}
+{{--                                                    <div class="text-gray-400 fw-semibold fs-7">2 hours ago</div>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Title-->--}}
+{{--                                            </div>--}}
+{{--                                            <!--end::Item-->--}}
+{{--                                            <!--begin::Item-->--}}
+{{--                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">--}}
+{{--                                                <!--begin::Symbol-->--}}
+{{--                                                <div class="symbol symbol-40px symbol-circle me-5">--}}
+{{--                        <span class="symbol-label bg-light-warning">--}}
+{{--                            <!--begin::Svg Icon | path: icons/duotune/coding/cod001.svg-->--}}
+{{--<span class="svg-icon svg-icon-warning svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--                                                        xmlns="http://www.w3.org/2000/svg">--}}
+{{--<path opacity="0.3"--}}
+{{--      d="M22.1 11.5V12.6C22.1 13.2 21.7 13.6 21.2 13.7L19.9 13.9C19.7 14.7 19.4 15.5 18.9 16.2L19.7 17.2999C20 17.6999 20 18.3999 19.6 18.7999L18.8 19.6C18.4 20 17.8 20 17.3 19.7L16.2 18.9C15.5 19.3 14.7 19.7 13.9 19.9L13.7 21.2C13.6 21.7 13.1 22.1 12.6 22.1H11.5C10.9 22.1 10.5 21.7 10.4 21.2L10.2 19.9C9.4 19.7 8.6 19.4 7.9 18.9L6.8 19.7C6.4 20 5.7 20 5.3 19.6L4.5 18.7999C4.1 18.3999 4.1 17.7999 4.4 17.2999L5.2 16.2C4.8 15.5 4.4 14.7 4.2 13.9L2.9 13.7C2.4 13.6 2 13.1 2 12.6V11.5C2 10.9 2.4 10.5 2.9 10.4L4.2 10.2C4.4 9.39995 4.7 8.60002 5.2 7.90002L4.4 6.79993C4.1 6.39993 4.1 5.69993 4.5 5.29993L5.3 4.5C5.7 4.1 6.3 4.10002 6.8 4.40002L7.9 5.19995C8.6 4.79995 9.4 4.39995 10.2 4.19995L10.4 2.90002C10.5 2.40002 11 2 11.5 2H12.6C13.2 2 13.6 2.40002 13.7 2.90002L13.9 4.19995C14.7 4.39995 15.5 4.69995 16.2 5.19995L17.3 4.40002C17.7 4.10002 18.4 4.1 18.8 4.5L19.6 5.29993C20 5.69993 20 6.29993 19.7 6.79993L18.9 7.90002C19.3 8.60002 19.7 9.39995 19.9 10.2L21.2 10.4C21.7 10.5 22.1 11 22.1 11.5ZM12.1 8.59998C10.2 8.59998 8.6 10.2 8.6 12.1C8.6 14 10.2 15.6 12.1 15.6C14 15.6 15.6 14 15.6 12.1C15.6 10.2 14 8.59998 12.1 8.59998Z"--}}
+{{--      fill="currentColor"/>--}}
+{{--<path--}}
+{{--    d="M17.1 12.1C17.1 14.9 14.9 17.1 12.1 17.1C9.30001 17.1 7.10001 14.9 7.10001 12.1C7.10001 9.29998 9.30001 7.09998 12.1 7.09998C14.9 7.09998 17.1 9.29998 17.1 12.1ZM12.1 10.1C11 10.1 10.1 11 10.1 12.1C10.1 13.2 11 14.1 12.1 14.1C13.2 14.1 14.1 13.2 14.1 12.1C14.1 11 13.2 10.1 12.1 10.1Z"--}}
+{{--    fill="currentColor"/>--}}
+{{--</svg>--}}
+{{--</span>--}}
+{{--                            <!--end::Svg Icon-->                        </span>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Symbol-->--}}
+
+{{--                                                <!--begin::Title-->--}}
+{{--                                                <div class="mb-1 pe-3 flex-grow-1">--}}
+{{--                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">Review--}}
+{{--                                                        privacy policy</a>--}}
+{{--                                                    <div class="text-gray-400 fw-semibold fs-7">1 day ago</div>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Title-->--}}
+{{--                                            </div>--}}
+{{--                                            <!--end::Item-->--}}
+{{--                                            <!--begin::Item-->--}}
+{{--                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">--}}
+{{--                                                <!--begin::Symbol-->--}}
+{{--                                                <div class="symbol symbol-40px symbol-circle me-5">--}}
+{{--                        <span class="symbol-label bg-light-danger">--}}
+{{--                            <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->--}}
+{{--<span class="svg-icon svg-icon-danger svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--                                                       xmlns="http://www.w3.org/2000/svg">--}}
+{{--<path--}}
+{{--    d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z"--}}
+{{--    fill="currentColor"/>--}}
+{{--<path opacity="0.5"--}}
+{{--      d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z"--}}
+{{--      fill="currentColor"/>--}}
+{{--<path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="currentColor"/>--}}
+{{--</svg>--}}
+{{--</span>--}}
+{{--                            <!--end::Svg Icon-->                        </span>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Symbol-->--}}
+
+{{--                                                <!--begin::Title-->--}}
+{{--                                                <div class="mb-1 pe-3 flex-grow-1">--}}
+{{--                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">Order--}}
+{{--                                                        deleted</a>--}}
+{{--                                                    <div class="text-gray-400 fw-semibold fs-7">5 days ago</div>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Title-->--}}
+{{--                                            </div>--}}
+{{--                                            <!--end::Item-->--}}
+{{--                                            <!--begin::Item-->--}}
+{{--                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">--}}
+{{--                                                <!--begin::Symbol-->--}}
+{{--                                                <div class="symbol symbol-40px symbol-circle me-5">--}}
+{{--                        <span class="symbol-label bg-light-primary">--}}
+{{--                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr029.svg-->--}}
+{{--<span class="svg-icon svg-icon-primary svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--                                                        xmlns="http://www.w3.org/2000/svg">--}}
+{{--<path--}}
+{{--    d="M14.5 20.7259C14.6 21.2259 14.2 21.826 13.7 21.926C13.2 22.026 12.6 22.0259 12.1 22.0259C9.5 22.0259 6.9 21.0259 5 19.1259C1.4 15.5259 1.09998 9.72592 4.29998 5.82592L5.70001 7.22595C3.30001 10.3259 3.59999 14.8259 6.39999 17.7259C8.19999 19.5259 10.8 20.426 13.4 19.926C13.9 19.826 14.4 20.2259 14.5 20.7259ZM18.4 16.8259L19.8 18.2259C22.9 14.3259 22.7 8.52593 19 4.92593C16.7 2.62593 13.5 1.62594 10.3 2.12594C9.79998 2.22594 9.4 2.72595 9.5 3.22595C9.6 3.72595 10.1 4.12594 10.6 4.02594C13.1 3.62594 15.7 4.42595 17.6 6.22595C20.5 9.22595 20.7 13.7259 18.4 16.8259Z"--}}
+{{--    fill="currentColor"/>--}}
+{{--<path opacity="0.3"--}}
+{{--      d="M2 3.62592H7C7.6 3.62592 8 4.02592 8 4.62592V9.62589L2 3.62592ZM16 14.4259V19.4259C16 20.0259 16.4 20.4259 17 20.4259H22L16 14.4259Z"--}}
+{{--      fill="currentColor"/>--}}
+{{--</svg>--}}
+{{--</span>--}}
+{{--                            <!--end::Svg Icon-->                        </span>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Symbol-->--}}
+
+{{--                                                <!--begin::Title-->--}}
+{{--                                                <div class="mb-1 pe-3 flex-grow-1">--}}
+{{--                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">System--}}
+{{--                                                        update reminder</a>--}}
+{{--                                                    <div class="text-gray-400 fw-semibold fs-7">2 weeks ago</div>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Title-->--}}
+{{--                                            </div>--}}
+{{--                                            <!--end::Item-->--}}
+{{--                                            <!--begin::Item-->--}}
+{{--                                            <div class="d-flex align-items-center bg-hover-lighten py-3 px-9">--}}
+{{--                                                <!--begin::Symbol-->--}}
+{{--                                                <div class="symbol symbol-40px symbol-circle me-5">--}}
+{{--                        <span class="symbol-label bg-light-warning">--}}
+{{--                            <!--begin::Svg Icon | path: icons/duotune/finance/fin002.svg-->--}}
+{{--<span class="svg-icon svg-icon-warning svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--                                                        xmlns="http://www.w3.org/2000/svg">--}}
+{{--<path d="M22 7H2V11H22V7Z" fill="currentColor"/>--}}
+{{--<path opacity="0.3"--}}
+{{--      d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19ZM14 14C14 13.4 13.6 13 13 13H5C4.4 13 4 13.4 4 14C4 14.6 4.4 15 5 15H13C13.6 15 14 14.6 14 14ZM16 15.5C16 16.3 16.7 17 17.5 17H18.5C19.3 17 20 16.3 20 15.5C20 14.7 19.3 14 18.5 14H17.5C16.7 14 16 14.7 16 15.5Z"--}}
+{{--      fill="currentColor"/>--}}
+{{--</svg>--}}
+{{--</span>--}}
+{{--                            <!--end::Svg Icon-->                        </span>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Symbol-->--}}
+
+{{--                                                <!--begin::Title-->--}}
+{{--                                                <div class="mb-1 pe-3 flex-grow-1">--}}
+{{--                                                    <a href="#" class="fs-6 text-dark text-hover-primary fw-semibold">Credit--}}
+{{--                                                        card expiring</a>--}}
+{{--                                                    <div class="text-gray-400 fw-semibold fs-7">1 week ago</div>--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Title-->--}}
+{{--                                            </div>--}}
+{{--                                            <!--end::Item-->--}}
+{{--                                        </div>--}}
+{{--                                        <!--end::Notifications-->--}}
+{{--                                    </div>--}}
+{{--                                    <!--end::Card header-->--}}
+
+{{--                                    <!--begin::Card footer-->--}}
+{{--                                    <div class="card-footer text-center py-5">--}}
+{{--                                        <a href="index6330.html?page=account/activity"--}}
+{{--                                           class="btn btn-light btn-active-light-primary btn-sm">All Notifications</a>--}}
+{{--                                    </div>--}}
+{{--                                    <!--end::Card footer-->--}}
+{{--                                </div>--}}
+{{--                                <!--end::Card-->--}}
+{{--                            </div>--}}
+{{--                            <!--end::Menu-->        <!--end::Menu wrapper-->--}}
+{{--                        </div>--}}
                         <!--end::Notifications-->
 
                         <!--begin::Chat-->
@@ -2418,99 +2428,101 @@
                                 <!--end::Menu separator-->
 
                                 <!--begin::Menu item-->
-                                <div class="menu-item px-5">
-                                    <a href="index3164.html?page=account/overview" class="menu-link px-5">
-                                        My Profile
-                                    </a>
-                                </div>
+
+
+{{--                                <div class="menu-item px-5">--}}
+{{--                                    <a href="index3164.html?page=account/overview" class="menu-link px-5">--}}
+{{--                                        My Profile--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+
+
                                 <!--end::Menu item-->
 
                                 <!--begin::Menu item-->
-                                <div class="menu-item px-5">
-                                    <a href="index99a6.html?page=apps/projects/list" class="menu-link px-5">
-                                        <span class="menu-text">My Projects</span>
-                                        <span class="menu-badge">
-                <span class="badge badge-light-danger badge-circle fw-bold fs-7">3</span>
-            </span>
-                                    </a>
-                                </div>
+
+
+{{--                                <div class="menu-item px-5">--}}
+{{--                                    <a href="index99a6.html?page=apps/projects/list" class="menu-link px-5">--}}
+{{--                                        <span class="menu-text">My Projects</span>--}}
+{{--                                        <span class="menu-badge">--}}
+{{--                <span class="badge badge-light-danger badge-circle fw-bold fs-7">3</span>--}}
+{{--            </span>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+
+
                                 <!--end::Menu item-->
 
                                 <!--begin::Menu item-->
-                                <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                                     data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
-                                    <a href="#" class="menu-link px-5">
-                                        <span class="menu-title">My Subscription</span>
-                                        <span class="menu-arrow"></span>
-                                    </a>
 
-                                    <!--begin::Menu sub-->
-                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="indexe638.html?page=account/referrals" class="menu-link px-5">
-                                                Referrals
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
 
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="index93d4.html?page=account/billing" class="menu-link px-5">
-                                                Billing
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
+{{--                                <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"--}}
+{{--                                     data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">--}}
+{{--                                    <a href="#" class="menu-link px-5">--}}
+{{--                                        <span class="menu-title">My Subscription</span>--}}
+{{--                                        <span class="menu-arrow"></span>--}}
+{{--                                    </a>--}}
 
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="index28ff.html?page=account/statements" class="menu-link px-5">
-                                                Payments
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
+{{--                              --}}
+{{--                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">--}}
+{{--                                  --}}
+{{--                                        <div class="menu-item px-3">--}}
+{{--                                            <a href="indexe638.html?page=account/referrals" class="menu-link px-5">--}}
+{{--                                                Referrals--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                        --}}
+{{--                                        <div class="menu-item px-3">--}}
+{{--                                            <a href="index93d4.html?page=account/billing" class="menu-link px-5">--}}
+{{--                                                Billing--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                     --}}
+{{--                                        <div class="menu-item px-3">--}}
+{{--                                            <a href="index28ff.html?page=account/statements" class="menu-link px-5">--}}
+{{--                                                Payments--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                   --}}
+{{--                                        <div class="menu-item px-3">--}}
+{{--                                            <a href="index28ff.html?page=account/statements"--}}
+{{--                                               class="menu-link d-flex flex-stack px-5">--}}
+{{--                                                Statements--}}
 
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="index28ff.html?page=account/statements"
-                                               class="menu-link d-flex flex-stack px-5">
-                                                Statements
+{{--                                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"--}}
+{{--                                                   title="View your statements"></i>--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="separator my-2"></div>--}}
+{{--                                        <div class="menu-item px-3">--}}
+{{--                                            <div class="menu-content px-3">--}}
+{{--                                                <label--}}
+{{--                                                    class="form-check form-switch form-check-custom form-check-solid">--}}
+{{--                                                    <input class="form-check-input w-30px h-20px" type="checkbox"--}}
+{{--                                                           value="1" checked="checked" name="notifications"/>--}}
+{{--                                                    <span class="form-check-label text-muted fs-7">--}}
+{{--                            Notifications--}}
+{{--                        </span>--}}
+{{--                                                </label>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                                                   title="View your statements"></i>
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
 
-                                        <!--begin::Menu separator-->
-                                        <div class="separator my-2"></div>
-                                        <!--end::Menu separator-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <div class="menu-content px-3">
-                                                <label
-                                                    class="form-check form-switch form-check-custom form-check-solid">
-                                                    <input class="form-check-input w-30px h-20px" type="checkbox"
-                                                           value="1" checked="checked" name="notifications"/>
-                                                    <span class="form-check-label text-muted fs-7">
-                            Notifications
-                        </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu sub-->
-                                </div>
                                 <!--end::Menu item-->
 
                                 <!--begin::Menu item-->
-                                <div class="menu-item px-5">
-                                    <a href="index28ff.html?page=account/statements" class="menu-link px-5">
-                                        My Statements
-                                    </a>
-                                </div>
+
+
+{{--                                <div class="menu-item px-5">--}}
+{{--                                    <a href="index28ff.html?page=account/statements" class="menu-link px-5">--}}
+{{--                                        My Statements--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+
+
                                 <!--end::Menu item-->
 
                                 <!--begin::Menu separator-->
@@ -2649,6 +2661,12 @@
 
 
             <div class="footer py-4 d-flex flex-lg-column " id="kt_footer">
+
+                <div  id="gtranslate_wrapper" class="add-list gtranslate_wrapper gtranslate_languages"></div>
+                <script>window.gtranslateSettings = {"default_language":"en","languages":["en","fr","de","it","es","tr"],"wrapper_selector":".gtranslate_wrapper", 'background-color':"#000000"}</script>
+                <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+
                 <!--begin::Container-->
                 <div class=" container-fluid  d-flex flex-column flex-md-row flex-stack">
 

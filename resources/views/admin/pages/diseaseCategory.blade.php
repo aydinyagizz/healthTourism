@@ -1,7 +1,7 @@
 @extends('admin.layout.adminLayout')
 
 @section('title')
-    Disease Category
+    Treatment Category
 @endsection
 
 @section('css')
@@ -18,7 +18,7 @@
 
         <!--begin::Heading-->
         <h1 class="text-dark fw-bold mt-1 mb-1 fs-2">
-            Diseases Category <small class="text-muted fs-6 fw-normal ms-1"></small>
+            Treatment Category <small class="text-muted fs-6 fw-normal ms-1"></small>
         </h1>
         <!--end::Heading-->
 
@@ -35,7 +35,7 @@
             </li>
 
             <li class="breadcrumb-item text-dark">
-                Diseases Categories
+                Treatment Categories
             </li>
 
         </ul>
@@ -72,7 +72,7 @@
 </span>
                             <input type="text" data-kt-diseases-category-table-filter="search"
                                    class="form-control form-control-solid w-250px ps-14"
-                                   placeholder="Search diseases category"/>
+                                   placeholder="Search treatment category"/>
                         </div>
                         <!--end::Search-->
                     </div>
@@ -158,7 +158,7 @@
 
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#kt_modal_add_diseases_category">
-                                Add New Diseases Category
+                                Add New Treatment Category
                             </button>
 
 
@@ -434,7 +434,7 @@
                         <!--begin::Modal header-->
                         <div class="modal-header" id="kt_modal_add_customer_header">
                             <!--begin::Modal title-->
-                            <h2 class="fw-bold">Add a disease category</h2>
+                            <h2 class="fw-bold">Add a treatment category</h2>
 
 
                             <div id="kt_modal_add_diseases_category_close"

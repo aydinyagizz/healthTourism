@@ -1,7 +1,7 @@
 @extends('admin.layout.adminLayout')
 
 @section('title')
-    Diseases
+    Treatment
 @endsection
 
 @section('css')
@@ -39,7 +39,7 @@
             </li>
 
             <li class="breadcrumb-item text-dark">
-                Diseases
+                Treatment
             </li>
 
         </ul>
@@ -72,7 +72,7 @@
 </span>
                             <input type="text" data-kt-diseases-table-filter="search"
                                    class="form-control form-control-solid w-250px ps-14"
-                                   placeholder="Search diseases"/>
+                                   placeholder="Search treatment"/>
                         </div>
 
                     </div>
@@ -83,7 +83,7 @@
 
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#kt_modal_add_diseases_modal">
-                                Add New Diseases
+                                Add New Treatment
                             </button>
 
                         </div>
@@ -121,7 +121,7 @@
                                                value=""/>
                                     </div>
                                 </th>
-                                <th class="min-w-125px">Diseases</th>
+                                <th class="min-w-125px">Treatment</th>
                                 <th class="min-w-125px">Cities</th>
                                 <th class="min-w-125px">Category</th>
 
@@ -375,7 +375,7 @@
 
                         <div class="modal-header" id="kt_modal_add_customer_header">
                             <!--begin::Modal title-->
-                            <h2 class="fw-bold">Add a diseases</h2>
+                            <h2 class="fw-bold">Add a treatment</h2>
 
 
                             <div id="kt_modal_add_diseases_close"
@@ -474,7 +474,7 @@
 
 
                                 <div class="fv-row mb-7">
-                                    <label class="required fs-6 fw-semibold mb-2">Diseases Category</label>
+                                    <label class="required fs-6 fw-semibold mb-2">Treatment Category</label>
 
                                     <!--begin::Select2-->
                                     <select name="diseases_category" required
@@ -499,7 +499,7 @@
 
                                     <!--begin::Input-->
                                     <input type="text" class="form-control form-control-solid" required
-                                           placeholder="Diseases Title" name="title" id="title"/>
+                                           placeholder="Treatment Title" name="title" id="title"/>
 
 
                                 </div>

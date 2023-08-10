@@ -11,6 +11,13 @@
 
     <style>
 
+        @media only screen and (max-width: 600px) {
+            .hero__caption span {
+                font-size: 28px!important;
+                margin-top: 30px!important;
+            }
+        }
+
 
         @media (min-width: 641px) {
             .location-img {
@@ -80,7 +87,7 @@
                     <div class="col-xl-8 col-lg-9">
                         <!-- Hero Caption -->
                         <div class="hero__caption">
-                            <span>Perfect Harmony of Health and Vacation</span>
+                            <span style="font-family: 'Sulphur Point', sans-serif;";>Perfect Harmony of Health and Vacation</span>
                             <h1 style="font-size: 45px!important;">Just One Flight Away from Treatment and
                                 Discoveries!</h1>
                         </div>
@@ -118,7 +125,7 @@
                                 <div class="select-itms">
                                     <select class="form-select form-control nice-select" name="category"
                                             id="category_filter">
-                                        <option value="">Diseases Category</option>
+                                        <option value="">Treatment Category</option>
                                         @foreach($categories as $item)
                                             <option
                                                 value="{{ $item->id }}" {{ request('category') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
@@ -269,7 +276,7 @@
                     <!-- Section Tittle -->
                     <div class="section-tittle text-center mb-80">
                         <span>We are offering for you</span>
-                        <h2>Featured Diseases</h2>
+                        <h2>Featured Treatment</h2>
                     </div>
                 </div>
             </div>
@@ -337,7 +344,18 @@
     </div>
     <!-- Categories Area End -->
     <!-- peoples-visit Start -->
-    <div class="peoples-visit dining-padding-top">
+
+
+
+    <style>
+        .peoples-visit .single-visit.left-img::before {
+            background-image: url('public/adminFrontend/assets/img/gallery/bg.jpg');
+        }
+
+    </style>
+
+
+    <div class="peoples-visit dining-padding-top" id="aboutus">
         <!-- Single Left img -->
         <div class="single-visit left-img">
             <div class="container">
@@ -345,19 +363,16 @@
                     <div class="col-lg-8">
                         <div class="visit-caption">
                             <span>We are offering for you</span>
-                            <h3>Every Month, Millions of People
-                                visit this site We’ve Built.</h3>
-                            <p>Unlike what its name implies, dry cleaning is not actually a 'dry' process. Clothes are
-                                soaked in a different solvent.</p>
+                            <h3>Every Month, Millions of People visit this site We’ve Built.</h3>
+                            <p>Millions of people from all over the world both discover the unique beauties of Turkey and benefit from health services at affordable costs.</p>
                             <!--Single Visit categories -->
                             <div class="visit-categories mb-40">
                                 <div class="visit-location">
                                     <span class="flaticon-travel"></span>
                                 </div>
                                 <div class="visit-cap">
-                                    <h4>Great places in the world</h4>
-                                    <p>Unlike what its name implies, dry cleaning is not actu process. Clothes soaked
-                                        differentent.
+                                    <h4>Get the best offer for you</h4>
+                                    <p>HOLIDAYHEALTHTURKEY.COM is a platform that allows you to quickly receive offers from all licensed health agencies in Turkey.
                                     </p>
                                 </div>
                             </div>
@@ -367,9 +382,8 @@
                                     <span class="flaticon-work"></span>
                                 </div>
                                 <div class="visit-cap">
-                                    <h4>Biggest category listing</h4>
-                                    <p>Unlike what its name implies, dry cleaning is not actu process. Clothes soaked
-                                        differentent.
+                                    <h4>Biggest Health Tourism Agencies listing</h4>
+                                    <p>In Turkey, you can receive offers from a total of 6 AGENCIES in 3 different CITIES for a total of 8 different TREATMENTS needs. (Yine değişkenden otomatik gelecek)
                                     </p>
                                 </div>
                             </div>
@@ -388,7 +402,7 @@
                     <!-- Section Tittle -->
                     <div class="section-tittle text-center mb-80">
                         <span>Our client testimonials</span>
-                        <h2>What our client say</h2>
+                        <h2>What our users say?</h2>
                     </div>
                 </div>
             </div>
@@ -400,21 +414,18 @@
                             <!-- Testimonial Content -->
                             <div class="testimonial-caption ">
                                 <div class="testimonial-top-cap">
-                                    <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                        magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra
-                                        maecenas accumsan lacus vel facilisis por incididunt ut labore et dolore
-                                        mas. </p>
+                                    <p>I discovered this amazing platform that combines both vacation and medical treatment experiences in Turkey. Thanks to the health tourism agencies, I was able to fulfill my health needs while exploring the beauty of Turkey. Having access to health services while enjoying my vacation was an incredible experience. It made the dedicated time for my health even more valuable. </p>
                                 </div>
                                 <!-- founder -->
                                 <div class="testimonial-founder d-flex align-items-center justify-content-center mb-30">
                                     <div class="founder-img">
-                                        <img
-                                            src="{{ asset('public/adminFrontend/assets/img/testmonial/Homepage_testi.png') }}"
-                                            alt="">
+{{--                                        <img--}}
+{{--                                            src="{{ asset('public/adminFrontend/assets/img/testmonial/Homepage_testi.png') }}"--}}
+{{--                                            alt="">--}}
                                     </div>
                                     <div class="founder-text">
-                                        <span>Oliva jems</span>
-                                        <p>UIX designer</p>
+                                        <span>Emily Wilson</span>
+                                        <p>Marketing Manager</p>
                                     </div>
                                 </div>
                             </div>
@@ -424,21 +435,18 @@
                             <!-- Testimonial Content -->
                             <div class="testimonial-caption ">
                                 <div class="testimonial-top-cap">
-                                    <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                        magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra
-                                        maecenas accumsan lacus vel facilisis por incididunt ut labore et dolore
-                                        mas. </p>
+                                    <p>As someone interested in health tourism, this platform provided me with the opportunity to both vacation and receive medical services. Receiving treatment amidst Turkey's unique cultural heritage and natural beauty was a truly rejuvenating experience. The professionalism and service quality of the health tourism agencies ensured a seamless process. It's an ideal choice for combining vacation and health needs.</p>
                                 </div>
                                 <!-- founder -->
                                 <div class="testimonial-founder d-flex align-items-center justify-content-center mb-30">
                                     <div class="founder-img">
-                                        <img
-                                            src="{{ asset('public/adminFrontend/assets/img/testmonial/Homepage_testi.png') }}"
-                                            alt="">
+{{--                                        <img--}}
+{{--                                            src="{{ asset('public/adminFrontend/assets/img/testmonial/Homepage_testi.png') }}"--}}
+{{--                                            alt="">--}}
                                     </div>
                                     <div class="founder-text">
-                                        <span>Oliva jems</span>
-                                        <p>UIX designer</p>
+                                        <span>Alex Johnson</span>
+                                        <p>Software Engineer</p>
                                     </div>
                                 </div>
                             </div>

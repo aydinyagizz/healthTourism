@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title> @yield("title") </title>
+    <title>@yield("title") | Holıday & Health Turkey</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -83,6 +83,7 @@
                                                 ''
                                             @endif href="{{ route('admin.frontend.diseases') }}">Treatment</a></li>
 
+                                        <li><a href="https://holidayhealthturkey.com/#aboutus">About Us</a></li>
 
 
 {{--                                        <li><a @if(Route::is('admin.frontend.blog'))  style="color: #FF3D1C" @else--}}
@@ -94,9 +95,11 @@
                                         <li class="add-list"><a href="{{ route('admin.frontend.offer') }}"><i
                                                     class="ti-plus"></i> Get An Offer</a></li>
 
-                                        <li class="login"><a href="#">
-                                                <i class="ti-user"></i> Sign in or Register</a>
+                                        <li class="login"><a href="{{ route('login') }}">
+                                                <i class="ti-user"></i> Agency Login</a>
                                         </li>
+
+
                                     </ul>
                                 </nav>
                             </div>
@@ -120,6 +123,21 @@
 
 </main>
 <footer>
+
+
+    <style>
+
+        .gt_float_switcher{
+            background: #36cb61!important;
+        }
+
+    </style>
+
+    <li style="background: black!important;" id="gtranslate_wrapper" class="add-list gtranslate_wrapper gtranslate_languages"></li>
+    <script>window.gtranslateSettings = {"default_language":"en","languages":["en","fr","de","it","es","tr"],"wrapper_selector":".gtranslate_wrapper", 'background-color':"#000000"}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+
     <!-- Footer Start-->
     <div class="footer-area">
         <div class="container">
@@ -188,7 +206,7 @@
                         <div class="footer-copy-right">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                                All rights reserved | This template is made with by <a
+                                All rights reserved | This platform is made by <a
                                     href="https://buberka.com" target="_blank">Buberka</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>

@@ -35,7 +35,7 @@ Route::prefix('/')->group(function () {
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::match(['get', 'post'], '/admin/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login')->middleware('alreadyLoggedIn');
+Route::match(['get', 'post'], '/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login')->middleware('alreadyLoggedIn');
 Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 
 
@@ -85,10 +85,10 @@ Route::prefix('/admin')->middleware(['is_admin', 'role:Admin'])->group(function 
     Route::post( '/cityDelete', [\App\Http\Controllers\Admin\CityController::class, 'cityDelete'])->name('admin.city.delete');
 
 
-    Route::get( '/diseaseCategory', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryList'])->name('admin.disease.category.list');
-    Route::post( '/diseaseCategoryAdd', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryAdd'])->name('admin.disease.category.add');
-    Route::post( '/diseaseCategoryDelete', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryDelete'])->name('admin.disease.category.delete');
-    Route::post( '/diseaseCategoryUpdate/{id}', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryUpdate'])->name('admin.disease.category.update');
+    Route::get( '/treatmentCategory', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryList'])->name('admin.disease.category.list');
+    Route::post( '/treatmentCategoryAdd', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryAdd'])->name('admin.disease.category.add');
+    Route::post( '/treatmentCategoryDelete', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryDelete'])->name('admin.disease.category.delete');
+    Route::post( '/treatmentCategoryUpdate/{id}', [\App\Http\Controllers\Admin\DiseasesCategoryController::class, 'diseaseCategoryUpdate'])->name('admin.disease.category.update');
 
 //    Route::get( '/diseases', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesList'])->name('admin.diseases.list');
     Route::get( '/treatment', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesList'])->name('admin.diseases.list');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -21,7 +22,9 @@ class UserController extends Controller
             // 'users' => User::where('user_role', 1)->get(),
         ];
 
-        return view('user.pages.userIndex', $data, compact('user'));
+       // return view('user.pages.userIndex', $data, compact('user'));
+
+        return Redirect::route('user.offers.list');
 
     }
 }
