@@ -27,8 +27,11 @@ class AdminFrontendController extends Controller
 
             'categories' => DiseaseCategory::where('status', 1)->get(),
 
-
+            'totalCity' => DB::table('cities')->count(),
+            'totalUser' => DB::table('users')->where('user_role', '=' ,1)->where('status', '=' ,1)->count(),
+            'totalDiseases' => DB::table('diseases')->where('status', '=' ,1)->count(),
         ];
+
         return view('adminFrontend.pages.adminFrontendIndex', $data);
     }
 }

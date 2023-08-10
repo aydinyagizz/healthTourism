@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Citiest;
 use App\Models\Disease;
 use App\Models\DiseaseCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -61,6 +62,10 @@ class AdminFrontendCityController extends Controller
 
     public function adminFrontendCityDetail(Request $request, $slug)
     {
+
+        $getCity = Citiest::where('slug', $slug)->first();
+
+
         $data = [
 //        'city' => DB::table('cities')
 //            ->paginate(10),
@@ -71,6 +76,8 @@ class AdminFrontendCityController extends Controller
             'recentCity' => Citiest::with('diseases')->orderBy('created_at', 'desc')
                 ->take(5)
                 ->get(),
+
+            'agencyCount' => User::where('user_role', 1)->where('city', $getCity->id)->count(),
 
            // 'categories' => DiseaseCategory::where('status', 1)->get(),
         ];

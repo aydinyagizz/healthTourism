@@ -268,6 +268,10 @@
                                         type="submit">Get an offer
                                 </button>
                             </form>
+
+                            <div class="alert alert-info alert-dismissible fade show mt-3" role="alert" id="agencyCountInfo" >
+                                Your request for a quote will be sent to <strong>{{ $agencyCount }} AGENCIES.</strong>
+                            </div>
                         </aside>
                         <aside class="single_sidebar_widget post_category_widget single_sidebar_widget popular_post_widget">
                             <h4 class="widget_title">Treatments in this city</h4>

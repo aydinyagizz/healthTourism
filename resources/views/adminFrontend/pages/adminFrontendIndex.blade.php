@@ -246,7 +246,7 @@
                             <span class="flaticon-problem"></span>
                         </div>
                         <div class="services-cap">
-                            <h5 style="color: black"><a style="color: black" href="#">2. Choose Your Disease</a></h5>
+                            <h5 style="color: black"><a style="color: black" href="#">2. Choose Your Treatment</a></h5>
                             {{--                            <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>--}}
                         </div>
                         <img class="shape2 d-none d-lg-block"
@@ -383,7 +383,7 @@
                                 </div>
                                 <div class="visit-cap">
                                     <h4>Biggest Health Tourism Agencies listing</h4>
-                                    <p>In Turkey, you can receive offers from a total of 6 AGENCIES in 3 different CITIES for a total of 8 different TREATMENTS needs. (Yine değişkenden otomatik gelecek)
+                                    <p>In Turkey, you can receive offers from a total of {{ $totalUser }} AGENCIES in {{ $totalCity }} different CITIES for a total of {{ $totalDiseases }} different TREATMENTS needs.
                                     </p>
                                 </div>
                             </div>

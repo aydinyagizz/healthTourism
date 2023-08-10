@@ -129,6 +129,17 @@ License: For each use you must have a valid license purchased only from above li
                 </div>
                 <!--end::Header-->
 
+                <style>
+                    @media only screen and (max-width: 600px) {
+                        .login-img {
+                            width: 150px;
+                        }
+                        .login-text {
+                            font-size: 13px!important;
+                        }
+                    }
+                </style>
+
                 <!--begin::Illustration-->
                 <div class="d-flex flex-row-auto flex-center">
                     <img
@@ -136,12 +147,14 @@ License: For each use you must have a valid license purchased only from above li
                         width="300px"
                         src="{{ asset('public/adminFrontend/assets/logo/buberkalogo.png') }}"
                         alt=""
-                        class=" mb-10"/>
+                        class="login-img mb-10"/>
 
 
                 </div>
-                <div class="d-flex flex-row-auto flex-center">
-                <p class="text-white fw-semibold fs-2">Holiday & Health Turkey is a <a href="https://buberka.com" target="_blank">BUBERKA</a> product.</p>
+                <div class="d-flex flex-row-auto flex-center text-center">
+                    <p class="text-white fw-semibold fs-2 login-text">Holiday & Health Turkey is a <a href="https://buberka.com"
+                                                                                           target="_blank">BUBERKA</a>
+                        product.</p>
                 </div>
                 <!--end::Illustration-->
             </div>

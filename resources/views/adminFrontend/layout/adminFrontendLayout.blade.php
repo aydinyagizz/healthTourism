@@ -161,8 +161,9 @@
                                 <h4>Quick Link</h4>
                                 <ul>
                                     <li><a href="{{ route('admin.frontend.index') }}">Home</a></li>
-                                    <li><a href="#">Cities</a></li>
-                                    <li><a href="#">Treatment</a></li>
+                                    <li><a href="{{ route('admin.frontend.city') }}">Cities</a></li>
+                                    <li><a href="{{ route('admin.frontend.diseases') }}">Treatment</a></li>
+                                    <li><a href="https://holidayhealthturkey.com/#aboutus">About Us</a></li>
 {{--                                    <li><a href="#">Contact</a></li>--}}
                                 </ul>
                             </div>
