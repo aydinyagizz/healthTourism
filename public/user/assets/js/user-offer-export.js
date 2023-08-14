@@ -9,8 +9,9 @@ var KTUserOfferExport = function () {
     // Private functions
     var initDatatable = function () {
         // Tabloyu initialize etmek için kodları buraya yerleştirin
-        // ...
+
     }
+
 
     // Hook export buttons
     var exportButtons = () => {
@@ -19,22 +20,55 @@ var KTUserOfferExport = function () {
             buttons: [
                 {
                     extend: 'copyHtml5',
-                    title: documentTitle
+                    title: documentTitle,
+                    exportOptions: {
+                        columns: ':visible:not(:eq(0))' // Exclude the first column from export
+                    }
                 },
                 {
                     extend: 'excelHtml5',
-                    title: documentTitle
+                    title: documentTitle,
+                    exportOptions: {
+                        columns: ':visible:not(:eq(0))' // Exclude the first column from export
+                    }
                 },
                 {
                     extend: 'csvHtml5',
-                    title: documentTitle
+                    title: documentTitle,
+                    exportOptions: {
+                        columns: ':visible:not(:eq(0))' // Exclude the first column from export
+                    }
                 },
                 {
                     extend: 'pdfHtml5',
-                    title: documentTitle
+                    title: documentTitle,
+                    // exportOptions: {
+                    //     format: {
+                    //         body: function (data, row, column, node) {
+                    //             // Exclude first column (index 0) from export
+                    //             if (column === 0) {
+                    //                 return "";
+                    //             }
+                    //             return data;
+                    //         }
+                    //     }
+                    // }
+                    exportOptions: {
+                        columns: ':visible:not(:eq(0))' // Exclude the first column from export
+                    },
+                    // customize: function (doc) {
+                    //     // Customize the PDF document here
+                    //     // You can modify the styling, layout, etc.
+                    //     // For example:
+                    //     doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+                    // }
+
                 }
             ]
         }).container().appendTo($('#kt_ecommerce_report_sales_export_menu_export'));
+
+
+
 
         // Hook dropdown menu click event to datatable export buttons
         const exportButtonsList = document.querySelectorAll('#kt_ecommerce_report_sales_export_menu_export [data-kt-ecommerce-export]');
@@ -53,9 +87,6 @@ var KTUserOfferExport = function () {
             });
         });
     }
-
-
-
 
 
     // var handleFilterDatatable = () => {
@@ -108,8 +139,6 @@ var KTUserOfferExport = function () {
     // }
 
 
-
-
     // Public methods
     return {
         init: function () {
@@ -122,8 +151,8 @@ var KTUserOfferExport = function () {
             initDatatable();
             exportButtons();
 
-         //   handleResetForm();
-         //   handleFilterDatatable();
+            //   handleResetForm();
+            //   handleFilterDatatable();
         }
     };
 }();

@@ -1,6 +1,16 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S22ED796P1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-S22ED796P1');
+    </script>
+
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -174,7 +184,7 @@
                             <div class="footer-tittle">
                                 <h4>Contracts</h4>
                                 <ul>
-                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="{{ route('admin.frontend.privacy.policy') }}">Privacy Policy</a></li>
                                     <li><a href="#">FAQ</a></li>
 
                                 </ul>

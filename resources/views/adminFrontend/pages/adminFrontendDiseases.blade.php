@@ -214,7 +214,7 @@
                                     <div class="single-wrap d-flex justify-content-center">
                                         <nav aria-label="Page navigation example">
                                             <ul class="pagination justify-content-start">
-                                                {{ $diseases->appends(request()->except('page'))->links() }}
+                                                <li class="page-item">{{ $diseases->appends(request()->except('page'))->links() }}</li>
                                             </ul>
                                         </nav>
                                     </div>

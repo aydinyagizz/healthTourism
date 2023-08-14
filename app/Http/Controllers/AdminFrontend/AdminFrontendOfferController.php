@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class AdminFrontendOfferController extends Controller
 {
@@ -31,8 +32,8 @@ class AdminFrontendOfferController extends Controller
                 ->get(),
             'country' => DB::table('countries')->get(),
             'countCity' => Citiest::count(),
-            'countDiseases' => Disease::where('status', 1)->count(),
-            'countUser' => User::where('user_role', 1)->where('status', 1)->count(),
+            'countDiseases' => Disease::count(),
+            'countUser' => User::where('user_role', 1)->count(),
         ];
 
 
@@ -96,7 +97,8 @@ class AdminFrontendOfferController extends Controller
         $offer = new FrontendOffer();
         $offer->name = $request->name;
         $offer->email = $request->email;
-        $offer->phone = $request->phone;
+        $offer->phone = Str::of($request->phone)->replaceMatches('/[^A-Za-z0-9]++/', '');
+
         $offer->country = $request->country;
         $offer->city = $request->city;
 

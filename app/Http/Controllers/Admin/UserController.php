@@ -373,20 +373,49 @@ class UserController extends Controller
 
             $validation = Validator::make([$row => $data], $import->rules(), [
                 '*.0.required' => 'Row ' . ($row + 1) . ': Name field is required.',
-                '*.1.required' => 'Row ' . ($row + 1) . ': Email field is required.',
-                '*.1.email' => 'Row ' . ($row + 1) . ': Invalid email format.',
-                '*.1.unique' => 'Row ' . ($row + 1) . ': Email already exists.',
-                '*.2.required' => 'Row ' . ($row + 1) . ': Password field is required.',
-                '*.2.min' => 'Row ' . ($row + 1) . ': Password must be at least 6 characters.',
+               // '*.1.required' => 'Row ' . ($row + 1) . ': Email field is required.',
+              //  '*.1.email' => 'Row ' . ($row + 1) . ': Invalid email format.',
+             //   '*.1.unique' => 'Row ' . ($row + 1) . ': Email already exists.',
+              // '*.2.required' => 'Row ' . ($row + 1) . ': Password field is required.',
+               // '*.2.min' => 'Row ' . ($row + 1) . ': Password must be at least 6 characters.',
             ]);
 
 
             if ($validation->fails()) {
+
                 $errors[$row] = $validation->errors()->all();
             } else {
+
                 $user = $import->model($data);
-                $user->save();
-                $successCount++;
+
+                if ($user) { // Model null değilse
+                    $user->syncRoles('User');
+                    $user->save();
+
+                    $user->givePermissionTo([
+                        'about us view',
+                        'about us update',
+                        'services view',
+                        'services create',
+                        'services update',
+                        'services delete',
+                        'pricing view',
+                        'pricing create',
+                        'pricing update',
+                        'pricing delete',
+                        'faq view',
+                        'faq create',
+                        'faq update',
+                        'faq delete'
+                    ]);
+                    $successCount++;
+                } else {
+                    $errors[$row] = ['Row ' . ($row + 1) . ': User creation failed.'];
+                }
+
+
+//                $user->save();
+//                $successCount++;
             }
         }
 
@@ -394,7 +423,8 @@ class UserController extends Controller
             foreach ($errors as $row => $rowErrors) {
                 foreach ($rowErrors as $rowError) {
 
-                    $flasher->addError('Row ' . ($row + 1) . ': ' . $rowError);
+                   // $flasher->addError('Row ' . ($row + 1) . ': ' . $rowError);
+                    $flasher->addError($rowError);
                 }
             }
         } else {

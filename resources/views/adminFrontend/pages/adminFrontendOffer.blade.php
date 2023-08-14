@@ -195,7 +195,7 @@
 
                                 <div class="input-group-icon mt-10">
                                     <div class="form-select" id="default-select">
-                                        <select class="form-select form-control nice-select" name="category" id="category" required>
+                                        <select class="form-select form-control nice-select " name="category" id="category" required>
                                             <option value="">* Select Category</option>
                                             @foreach($categories as $item)
 
@@ -420,7 +420,7 @@
                                         selectElement.append(option);
                                     });
                                 } else {
-                                    selectElement.append('<option value="">No diseases found</option>');
+                                    selectElement.append('<option value="">No treatment found</option>');
                                 }
                             }
                         });

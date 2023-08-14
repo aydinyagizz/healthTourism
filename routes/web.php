@@ -26,6 +26,8 @@ Route::prefix('/')->group(function () {
     Route::post( '/offerPost', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOfferPost'])->name('admin.frontend.offer.post');
     Route::post('/api/fetch-get-diseases', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOfferGetDiseases'])->name('fetch-get-diseases');
     Route::post('/api/fetch-agency-count', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOfferGetAgencyCount'])->name('fetch.get.agency.count');
+    Route::get( '/privacyPolicy', [\App\Http\Controllers\AdminFrontend\AdminFrontendController::class, 'adminFrontendPrivacyPolicy'])->name('admin.frontend.privacy.policy');
+
 });
 
 
@@ -35,7 +37,7 @@ Route::prefix('/')->group(function () {
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::match(['get', 'post'], '/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login')->middleware('alreadyLoggedIn');
+Route::match(['get', 'post'], '/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login')->middleware('AlreadyLoggedIn');
 Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 
 

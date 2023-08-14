@@ -214,14 +214,14 @@
     </div>
     <!-- Popular Locations End -->
     <!-- Services Area Start -->
-    <div class="services-area pt-150 pb-150 section-bg" data-background="assets/img/gallery/section_bg02.jpg">
+    <div style="background-image: url('public/adminFrontend/assets/img/gallery/section_bg02.jpg'); color: white" class="services-area pt-150 pb-150 section-bg" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Section Tittle -->
                     <div class="section-tittle section-tittle2 text-center mb-80">
                         <span>Easy to explore</span>
-                        <h2 style="color: black">How It Works</h2>
+                        <h2>How It Works</h2>
                     </div>
                 </div>
             </div>
@@ -232,7 +232,7 @@
                             <span class="flaticon-list"></span>
                         </div>
                         <div class="services-cap">
-                            <h5 style="color: black"><a style="color: black" href="#">1. Select Your City</a></h5>
+                            <h5><a href="#">1. Select Your City</a></h5>
                             {{--                            <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>--}}
                         </div>
                         <!-- Shpape -->
@@ -246,7 +246,7 @@
                             <span class="flaticon-problem"></span>
                         </div>
                         <div class="services-cap">
-                            <h5 style="color: black"><a style="color: black" href="#">2. Choose Your Treatment</a></h5>
+                            <h5><a href="#">2. Choose Your Treatment</a></h5>
                             {{--                            <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>--}}
                         </div>
                         <img class="shape2 d-none d-lg-block"
@@ -259,7 +259,7 @@
                             <span class="flaticon-respect"></span>
                         </div>
                         <div class="services-cap">
-                            <h5 style="color: black"><a style="color: black" href="#">3. Get An Offer</a></h5>
+                            <h5><a href="#">3. Get An Offer</a></h5>
                             {{--                            <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>--}}
                         </div>
                     </div>

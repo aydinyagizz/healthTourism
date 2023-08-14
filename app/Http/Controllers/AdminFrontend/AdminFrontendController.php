@@ -34,4 +34,10 @@ class AdminFrontendController extends Controller
 
         return view('adminFrontend.pages.adminFrontendIndex', $data);
     }
+
+
+    public function adminFrontendPrivacyPolicy()
+    {
+        return view('adminFrontend.pages.adminFrontendPrivacyPolicy');
+    }
 }

@@ -69,7 +69,7 @@ class Kernel extends HttpKernel
         'role' => RoleMiddleware::class,
         'permission' => PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
-        'alreadyLoggedIn' => \App\Http\Middleware\AlreadyLoggedIn::class,
+        'AlreadyLoggedIn' => \App\Http\Middleware\AlreadyLoggedIn::class,
         'is_admin' => \App\Http\Middleware\IsAdmin::class,
         'is_user' => \App\Http\Middleware\IsUser::class,
     ];

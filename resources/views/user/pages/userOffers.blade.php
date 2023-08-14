@@ -292,17 +292,17 @@
 
                             {{--                            TODO: burası düzenlenecek--}}
 
-
+                            <th class="min-w-100px">Actions</th>
                             <th class="min-w-125px">User Name</th>
                             <th class="min-w-125px">User Phone</th>
                             <th class="min-w-125px">User Country</th>
-                            <th class="min-w-125px">Disease</th>
+                            <th class="min-w-125px">Treatment</th>
                             <th class="min-w-125px">Service City</th>
                             <th class="min-w-125px">User Email</th>
                             <th class="min-w-125px">City</th>
                             <th class="min-w-125px">Date Range</th>
-                            <th class="min-w-125px">Disease Category</th>
-                            <th class="text-end min-w-100px">Actions</th>
+                            <th class="min-w-125px">Treatment Category</th>
+
                         </tr>
                         <!--end::Table row-->
                         </thead>
@@ -314,70 +314,37 @@
                         @foreach($offers as $item)
 
                             <tr>
-                                <!--begin::Checkbox-->
                                 {{--                                TODO: burası düzenlenecek--}}
 
-                                <!--end::Checkbox-->
 
-                                <!--begin::User--->
-                                <td class=" align-items-center">
-
-
-                                    <div class="flex-column">
-                                        {{ $item->name }}
-{{--                                        <a href="#" data-id="{{ $item->id }}"--}}
-{{--                                           class="text-gray-800 text-hover-primary mb-1">{{ $item->name }} </a>--}}
-                                    </div>
-                                    <!--begin::User details-->
-
-                                </td>
-
-
-                                <td>
-                                    {{ $item->phone }}
-                                    {{--                                    <div class="menu-item px-3">--}}
-                                    {{--                                        <a href="#" data-bs-toggle="modal"--}}
-                                    {{--                                           data-bs-target="#offersDetail{{ $item->id }}"--}}
-                                    {{--                                           class="menu-link px-3">--}}
-                                    {{--                                            View--}}
-                                    {{--                                        </a>--}}
-                                    {{--                                    </div>--}}
-
-                                </td>
-
-
-                                <td>
-                                    {{ $item->country_name }}
-                                </td>
-
-                                <td>{{ $item->disease_title }}</td>
-
-                                <td>{{ $item->city_name }}</td>
-
-                                <td>{{ $item->email }}</td>
-
-
-                                <td>{{ $item->city }}</td>
-
-                                <td>
-                                    @if($item->date_range_start && $item->date_range_end)
-                                        {{ $item->date_range_start }} to {{ $item->date_range_end }}
-                                    @elseif($item->date_range_start)
-                                        {{ $item->date_range_start }}
-                                    @else
-                                        Not specified
-                                    @endif
-
-                                </td>
-
-
-                                <td>{{ $item->disease_category_name }}</td>
-
-
-                                <td class="text-end">
+                                <td class="">
                                     <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        Actions
+
+                                        @if(empty($userOfferStatuses[$item->id]) || $userOfferStatuses[$item->id] === 'unprocessed')
+                                            <div class="symbol-label">
+                                                <i style="font-size: 20px; margin-left: 6px;" class="fa fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                        @elseif($userOfferStatuses[$item->id] === 'under_review')
+                                            <div class="symbol-label">
+                                                <i style="font-size: 20px; margin-left: 6px;" class="fa fa-clock" aria-hidden="true"></i>
+                                            </div>
+
+                                        @elseif($userOfferStatuses[$item->id] === 'approved')
+                                            <div class="symbol-label">
+                                                <i style="font-size: 20px; margin-left: 6px;" class="fa fa-check-circle"></i>
+                                            </div>
+
+                                        @elseif($userOfferStatuses[$item->id] === 'rejected')
+                                            <div class="symbol-label">
+
+                                                <i style="font-size: 20px; margin-left: 6px;" class="fa fa-times-circle" aria-hidden="true"></i>
+                                            </div>
+
+                                        @endif
+
+
+
                                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
                                         <span class="svg-icon svg-icon-5 m-0"><svg width="24" height="24"
                                                                                    viewBox="0 0 24 24" fill="none"
@@ -525,6 +492,67 @@
                                     </div>
                                     <!--end::Menu-->
                                 </td>
+
+
+                                <td class=" align-items-center">
+
+
+                                    <div class="flex-column">
+                                        {{ $item->name }}
+
+                                    </div>
+
+
+                                </td>
+
+
+
+
+
+
+
+                                <td>
+                                    {{ $item->phone }}
+                                    {{--                                    <div class="menu-item px-3">--}}
+                                    {{--                                        <a href="#" data-bs-toggle="modal"--}}
+                                    {{--                                           data-bs-target="#offersDetail{{ $item->id }}"--}}
+                                    {{--                                           class="menu-link px-3">--}}
+                                    {{--                                            View--}}
+                                    {{--                                        </a>--}}
+                                    {{--                                    </div>--}}
+
+                                </td>
+
+
+                                <td>
+                                    {{ $item->country_name }}
+                                </td>
+
+                                <td>{{ $item->disease_title }}</td>
+
+                                <td>{{ $item->city_name }}</td>
+
+                                <td>{{ $item->email }}</td>
+
+
+                                <td>{{ $item->city }}</td>
+
+                                <td>
+                                    @if($item->date_range_start && $item->date_range_end)
+                                        {{ $item->date_range_start }} to {{ $item->date_range_end }}
+                                    @elseif($item->date_range_start)
+                                        {{ $item->date_range_start }}
+                                    @else
+                                        Not specified
+                                    @endif
+
+                                </td>
+
+
+                                <td>{{ $item->disease_category_name }}</td>
+
+
+
                                 <!--end::Action--->
                             </tr>
 

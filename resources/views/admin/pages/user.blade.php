@@ -206,6 +206,8 @@
                                 </th>
                                 <th class="min-w-125px">User</th>
                                 <th class="min-w-125px">Phone</th>
+                                <th class="min-w-125px">Agency Name</th>
+                                <th class="min-w-125px">Company Name</th>
                                 <th class="min-w-125px">Address</th>
                                 <th class="min-w-125px">City</th>
                                 <th class="min-w-125px">Status</th>
@@ -268,9 +270,15 @@
 
 
                                     <td>
-
                                         {{ $item->phone }}
+                                    </td>
 
+                                    <td>
+                                        {{ $item->agency_name }}
+                                    </td>
+
+                                    <td>
+                                        {{ $item->company_name }}
                                     </td>
 
                                     <td>{{ $item->address }}</td>
