@@ -32,6 +32,8 @@ class UsersImport implements ToModel, WithValidation
     public function model(array $row)
     {
 
+//        TODO: $row[1]->Şehir, $row[2]->agency_name, $row[3]->company_name, $row[4]->address, $row[5]->phone
+
         $cityName = $row[1]; // Excel'den gelen şehir ismi
 
         $city = Citiest::where('name', $cityName)->first(); // Şehri veritabanında ara
@@ -42,7 +44,23 @@ class UsersImport implements ToModel, WithValidation
 
             $password = "123456";
             $companyName = $row[3]; // Excel'den gelen şirket ismi
-            $firstWord = strtolower(strtok($companyName, ' '));
+
+            $translit = [
+                'ç' => 'c', 'Ç' => 'C',
+                'ğ' => 'g', 'Ğ' => 'G',
+                'ı' => 'i', 'İ' => 'I',
+                'ö' => 'o', 'Ö' => 'O',
+                'ş' => 's', 'Ş' => 'S',
+                'ü' => 'u', 'Ü' => 'U',
+            ];
+
+
+            $companyNameTrans = strtr($companyName, $translit);
+
+            // İlk kelimeyi al ve küçük harfe çevir
+            $firstWord = strtolower(strtok($companyNameTrans, ' '));
+
+            //$firstWord = strtolower(strtok($companyName, ' '));
            // $randomNumber = rand(100, 999); // Rastgele bir sayı üret
             //$email = $firstWord . $randomNumber . '@gmail.com'; // E-posta oluştur
             $email = $firstWord . substr($phone, -4) . '@gmail.com'; // E-posta oluştur
