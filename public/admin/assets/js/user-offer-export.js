@@ -53,9 +53,9 @@ var KTUserOfferExport = function () {
                     //         }
                     //     }
                     // }
-                    exportOptions: {
-                        columns: ':visible:not(:eq(0))' // Exclude the first column from export
-                    },
+                    // exportOptions: {
+                    //     columns: ':visible:not(:eq(0))' // Exclude the first column from export
+                    // },
                     // customize: function (doc) {
                     //     // Customize the PDF document here
                     //     // You can modify the styling, layout, etc.
