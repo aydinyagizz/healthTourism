@@ -1,4 +1,4 @@
-@extends('user.layout.userLayout')
+@extends('admin.layout.adminLayout')
 
 @section('title')
     Offers
@@ -292,7 +292,7 @@
 
                             {{--                            TODO: burası düzenlenecek--}}
 
-                            <th class="min-w-100px">Actions</th>
+
                             <th class="min-w-125px">User Name</th>
                             <th class="min-w-125px">User Phone</th>
                             <th class="min-w-125px">User Country</th>
@@ -317,181 +317,6 @@
                                 {{--                                TODO: burası düzenlenecek--}}
 
 
-                                <td class="">
-                                    <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
-                                       data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-
-                                        @if(empty($userOfferStatuses[$item->id]) || $userOfferStatuses[$item->id] === 'unprocessed')
-                                            <div class="symbol-label">
-                                                <i style="font-size: 20px; margin-left: 6px;" class="fa fa-minus" aria-hidden="true"></i>
-                                            </div>
-                                        @elseif($userOfferStatuses[$item->id] === 'under_review')
-                                            <div class="symbol-label">
-                                                <i style="font-size: 20px; margin-left: 6px;" class="fa fa-clock" aria-hidden="true"></i>
-                                            </div>
-
-                                        @elseif($userOfferStatuses[$item->id] === 'approved')
-                                            <div class="symbol-label">
-                                                <i style="font-size: 20px; margin-left: 6px;" class="fa fa-check-circle"></i>
-                                            </div>
-
-                                        @elseif($userOfferStatuses[$item->id] === 'rejected')
-                                            <div class="symbol-label">
-
-                                                <i style="font-size: 20px; margin-left: 6px;" class="fa fa-times-circle" aria-hidden="true"></i>
-                                            </div>
-
-                                        @endif
-
-
-
-                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                        <span class="svg-icon svg-icon-5 m-0"><svg width="24" height="24"
-                                                                                   viewBox="0 0 24 24" fill="none"
-                                                                                   xmlns="http://www.w3.org/2000/svg">
-<path
-    d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-    fill="currentColor"/>
-</svg>
-</span>
-                                        <!--end::Svg Icon-->                    </a>
-                                    <!--begin::Menu-->
-                                    <div
-                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
-                                        data-kt-menu="true">
-
-                                        <style>
-                                            .px-3 {
-                                                padding-right: 4.75rem !important;
-                                                /*padding-left: 0.75rem !important;*/
-                                            }
-                                        </style>
-
-                                        <form action="{{ route('offer.update-status', [$item->id]) }}" method="POST">
-                                            @csrf
-
-
-                                            <div class="menu-item px-3">
-                                                <div class="form-check form-check-custom form-check-solid">
-                                                    <!--begin::Input-->
-                                                    <input class="form-check-input me-3 text-right"
-                                                           name="status" type="radio"
-                                                           value="unprocessed"
-                                                           id="kt_ecommerce_add_category_automation_1"
-                                                        {{ empty($userOfferStatuses[$item->id]) || $userOfferStatuses[$item->id] === 'unprocessed' ? 'checked' : '' }}>Unprocessed
-
-                                                </div>
-                                            </div>
-
-
-                                            <div class="menu-item px-3">
-                                                <div class="form-check form-check-custom form-check-solid">
-                                                    <!--begin::Input-->
-                                                    <input class="form-check-input me-3" name="status"
-                                                           type="radio"
-                                                           value="under_review"
-                                                           id="kt_ecommerce_add_category_automation_1"
-                                                        {{ $userOfferStatuses[$item->id] === 'under_review' ? 'checked' : '' }}>Under Review
-
-                                                </div>
-                                            </div>
-
-                                            <div class="menu-item px-3">
-                                                <div class="form-check form-check-custom form-check-solid">
-
-                                                    <input class="form-check-input me-3" name="status"
-                                                           type="radio"
-                                                           value="approved" id="kt_ecommerce_add_category_automation_1"
-                                                        {{ $userOfferStatuses[$item->id] === 'approved' ? 'checked' : '' }}>Approved
-
-                                                </div>
-                                            </div>
-
-                                            <div class="menu-item px-3">
-                                                <div class="form-check form-check-custom form-check-solid">
-
-                                                    <input class="form-check-input me-3" name="status"
-                                                           type="radio"
-                                                           value="rejected" id="kt_ecommerce_add_category_automation_1"
-                                                        {{ $userOfferStatuses[$item->id] === 'rejected' ? 'checked' : '' }}>Rejected
-
-                                                </div>
-                                            </div>
-
-
-                                            <div class="menu-item px-3">
-                                                <button class="btn btn-primary btn-sm mt-2" type="submit">Save</button>
-                                            </div>
-
-
-                                        </form>
-
-
-                                        {{--                                        <script>--}}
-                                        {{--                                            function updateOfferStatus() {--}}
-                                        {{--                                                const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');--}}
-                                        {{--                                                const offerId = {{ $item->id }};--}}
-                                        {{--                                                const status = document.querySelector('input[name="status"]:checked').value;--}}
-
-                                        {{--                                                fetch(`{{ route('offer.update-status', ['id' => $item->id]) }}`, {--}}
-                                        {{--                                                    method: 'POST',--}}
-                                        {{--                                                    headers: {--}}
-                                        {{--                                                        'Content-Type': 'application/json',--}}
-                                        {{--                                                        'X-CSRF-TOKEN': token--}}
-                                        {{--                                                    },--}}
-                                        {{--                                                    body: JSON.stringify({status: status})--}}
-                                        {{--                                                })--}}
-                                        {{--                                                    .then(response => response.json())--}}
-                                        {{--                                                    .then(data => {--}}
-                                        {{--                                                        // İsteğin başarılı bir şekilde tamamlandığını burada işleyebilirsiniz--}}
-                                        {{--                                                        console.log(data);--}}
-
-                                        {{--                                                        // Success mesajını göster--}}
-                                        {{--                                                        const successMessage = document.getElementById('successMessage');--}}
-                                        {{--                                                        successMessage.style.display = 'block';--}}
-                                        {{--                                                    })--}}
-                                        {{--                                                    .catch(error => {--}}
-                                        {{--                                                        // İsteğin hata ile sonuçlandığını burada işleyebilirsiniz--}}
-                                        {{--                                                        console.error(error);--}}
-                                        {{--                                                    });--}}
-                                        {{--                                            }--}}
-                                        {{--                                        </script>--}}
-
-
-                                        {{--                                        <button class="btn btn-primary btn-sm mt-2" onclick="updateOfferStatus({{ $item->id }}, document.querySelector('input[name=\'status_{{ $item->id }}\']:checked').value)">Gönder</button>--}}
-
-                                        {{--                                        <button class="btn btn-primary btn-sm mt-2" onclick="updateOfferStatus({{ $item->id }}, document.querySelector('input[name=\'status_{{ $item->id }}\']:checked').value)">--}}
-                                        {{--                                            Gönder--}}
-                                        {{--                                        </button>--}}
-
-
-
-
-
-                                        {{--                                        @can('services update')--}}
-                                        {{--                                            <!--begin::Menu item-->--}}
-                                        {{--                                            <div class="menu-item px-3">--}}
-                                        {{--                                                <a href="#" data-bs-toggle="modal"--}}
-                                        {{--                                                   data-bs-target="#blogCategoryEdit{{ $item->id }}"--}}
-                                        {{--                                                   class="menu-link px-3">--}}
-                                        {{--                                                    Edit--}}
-                                        {{--                                                </a>--}}
-                                        {{--                                            </div>--}}
-                                        {{--                                        @endcan--}}
-                                        <!--end::Menu item-->
-
-
-                                        <!--end::Menu item-->
-
-                                        {{--                                        @if (! (auth()->user()->can('services update') || auth()->user()->can('services delete')))--}}
-                                        {{--                                            <div class="menu-item ">--}}
-                                        {{--                                                <p class="text-center ">empty</p>--}}
-                                        {{--                                            </div>--}}
-                                        {{--                                        @endif--}}
-
-                                    </div>
-                                    <!--end::Menu-->
-                                </td>
 
 
                                 <td class=" align-items-center">

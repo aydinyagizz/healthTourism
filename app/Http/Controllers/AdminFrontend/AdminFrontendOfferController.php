@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminFrontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Admin\AdminOfferMail;
 use App\Models\Citiest;
 use App\Models\Disease;
 use App\Models\DiseaseCategory;
@@ -10,6 +11,7 @@ use App\Models\FrontendOffer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
@@ -117,8 +119,28 @@ class AdminFrontendOfferController extends Controller
         $offer->service_city = $request->service_city;
         $offer->save();
 
+
         $message = 'Your request for quotation has been successfully created.'; // İstediğiniz mesajı buraya yazın
         $request->session()->flash('message', $message);
+
+        $data = [
+            'offer' => $offer,
+        ];
+
+        try {
+            $getAdmin = User::where('user_role', 0)->first();
+            // E-posta gönder
+            Mail::to($getAdmin->email)->send(new AdminOfferMail($data));
+
+             response()->json('Mesajınız başarıyla gönderildi.');
+
+            //  return response()->json(['status' => 'success', 'message' => 'Mesajınız başarıyla gönderildi.']);
+
+        } catch (\Exception $e) {
+            //report($e);
+            response()->json('Mesajınız gönderilemedi!');
+            // return response()->json(['status' => 'error', 'message' => 'Mesajınız gönderilemedi.']);
+        }
 
 
         // Gerekli verileri view'a gönderelim

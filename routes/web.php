@@ -99,6 +99,8 @@ Route::prefix('/admin')->middleware(['is_admin', 'role:Admin'])->group(function 
     Route::get( '/treatmentUpdate/{id}', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesUpdate'])->name('admin.diseases.update');
     Route::post( '/treatmentUpdatePost/{id}', [\App\Http\Controllers\Admin\DiseasesController::class, 'diseasesUpdatePost'])->name('admin.diseases.update.post');
 
+    Route::get( '/offers', [\App\Http\Controllers\Admin\OffersController::class, 'offerList'])->name('admin.offer.list');
+
 });
 
 

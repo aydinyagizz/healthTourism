@@ -285,6 +285,23 @@
                         </a>
 
 
+                        <a href="{{ route('admin.offer.list') }}">
+                            <div
+                                class="menu-item   {{ Route::is('admin.offer.list') ? 'show' : '' }} menu-accordion mb-1">
+                            <span class="menu-link"><span class="menu-icon">
+
+                                    <i class="fa fa-images fa-3x" aria-hidden="true"></i>
+
+                                 </span>
+                                <span class="menu-title">Offers
+                                </span>
+                                <span class=""></span></span>
+
+
+                            </div>
+                        </a>
+
+
 
                         <a href="{{ route('admin.about.us.list') }}">
                             <div
@@ -7615,6 +7632,9 @@
 <script src="{{ asset('public/admin/assets/js/diseases-list.js') }}"></script>
 <script src="{{ asset('public/admin/assets/js/diseases-add.js') }}"></script>
 
+
+<script src="{{ asset('public/admin/assets/js/offers-list.js') }}"></script>
+<script src="{{ asset('public/admin/assets/js/user-offer-export.js') }}"></script>
 
 
 <script src="../../cdn.amcharts.com/lib/5/index.js"></script>

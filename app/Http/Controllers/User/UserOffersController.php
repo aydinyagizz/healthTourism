@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\DiseaseCategory;
 use App\Models\FrontendOffer;
 use App\Models\User;
 use App\Models\UserOfferStatus;
@@ -36,7 +37,7 @@ class UserOffersController extends Controller
                 ->where('frontend_offers.service_city', $user->city)
                 ->select('frontend_offers.*', 'countries.name as country_name', 'diseases.title as disease_title', 'disease_categories.name as disease_category_name', 'cities.name as city_name')
                 ->get(),
-
+            'category' => DiseaseCategory::where('status', 1)->get(),
 
         ];
 
