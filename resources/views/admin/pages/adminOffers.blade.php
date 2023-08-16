@@ -292,7 +292,7 @@
 
                             {{--                            TODO: burası düzenlenecek--}}
 
-
+{{--                            <th class="min-w-100px">teklif verenler</th>--}}
                             <th class="min-w-125px">User Name</th>
                             <th class="min-w-125px">User Phone</th>
                             <th class="min-w-125px">User Country</th>
@@ -316,8 +316,17 @@
                             <tr>
                                 {{--                                TODO: burası düzenlenecek--}}
 
-
-
+{{--                                <td class=" align-items-center">--}}
+{{--                                    @if ($item->userOfferStatuses->count() > 0)--}}
+{{--                                        @foreach ($item->userOfferStatuses as $status)--}}
+{{--                                            @if ($status->name)--}}
+{{--                                                <li>{{ $status->name }} - {{ $status->pivot->status }}</li>--}}
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
+{{--                                    @else--}}
+{{--                                        <p>No statuses found.</p>--}}
+{{--                                    @endif--}}
+{{--                                </td>--}}
 
                                 <td class=" align-items-center">
 

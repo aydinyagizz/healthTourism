@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Imports\UsersImport;
 use App\Models\AdminBlogCategory;
 use App\Models\AdminPricing;
+use App\Models\AdminUserStatus;
 use App\Models\User;
 use App\Models\UserLog;
 use Flasher\Prime\FlasherInterface;
@@ -27,7 +28,7 @@ class UserController extends Controller
         $data = [
             'admin' => User::where('id', Session::get('adminId'))->first(),
            // 'users' => User::where('user_role', 1)->get(),
-            'users' => User::join('cities', 'users.city', '=', 'cities.id')
+            'users' => User::with('adminUserStatuses')->join('cities', 'users.city', '=', 'cities.id')
                 ->where('users.user_role', 1)
                 ->select('users.*', 'cities.name as city_name', 'cities.id as city_id')
                 ->get(),
@@ -41,6 +42,37 @@ class UserController extends Controller
 
 
         return view('admin.pages.user', $data);
+    }
+
+
+    public function updateStatus($id, Request $request, FlasherInterface $flasher)
+    {
+//        $this->validate($request, [
+//            'status' => 'required|in:unprocessed,under_review,approved,rejected'
+//        ]);
+
+        $offerStatus = AdminUserStatus::where('user_id', $id)
+            ->first();
+
+        if (!$offerStatus) {
+            // Eğer teklif için durum yoksa, yeni bir durum oluştur ve ilişkilendir
+            $offerStatus = new AdminUserStatus([
+                'user_id' => $id,
+                'status' => $request->status,
+            ]);
+
+            $offerStatus->save();
+        } else {
+            // Eğer teklif için durum zaten varsa, güncelle
+            $offerStatus->status = $request->status;
+            $offerStatus->save();
+        }
+
+
+        $flasher->addSuccess('güncelleme başarılı');
+        return Redirect::route('admin.user.list');
+
+        // return response()->json(['message' => 'Teklif durumu güncellendi.']);
     }
 
     public function userAdd(Request $request, FlasherInterface $flasher)

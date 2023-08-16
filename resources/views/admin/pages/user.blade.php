@@ -204,7 +204,9 @@
                                                value=""/>
                                     </div>
                                 </th>
+                                <th class="min-w-125px">Transactions</th>
                                 <th class="min-w-125px">User</th>
+                                <th class="min-w-125px">Offer Count</th>
                                 <th class="min-w-125px">Phone</th>
                                 <th class="min-w-125px">Agency Name</th>
                                 <th class="min-w-125px">Company Name</th>
@@ -222,7 +224,11 @@
                             <tbody class="text-gray-600 fw-semibold">
 
                             @foreach($users as $item)
+
                                 <tr>
+
+
+
                                     <!--begin::Checkbox-->
                                     <td>
                                         <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -230,6 +236,89 @@
                                         </div>
                                     </td>
                                     <!--end::Checkbox-->
+
+                                    <td class="">
+                                        <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
+                                           data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+
+                                            @if($item->adminUserStatuses->isEmpty() || $item->adminUserStatuses[0]->pivot->status === 'not_contact')
+
+                                                <div class="symbol-label">
+
+                                                    <i style="font-size: 20px; margin-left: 6px;" class="fa fa-times-circle" aria-hidden="true"></i>
+                                                </div>
+
+                                            @elseif($item->adminUserStatuses[0]->pivot->status === 'contact')
+
+                                                <div class="symbol-label">
+                                                    <i style="font-size: 20px; margin-left: 6px;" class="fa fa-check-circle"></i>
+                                                </div>
+                                            @endif
+
+
+
+                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+                                            <span class="svg-icon svg-icon-5 m-0"><svg width="24" height="24"
+                                                                                       viewBox="0 0 24 24" fill="none"
+                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path
+    d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
+    fill="currentColor"/>
+</svg>
+</span>
+                                            <!--end::Svg Icon-->                    </a>
+                                        <!--begin::Menu-->
+                                        <div
+                                            class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
+                                            data-kt-menu="true">
+
+                                            <style>
+                                                .px-3 {
+                                                    padding-right: 4.75rem !important;
+                                                    /*padding-left: 0.75rem !important;*/
+                                                }
+                                            </style>
+
+                                            <form action="{{ route('admin.user.update-status', [$item->id]) }}" method="POST">
+                                                @csrf
+
+
+                                                <div class="menu-item px-3">
+                                                    <div class="form-check form-check-custom form-check-solid">
+                                                        <!--begin::Input-->
+                                                        <input class="form-check-input me-3 text-right"
+                                                               name="status" type="radio"
+                                                               value="contact"
+                                                               id="kt_ecommerce_add_category_automation_1"
+                                                            {{ !$item->adminUserStatuses->isEmpty() && $item->adminUserStatuses[0]->pivot->status === 'contact' ? 'checked' : '' }}>Contact
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="menu-item px-3">
+                                                    <div class="form-check form-check-custom form-check-solid">
+
+                                                        <input class="form-check-input me-3" name="status"
+                                                               type="radio"
+                                                               value="not_contact" id="kt_ecommerce_add_category_automation_1"
+                                                            {{ $item->adminUserStatuses->isEmpty() || $item->adminUserStatuses[0]->pivot->status === 'not_contact' ? 'checked' : '' }}>Not Contact
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="menu-item px-3">
+                                                    <button class="btn btn-primary btn-sm mt-2" type="submit">Save</button>
+                                                </div>
+
+
+                                            </form>
+
+                                        </div>
+                                        <!--end::Menu-->
+                                    </td>
+
+
 
                                     <!--begin::User--->
                                     <td class="d-flex align-items-center">
@@ -267,6 +356,11 @@
                                         <!--begin::User details-->
 
                                     </td>
+
+                                    <td>
+                                        {{ $item->offerCount }}
+                                    </td>
+
 
 
                                     <td>

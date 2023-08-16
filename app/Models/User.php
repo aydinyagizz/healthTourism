@@ -71,6 +71,18 @@ class User extends Authenticatable
         return $this->hasMany(UserLog::class);
     }
 
+    public function adminUserStatuses()
+    {
+        return $this->belongsToMany(User::class, 'admin_user_statuses',  'user_id')
+            ->withPivot('status');
+    }
+
+    public function getOfferCountAttribute()
+    {
+        return FrontendOffer::where('service_city', $this->city)->count();
+    }
+
+
 //    public function userOfferStatuses()
 //    {
 //        return $this->hasMany(UserOfferStatus::class, 'user_id');

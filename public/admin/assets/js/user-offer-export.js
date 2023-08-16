@@ -21,23 +21,23 @@ var KTUserOfferExport = function () {
                 {
                     extend: 'copyHtml5',
                     title: documentTitle,
-                    exportOptions: {
-                        columns: ':visible:not(:eq(0))' // Exclude the first column from export
-                    }
+                    // exportOptions: {
+                    //     columns: ':visible:not(:eq(0))' // Exclude the first column from export
+                    // }
                 },
                 {
                     extend: 'excelHtml5',
                     title: documentTitle,
-                    exportOptions: {
-                        columns: ':visible:not(:eq(0))' // Exclude the first column from export
-                    }
+                    // exportOptions: {
+                    //     columns: ':visible:not(:eq(0))' // Exclude the first column from export
+                    // }
                 },
                 {
                     extend: 'csvHtml5',
                     title: documentTitle,
-                    exportOptions: {
-                        columns: ':visible:not(:eq(0))' // Exclude the first column from export
-                    }
+                    // exportOptions: {
+                    //     columns: ':visible:not(:eq(0))' // Exclude the first column from export
+                    // }
                 },
                 {
                     extend: 'pdfHtml5',
