@@ -1,7 +1,7 @@
 @extends('adminFrontend.layout.adminFrontendLayout')
 
 @section('title')
-    City Detail
+    {{ $city->name }}
 @endsection
 
 @section('css')

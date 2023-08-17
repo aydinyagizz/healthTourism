@@ -18,7 +18,7 @@ License: For each use you must have a valid license purchased only from above li
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
 <head>
-    <title>Login | Holıday & Health Turkey</title>
+    <title>Login | Holiday & Health Turkey</title>
     <meta charset="utf-8"/>
     <meta name="description" content="Holiday & Health Turkey is a BUBERKA product."/>
     <meta name="keywords"

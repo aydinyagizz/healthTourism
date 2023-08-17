@@ -1,7 +1,7 @@
 @extends('adminFrontend.layout.adminFrontendLayout')
 
 @section('title')
-    Treatment Detail
+    {{ $diseases->title }}
 @endsection
 
 @section('css')
@@ -10,10 +10,6 @@
 @section('content')
 
     {{--@dd($diseases)--}}
-
-
-
-
 
 
     <!-- Hero Start-->

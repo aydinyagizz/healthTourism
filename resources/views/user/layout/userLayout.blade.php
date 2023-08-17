@@ -17,7 +17,7 @@
 
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield("title") | Holıday & Health Turkey</title>
+    <title>@yield("title") | Holiday & Health Turkey</title>
 
 
     {{--    <link rel="canonical" href="https://preview.keenthemes.com/rider-html-pro"/>--}}
