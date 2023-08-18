@@ -5,6 +5,50 @@
 @endsection
 
 @section('css')
+    <style>
+        /* Mobil cihazlar için konumu ayarla */
+
+
+        @media only screen and (max-width: 600px) {
+            #offer-masaustu {
+                display: none;
+            }
+        }
+
+
+        @media (min-width: 641px) {
+
+            #offer-mobile {
+                display: none;
+            }
+
+            /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+        }
+        @media (min-width: 961px) {
+
+            #offer-mobile {
+                display: none;
+            }
+            /* tablet, landscape iPad, lo-res laptops ands desktops */
+        }
+
+        @media (min-width: 1025px) {
+            #offer-mobile {
+                display: none;
+            }
+
+            /* big landscape tablets, laptops, and desktops */
+        }
+
+        @media (min-width: 1281px) {
+
+            #offer-mobile {
+                display: none;
+            }
+            /* hi-res laptops and desktops */
+        }
+
+    </style>
 @endsection
 
 @section('content')
@@ -21,11 +65,38 @@
             </div>
         </div>
     </div>
+
+
+
+
     <!--Hero End -->
     <!--================Blog Area =================-->
     <section class="blog_area single-post-area section-padding">
         <div class="container">
+
+
+            <div id="offer-mobile" class="offer-container blog_right_sidebar">
+                <aside class="single_sidebar_widget search_widget">
+
+                    <form class="form" action="{{ route('admin.frontend.offer') }}" method="POST"
+                          id="offerForm">
+                        @csrf
+
+                        <input type="hidden" name="city_id" value="{{ $city->id }}">
+                        <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                type="submit">Get an offer
+                        </button>
+                    </form>
+
+                    <div class="alert alert-info alert-dismissible fade show mt-3" role="alert" id="agencyCountInfo" >
+                        Your request for a quote will be sent to <strong>{{ $agencyCount }} AGENCIES.</strong>
+                    </div>
+                </aside>
+            </div>
+
             <div class="row">
+
+
                 <div class="col-lg-8 posts-list">
                     <div class="single-post">
                         <div class="feature-img">
@@ -257,7 +328,7 @@
 
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget search_widget">
+                        <aside id="offer-masaustu" class="single_sidebar_widget search_widget">
 
                             <form class="form" action="{{ route('admin.frontend.offer') }}" method="POST"
                                   id="offerForm">
