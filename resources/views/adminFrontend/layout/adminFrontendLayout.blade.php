@@ -110,6 +110,10 @@
                                                 ''
                                             @endif href="{{ route('admin.frontend.diseases') }}">Treatment</a></li>
 
+                                        <li><a @if(Route::is('admin.frontend.blog'))  style="color: #FF3D1C" @else
+                                                ''
+                                            @endif href="{{ route('admin.frontend.blog') }}">Blog</a></li>
+
                                         <li><a href="https://holidayhealthturkey.com/#aboutus">About Us</a></li>
 
 
@@ -190,6 +194,7 @@
                                     <li><a href="{{ route('admin.frontend.index') }}">Home</a></li>
                                     <li><a href="{{ route('admin.frontend.city') }}">Cities</a></li>
                                     <li><a href="{{ route('admin.frontend.diseases') }}">Treatment</a></li>
+                                    <li><a href="{{ route('admin.frontend.blog') }}">Blog</a></li>
                                     <li><a href="https://holidayhealthturkey.com/#aboutus">About Us</a></li>
 {{--                                    <li><a href="#">Contact</a></li>--}}
                                 </ul>
@@ -243,10 +248,10 @@
                     <div class="col-xl-3 col-lg-4">
                         <!-- Footer Social -->
                         <div class="footer-social f-right">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-globe"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="https://facebook.com/profile.php/?id=61550659762273" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com/company/holidayhealthturkey" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.youtube.com/@HolidayHealthTurkey" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.instagram.com/holidayhealthturkey" target="_blank"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>

@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->group(function () {
     Route::get( '/', [\App\Http\Controllers\AdminFrontend\AdminFrontendController::class, 'adminFrontendIndex'])->name('admin.frontend.index');
-    Route::get( '/blog', [\App\Http\Controllers\AdminFrontend\AdminFrontendBlogController::class, 'adminFrontendBlog'])->name('admin.frontend.blog');
     Route::get( '/cities', [\App\Http\Controllers\AdminFrontend\AdminFrontendCityController::class, 'adminFrontendCity'])->name('admin.frontend.city');
     Route::get( '/citiesDetail/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendCityController::class, 'adminFrontendCityDetail'])->name('admin.frontend.city.detail');
     Route::get( '/treatment', [\App\Http\Controllers\AdminFrontend\AdminFrontendDiseasesController::class, 'adminFrontendDiseases'])->name('admin.frontend.diseases');
@@ -27,7 +26,9 @@ Route::prefix('/')->group(function () {
     Route::post('/api/fetch-get-diseases', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOfferGetDiseases'])->name('fetch-get-diseases');
     Route::post('/api/fetch-agency-count', [\App\Http\Controllers\AdminFrontend\AdminFrontendOfferController::class, 'adminFrontendOfferGetAgencyCount'])->name('fetch.get.agency.count');
     Route::get( '/privacyPolicy', [\App\Http\Controllers\AdminFrontend\AdminFrontendController::class, 'adminFrontendPrivacyPolicy'])->name('admin.frontend.privacy.policy');
-
+    Route::get( '/blog', [\App\Http\Controllers\AdminFrontend\AdminFrontendBlogController::class, 'adminFrontendBlog'])->name('admin.frontend.blog');
+    Route::get('/blog-detail/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendBlogController::class, 'adminFrontendBlogDetail'])->name('admin.frontend.blog.detail');
+    Route::get('/category/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendBlogController::class, 'adminFrontendCategoryBlog'])->name('admin.frontend.category.blog');
 });
 
 

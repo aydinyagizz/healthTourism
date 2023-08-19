@@ -1,7 +1,7 @@
 @extends('adminFrontend.layout.adminFrontendLayout')
 
 @section('title')
-    Blog
+    {{ $category_get->name }}
 @endsection
 
 @section('css')
@@ -62,7 +62,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="hero-cap text-center pt-50">
-                        <h2>Blog Area</h2>
+                        <h2> {{ $category_get->name }}</h2>
                     </div>
                 </div>
             </div>
@@ -92,11 +92,12 @@
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
 
-                        @if(count($blog) == 0)
+                        @if(count($blog) < 1)
                             <div class="alert alert-warning" role="alert">
-                                Blog Not Found
+                                No Blogs Found For This Category
                             </div>
                         @endif
+
 
                         <div class="row">
                         @foreach($blog as $item)
@@ -105,7 +106,7 @@
 
                                     @if($item->image)
                                         <a href="{{ route('admin.frontend.blog.detail', $item->slug) }}">
-                                        <img  class="card-img " src="data:image/jpeg;base64,{{ $item->image }}"
+                                        <img class="card-img " src="data:image/jpeg;base64,{{ $item->image }}"
                                              alt="{{ $item->name }}">
                                         </a>
                                     @else
@@ -172,11 +173,6 @@
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">Category</h4>
                             <ul class="list cat-list">
-                                @if(count($category) < 1)
-                                    <div class="alert alert-warning" role="alert">
-                                        Category Not Found
-                                    </div>
-                                @endif
                                 @foreach($category as $item)
                                     <li>
                                         <a href="{{ route('admin.frontend.category.blog', $item->slug) }}" class="d-flex">
@@ -189,6 +185,7 @@
 
                         <aside class="single_sidebar_widget popular_post_widget">
                             <h3 class="widget_title">Recent Post</h3>
+
                             @if(count($recent_blog) < 1)
                                 <div class="alert alert-warning" role="alert">
                                     Recent Post Not Found
@@ -198,9 +195,8 @@
                             @foreach($recent_blog as $recent_blog)
                             <div class="media post_item">
                                 @if($recent_blog->image)
-                                    <a href="{{ route('admin.frontend.blog.detail', [$recent_blog->slug]) }}">
-                                    <img style="border-radius: 5px;" width="100px" src="data:image/jpeg;base64,{{ $recent_blog->image }}"
-                                         alt="{{ $recent_blog->name }}"></a>
+                                    <a href="{{ route('admin.frontend.blog.detail', [$recent_blog->slug]) }}">  <img style="border-radius: 5px" width="100px" src="data:image/jpeg;base64,{{ $recent_blog->image }}"
+                                                                                                                     alt="{{ $recent_blog->name }}"></a>
                                 @else
                                 @endif
 
