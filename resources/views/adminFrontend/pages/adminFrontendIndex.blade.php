@@ -505,6 +505,14 @@
                     </div>
                 @endforeach
             </div>
+
+            <div class="row justify-content-center">
+                <div class="room-btn pt-20">
+                    <a href="{{route('admin.frontend.blog')}}" class="btn view-btn1">View All </a>
+                </div>
+            </div>
+
+
         </div>
     </div>
     <!-- Blog Ara End -->

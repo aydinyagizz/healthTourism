@@ -38,6 +38,7 @@ class AdminFrontendController extends Controller
                 ->orderBy('created_at', 'DESC')->take(3)->get(),
         ];
 
+
         return view('adminFrontend.pages.adminFrontendIndex', $data);
     }
 

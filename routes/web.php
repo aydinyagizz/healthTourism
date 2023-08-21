@@ -29,6 +29,9 @@ Route::prefix('/')->group(function () {
     Route::get( '/blog', [\App\Http\Controllers\AdminFrontend\AdminFrontendBlogController::class, 'adminFrontendBlog'])->name('admin.frontend.blog');
     Route::get('/blog-detail/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendBlogController::class, 'adminFrontendBlogDetail'])->name('admin.frontend.blog.detail');
     Route::get('/category/{slug}', [\App\Http\Controllers\AdminFrontend\AdminFrontendBlogController::class, 'adminFrontendCategoryBlog'])->name('admin.frontend.category.blog');
+
+    Route::get('/sitemap', [\App\Http\Controllers\FrontendSitemap\AdminFrontendSitemapController::class, 'sitemap']);
+
 });
 
 
